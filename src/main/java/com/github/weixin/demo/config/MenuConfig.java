@@ -1,5 +1,6 @@
 package com.github.weixin.demo.config;
 
+import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.bean.menu.WxMenu;
 import me.chanjar.weixin.common.bean.menu.WxMenuButton;
 import me.chanjar.weixin.common.exception.WxErrorException;
@@ -30,8 +31,18 @@ public class MenuConfig {
         WxMenuButton button1 = new WxMenuButton();
         button1.setType(MenuButtonType.VIEW);
         button1.setName("微官网");
-        button1.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
+//		button1.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
+        button1.setUrl("https://www.baidu.com/");
+        WxMenuButton button3 = new WxMenuButton();
+        button3.setType(MenuButtonType.VIEW);
+        button3.setName("在线报名");
 
+//        WxMpService wxMpService = ...;
+        String url = "http://www.fjshhdzx.cn/wechat/course_list";
+//        wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
+//		button1.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
+        button3.setUrl(wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, "wxfd04fee4b7f7a651"));
+        System.out.println(wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, "wxfd04fee4b7f7a651"));
 //		WxMenuButton button2 = new WxMenuButton();
 //		button2.setName("我是卖家");
 //
@@ -59,11 +70,11 @@ public class MenuConfig {
 //		button2.getSubButtons().add(button22);
 //		button2.getSubButtons().add(button23);
 //		button2.getSubButtons().add(button24);
-
-        WxMenuButton button3 = new WxMenuButton();
-        button3.setType(MenuButtonType.CLICK);
-        button3.setName("在线报名");
-        button3.setKey("help");
+//
+//		WxMenuButton button3 = new WxMenuButton();
+//		button3.setType(MenuButtonType.CLICK);
+//		button3.setName("在线报名");
+//		button3.setKey("help");
 
         menu.getButtons().add(button1);
 //		menu.getButtons().add(button2);
