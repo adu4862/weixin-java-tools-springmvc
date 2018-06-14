@@ -62,7 +62,7 @@
          applicationContext.xml里有这样一行代码：<property name="templateLoaderPath" value="/WEB-INF/views/" /> 已经指定了视图位置。如果我们这里依然保留下方代码，页面回报406的找不到的错误 -->
         <!--<property name="prefix"><value>/WEB-INF/views/</value></property>-->
         <property name="suffix">
-            <value>.html</value>
+            <value>.jsp</value>
         </property>
         <property name="contentType">
             <value>text/html; charset=UTF-8</value>

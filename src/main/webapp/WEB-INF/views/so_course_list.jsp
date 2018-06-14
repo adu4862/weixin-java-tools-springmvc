@@ -456,7 +456,7 @@ Copyright 2016 Administrator. All rights reserved.
     </a>
 
     <a class="mui-tab-item"
-       href="http://localhost:8080/my.jsp">
+       href="http://localhost:8080/wechat/my">
         <span class="mui-icon mui-ext-icon mui-icon-person"></span>
         <span class="mui-tab-label">我的</span>
     </a>
@@ -491,7 +491,7 @@ Copyright 2016 Administrator. All rights reserved.
                     <ul class="mui-table-view">
                         <c:forEach items="${list}" var="user">
                             <li class="mui-table-view-cell mui-media"><a
-                                    href=user.url>
+                                href=user.url>
                                 <div class="mui-media-object mui-pull-left"
                                      style="background:url(user.iamge_url) no-repeat center"></div>
                                 <div class="mui-media-body"><span class="title mui-ellipsis">user.title</span>
@@ -499,7 +499,7 @@ Copyright 2016 Administrator. All rights reserved.
                                     <p class="mui-small">已报名：<font color="#666666">4 人</font> 剩余名额：<font color="#666666">0
                                         人</font></p>
                                     <div class="mui-media-footer"><span class="mui-badge">user.number</span> <span
-                                            class="mui-text-orange mui-rmb">user.cost</span></div>
+                                        class="mui-text-orange mui-rmb">user.cost</span></div>
                                 </div>
                             </a></li>
 
@@ -508,7 +508,7 @@ Copyright 2016 Administrator. All rights reserved.
                     </ul>
                 </div>
                 <div class="mui-card-footer"><a
-                        href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=activity&op=display">查看更多</a>
+                    href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=activity&op=display">查看更多</a>
                 </div>
             </div>
             <style type="text/css">

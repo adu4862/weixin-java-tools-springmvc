@@ -238,7 +238,7 @@
     </a>
 
     <a class="mui-tab-item"
-       href="http://localhost:8080/my.jsp">
+       href="http://localhost:8080/wechat/my">
         <span class="mui-icon mui-ext-icon mui-icon-person"></span>
         <span class="mui-tab-label">我的</span>
     </a>

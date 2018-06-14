@@ -32,7 +32,7 @@ public class MenuConfig {
         button1.setType(MenuButtonType.VIEW);
         button1.setName("微官网");
 //		button1.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
-        button1.setUrl("https://www.baidu.com/");
+        button1.setUrl("http://www.fjshhdzx.cn/weisite/cmsController.do?goPage&page=index");
         WxMenuButton button3 = new WxMenuButton();
         button3.setType(MenuButtonType.VIEW);
         button3.setName("在线报名");

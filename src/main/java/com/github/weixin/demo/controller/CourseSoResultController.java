@@ -28,8 +28,7 @@ public class CourseSoResultController {
     //
 
     @ResponseBody
-//    @GetMapping(produces = "text/plain;charset=UTF-8")
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET,produces = "text/plain;charset=UTF-8")
     public ModelAndView get() throws UnsupportedEncodingException {
         this.logger.info("\n课程列表：[{}]");
         searchCourseList();
@@ -44,8 +43,8 @@ public class CourseSoResultController {
         Connection conn = null;
         String sql;
 
-        String url = "jdbc:mysql://localhost:3306/Movie_db?"
-                + "user=yanglong&password=123456&useUnicode=true&characterEncoding=gbk";
+        String url = "jdbc:mysql://localhost:3306/weixin_db?"
+                + "user=yanglong&password=Willyang4862!&useUnicode=true&characterEncoding=gbk";
 
         try {
             // 之所以要使用下面这条语句，是因为要使用MySQL的驱动，所以我们要把它驱动起来，
@@ -73,7 +72,7 @@ public class CourseSoResultController {
                     Object object = rs.getObject(i);
                     if ("course_id".equals(columnName)) {
                         String s = object.toString();
-                        rowData.put(columnName, "http://www.changs1992.cn/wechat/web?code=" + s);
+                        rowData.put(columnName, "http://localhost:8080/wechat/details?code=" + s);
                     }
 //                    else if ("status".equals(columnName)) {
 //                        String s = object.toString();
