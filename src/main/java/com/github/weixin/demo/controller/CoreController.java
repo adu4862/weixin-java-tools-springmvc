@@ -144,7 +144,9 @@ public class CoreController extends GenericController {
             returnModel.setResult(true);
             returnModel.setDatum(wxMpUser);
             renderString(response, returnModel);
-
+            //保存wxMpUser到数据库
+            String openId = wxMpUser.getOpenId();
+            
         } catch (WxErrorException e) {
             returnModel.setResult(false);
             returnModel.setReason(e.getError().toString());
