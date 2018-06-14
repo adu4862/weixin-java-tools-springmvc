@@ -490,18 +490,22 @@ Copyright 2016 Administrator. All rights reserved.
                 <div class="mui-card-content">
                     <ul class="mui-table-view">
                         <c:forEach items="${list}" var="user">
-                            <li class="mui-table-view-cell mui-media"><a
-                                href=user.url>
-                                <div class="mui-media-object mui-pull-left"
-                                     style="background:url(user.iamge_url) no-repeat center"></div>
-                                <div class="mui-media-body"><span class="title mui-ellipsis">user.title</span>
-                                    <p class="mui-ellipsis-2 mui-small">剪纸|三年级</p>
-                                    <p class="mui-small">已报名：<font color="#666666">4 人</font> 剩余名额：<font color="#666666">0
-                                        人</font></p>
-                                    <div class="mui-media-footer"><span class="mui-badge">user.number</span> <span
-                                        class="mui-text-orange mui-rmb">user.cost</span></div>
-                                </div>
-                            </a></li>
+                            <li class="mui-table-view-cell mui-media">
+                                <a href="${user.course_id}">
+                                    <div class="mui-media-object mui-pull-left"
+                                         style="background:url(${user.iamge_url}) no-repeat center">
+                                            <%--<img src=user.iamge_url alt="">--%>
+                                    </div>
+                                    <div class="mui-media-body"><span class="title mui-ellipsis">${user.title}</span>
+                                        <p class="mui-ellipsis-2 mui-small">剪纸|三年级</p>
+                                        <p class="mui-small">已报名：<font color="#666666">4 人</font> 剩余名额：<font
+                                            color="#666666">0
+                                            人</font></p>
+                                        <div class="mui-media-footer"><span class="mui-badge">${user.number}</span>
+                                            <span
+                                                class="mui-text-orange mui-rmb">${user.cost}</span></div>
+                                    </div>
+                                </a></li>
 
                         </c:forEach>
 
