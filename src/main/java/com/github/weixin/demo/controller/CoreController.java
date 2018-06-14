@@ -144,6 +144,7 @@ public class CoreController extends GenericController {
             returnModel.setResult(true);
             returnModel.setDatum(wxMpUser);
             renderString(response, returnModel);
+
         } catch (WxErrorException e) {
             returnModel.setResult(false);
             returnModel.setReason(e.getError().toString());

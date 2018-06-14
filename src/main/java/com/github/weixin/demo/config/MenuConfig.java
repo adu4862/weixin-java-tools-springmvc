@@ -24,7 +24,7 @@ public class MenuConfig {
      */
     protected static WxMenu getMenu() {
 
-        MainConfig mainConfig = new MainConfig("appid", "appsecret", "token", "aesKey");
+        MainConfig mainConfig = new MainConfig("wxfd04fee4b7f7a651", "0027e67ffa9aee90b7b8004ce41369db", "shanghang", "yifYc0u9H77tw15SnC7sQBzs4RSfKwrDb1F24OLLKse");
         WxMpService wxMpService = mainConfig.wxMpService();
 
         WxMenu menu = new WxMenu();
@@ -38,11 +38,11 @@ public class MenuConfig {
         button3.setName("在线报名");
 
 //        WxMpService wxMpService = ...;
-        String url = "http://www.fjshhdzx.cn/wechat/course_list";
+        String url = "http://www.fjshhdzx.cn/getOAuth2UserInfo";
 //        wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
 //		button1.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
-        button3.setUrl(wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, "wxfd04fee4b7f7a651"));
-        System.out.println(wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, "wxfd04fee4b7f7a651"));
+        button3.setUrl(wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, ""));
+        System.out.println(wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, ""));
 //		WxMenuButton button2 = new WxMenuButton();
 //		button2.setName("我是卖家");
 //
