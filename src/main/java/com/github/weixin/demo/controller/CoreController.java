@@ -108,58 +108,58 @@ public class CoreController extends GenericController {
      * @param openid openid
      * @param lang   zh_CN, zh_TW, en
      */
-    @RequestMapping(value = "/getUserInfo")
-    public WxMpUser getUserInfo(HttpServletResponse response, @RequestParam(value = "openid") String openid, @RequestParam(value = "lang") String lang) {
-        ReturnModel returnModel = new ReturnModel();
-        WxMpUser wxMpUser = null;
-        try {
-            wxMpUser = this.wxMpService.getUserService().userInfo(openid, lang);
-            returnModel.setResult(true);
-            returnModel.setDatum(wxMpUser);
-            renderString(response, returnModel);
-        } catch (WxErrorException e) {
-            returnModel.setResult(false);
-            returnModel.setReason(e.getError().toString());
-            renderString(response, returnModel);
-            this.logger.error(e.getError().toString());
-        }
-        return wxMpUser;
-    }
+//    @RequestMapping(value = "/getUserInfo")
+//    public WxMpUser getUserInfo(HttpServletResponse response, @RequestParam(value = "openid") String openid, @RequestParam(value = "lang") String lang) {
+//        ReturnModel returnModel = new ReturnModel();
+//        WxMpUser wxMpUser = null;
+//        try {
+//            wxMpUser = this.wxMpService.getUserService().userInfo(openid, lang);
+//            returnModel.setResult(true);
+//            returnModel.setDatum(wxMpUser);
+//            renderString(response, returnModel);
+//        } catch (WxErrorException e) {
+//            returnModel.setResult(false);
+//            returnModel.setReason(e.getError().toString());
+//            renderString(response, returnModel);
+//            this.logger.error(e.getError().toString());
+//        }
+//        return wxMpUser;
+//    }
 
-    /**
-     * 通过code获得基本用户信息
-     * 详情请见: http://mp.weixin.qq.com/wiki/14/bb5031008f1494a59c6f71fa0f319c66.html
-     *
-     * @param code code
-     * @param lang zh_CN, zh_TW, en
-     */
-    @RequestMapping(value = "/getOAuth2UserInfo")
-    public ModelAndView getOAuth2UserInfo(HttpServletResponse response, @RequestParam(value = "code") String code, @RequestParam(value = "lang") String lang) {
-        ReturnModel returnModel = new ReturnModel();
-        WxMpOAuth2AccessToken accessToken;
-        WxMpUser wxMpUser;
-        try {
-            accessToken = this.wxMpService.oauth2getAccessToken(code);
-            wxMpUser = this.wxMpService.getUserService()
-                .userInfo(accessToken.getOpenId(), lang);
-            returnModel.setResult(true);
-            returnModel.setDatum(wxMpUser);
-            renderString(response, returnModel);
-            //保存wxMpUser到数据库
-            String openId = wxMpUser.getOpenId();
-            //重定向到课程列表
-            return new ModelAndView("redirect:/wechat/course_list?openId="+openId);
-
-
-
-        } catch (WxErrorException e) {
-            returnModel.setResult(false);
-            returnModel.setReason(e.getError().toString());
-            renderString(response, returnModel);
-            this.logger.error(e.getError().toString());
-        }
-        return null;
-    }
+//    /**
+//     * 通过code获得基本用户信息
+//     * 详情请见: http://mp.weixin.qq.com/wiki/14/bb5031008f1494a59c6f71fa0f319c66.html
+//     *
+//     * @param code code
+//     * @param lang zh_CN, zh_TW, en
+//     */
+//    @RequestMapping(value = "/getOAuth2UserInfo")
+//    public ModelAndView getOAuth2UserInfo(HttpServletResponse response, @RequestParam(value = "code") String code, @RequestParam(value = "lang") String lang) {
+//        ReturnModel returnModel = new ReturnModel();
+//        WxMpOAuth2AccessToken accessToken;
+//        WxMpUser wxMpUser;
+//        try {
+//            accessToken = this.wxMpService.oauth2getAccessToken(code);
+//            wxMpUser = this.wxMpService.getUserService()
+//                .userInfo(accessToken.getOpenId(), lang);
+//            returnModel.setResult(true);
+//            returnModel.setDatum(wxMpUser);
+//            renderString(response, returnModel);
+//            //保存wxMpUser到数据库
+//            String openId = wxMpUser.getOpenId();
+//            //重定向到课程列表
+//            return new ModelAndView("redirect:/wechat/course_list?openId="+openId);
+//
+//
+//
+//        } catch (WxErrorException e) {
+//            returnModel.setResult(false);
+//            returnModel.setReason(e.getError().toString());
+//            renderString(response, returnModel);
+//            this.logger.error(e.getError().toString());
+//        }
+//        return null;
+//    }
 
     /**
      * 用code换取oauth2的openid
