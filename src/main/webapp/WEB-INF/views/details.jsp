@@ -481,7 +481,8 @@
     }
 </style>
 <footer class="mui-bar mui-bar-footer">
-    <a class="js-btn-join js-follow" href="javascript:;" style="width:3%;">
+    <%--<a class="js-btn-join js-follow" href="javascript:;" style="width:3%;">--%>
+        <a class="js-btn-join js-follow" href=${course_id} style="width:3%;">
         <span class="mui-btn mui-btn-default mui-btn-block">报名已结束</span>
     </a>
 </footer>
@@ -650,15 +651,15 @@ Copyright 2016 Administrator. All rights reserved.
     </div>
 </div>
 <script>
-    $(document).on('tap', '.js-follow', function () {
-        util.alert('请分享此连接到微信打开', ' ', function (e) {
-        });
-    })
-    $('.buttonn').on('tap', function () {
-        util.alert('请分享此连接到微信打开', ' ', function (e) {
-        });
-        //$('.subscribe').remove();
-    });
+    // $(document).on('tap', '.js-follow', function () {
+    //     util.alert('请分享此连接到微信打开', ' ', function (e) {
+    //     });
+    // })
+    // $('.buttonn').on('tap', function () {
+    //     util.alert('请分享此连接到微信打开', ' ', function (e) {
+    //     });
+    //     //$('.subscribe').remove();
+    // });
     $('.top .close').on('click', function (e) {
         $('.top').hide();
         $.post("http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=check&ac=check&op=follow", '', function (d) {
@@ -1063,43 +1064,45 @@ Copyright 2016 Administrator. All rights reserved.
             //console.log(lefttime);
         }
         //var bar_width =  (1-(lefttime/3600))*100+"%"; //计算进度条百分比
-        if (lefttime >= 0) {
-            dd = parseInt((lefttime / 86400));
-            hh = parseInt((lefttime / 3600)) - dd * 24;
-            mm = parseInt((lefttime / 60) % 60);
-            ss = parseInt(lefttime % 60);
-            if (start_time > now_time) {
-                $('#J_CountDownTxt').text('距报名开始');
-                $('.js-btn-join').find('span.mui-btn').text('报名还未开始');
-                $(id).html('<span id="ti_time_day">' + dd + '</span> 天 <span id="ti_time_hour">' + hh + '</span>:<span id="ti_time_min">' + mm + '</span>:<span id="ti_time_sec">' + ss + '</span>');
-            } else if (end_time > now_time) {
+        // if (lefttime >= 0) {
+        //     dd = parseInt((lefttime / 86400));
+        //     hh = parseInt((lefttime / 3600)) - dd * 24;
+        //     mm = parseInt((lefttime / 60) % 60);
+        //     ss = parseInt(lefttime % 60);
+        //     if (start_time > now_time) {
+        //         $('#J_CountDownTxt').text('距报名开始');
+        //         $('.js-btn-join').find('span.mui-btn').text('报名还未开始');
+        //         $(id).html('<span id="ti_time_day">' + dd + '</span> 天 <span id="ti_time_hour">' + hh + '</span>:<span id="ti_time_min">' + mm + '</span>:<span id="ti_time_sec">' + ss + '</span>');
+        //     } else
+        //         if (end_time > now_time) {
                 var hasoption = parseInt("0");
                 var guanzhu = parseInt("2");
                 var follow = parseInt("");
                 $('#J_CountDownTxt').text('距报名结束');
-                if (((guanzhu == 2 && follow) || guanzhu == 1) && container == 'wechat') {
-                    if (hasoption) {
-                        $('.js-btn-join').attr('href', 'javascript:;');
-                        $('.js-btn-join').addClass('js-selector');
-                    } else {
-                        $('.js-btn-join').attr('href', "http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=home&ac=join&op=display&activityid=77");
-                    }
-                }
+                // if (((guanzhu == 2 && follow) || guanzhu == 1) && container == 'wechat') {
+                //     if (hasoption) {
+                //         $('.js-btn-join').attr('href', 'javascript:;');
+                //         $('.js-btn-join').addClass('js-selector');
+                //     } else {
+                //         $('.js-btn-join').attr('href', "");
+                //     }
+                // }
                 $('.js-btn-join').find('span.mui-btn').text('我要报名');
                 $('.js-btn-join').find('span.mui-btn').removeClass('mui-btn-default');
                 $('.js-btn-join').find('span.mui-btn').addClass('mui-btn-orange');
                 $(id).html('<span id="ti_time_day">' + dd + '</span> 天 <span id="ti_time_hour">' + hh + '</span>:<span id="ti_time_min">' + mm + '</span>:<span id="ti_time_sec">' + ss + '</span>');
-            }
+            // }
             //$('#progressbar').css("width",bar_width);
-        } else {
-            $('.js-btn-join').attr('href', 'javascript:;');
-            $('.js-btn-join').removeClass('js-selector');
-            $('.js-btn-join').find('span.mui-btn').text('报名结束');
-            $('.js-btn-join').find('span.mui-btn').addClass('mui-btn-default');
-            $('.js-btn-join').find('span.mui-btn').removeClass('mui-btn-orange');
-            $('#J_CountDownTxt').text('报名已结束');
-            $(id).html('<span id="ti_time_day">00</span> 天 <span id="ti_time_hour">00</span>:<span id="ti_time_min">00</span>:<span id="ti_time_sec">00</span>');
-        }
+        // }
+        // else {
+        //     $('.js-btn-join').attr('href', 'javascript:;');
+        //     $('.js-btn-join').removeClass('js-selector');
+        //     $('.js-btn-join').find('span.mui-btn').text('报名结束');
+        //     $('.js-btn-join').find('span.mui-btn').addClass('mui-btn-default');
+        //     $('.js-btn-join').find('span.mui-btn').removeClass('mui-btn-orange');
+        //     $('#J_CountDownTxt').text('报名已结束');
+        //     $(id).html('<span id="ti_time_day">00</span> 天 <span id="ti_time_hour">00</span>:<span id="ti_time_min">00</span>:<span id="ti_time_sec">00</span>');
+        // }
     }
 
     //阅读量计数器

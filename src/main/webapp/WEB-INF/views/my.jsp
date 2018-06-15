@@ -232,13 +232,13 @@
     }
 </style>
 <nav class="mui-bar mui-bar-tab" id="bar">
-    <a class="mui-tab-item" href="http://localhost:8080/wechat/course_list">
+    <a class="mui-tab-item" href="http://www.fjshhdzx.cn/wechat/course_list">
         <span class="mui-icon mui-ext-icon mui-icon-activity"></span>
         <span class="mui-tab-label">报名</span>
     </a>
 
     <a class="mui-tab-item"
-       href="http://localhost:8080/wechat/my">
+       href="http://www.fjshhdzx.cn/wechat/my">
         <span class="mui-icon mui-ext-icon mui-icon-person"></span>
         <span class="mui-tab-label">我的</span>
     </a>

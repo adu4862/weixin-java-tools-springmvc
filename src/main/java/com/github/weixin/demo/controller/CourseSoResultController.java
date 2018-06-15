@@ -2,10 +2,7 @@ package com.github.weixin.demo.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.UnsupportedEncodingException;
@@ -24,18 +21,23 @@ public class CourseSoResultController {
     private String movInfoOuter;
     private String detail ="";
     private List<Map<String, Object>> list = new ArrayList<>();
+    private String openId;
 
     //
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET,produces = "text/plain;charset=UTF-8")
-    public ModelAndView get() throws UnsupportedEncodingException {
+    public ModelAndView get(@RequestParam(name = "openId", required = false) String openId) {
         this.logger.info("\n课程列表：[{}]");
+        this.openId = openId;
         searchCourseList();
 
         ModelAndView mav = new ModelAndView("so_course_list");
         //将参数返回给页面
         mav.addObject("list", list);
+
+        mav.addObject("openId", this.openId);
+        mav.addObject("urlWithOpenId", "http://www.fjshhdzx.cn/wechat/my?openId="+this.openId);
         return mav;
     }
     private void searchCourseList() {
@@ -72,7 +74,7 @@ public class CourseSoResultController {
                     Object object = rs.getObject(i);
                     if ("course_id".equals(columnName)) {
                         String s = object.toString();
-                        rowData.put(columnName, "http://localhost:8080/wechat/details?code=" + s);
+                        rowData.put(columnName, "http://www.fjshhdzx.cn/wechat/details?course_id=" + s+"&openId="+openId);
                     }
 //                    else if ("status".equals(columnName)) {
 //                        String s = object.toString();

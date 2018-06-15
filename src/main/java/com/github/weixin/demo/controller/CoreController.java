@@ -18,6 +18,7 @@ import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
 import me.chanjar.weixin.mp.bean.result.WxMpUser;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by FirenzesEagle on 2016/5/30 0030.
@@ -133,7 +134,7 @@ public class CoreController extends GenericController {
      * @param lang zh_CN, zh_TW, en
      */
     @RequestMapping(value = "/getOAuth2UserInfo")
-    public void getOAuth2UserInfo(HttpServletResponse response, @RequestParam(value = "code") String code, @RequestParam(value = "lang") String lang) {
+    public ModelAndView getOAuth2UserInfo(HttpServletResponse response, @RequestParam(value = "code") String code, @RequestParam(value = "lang") String lang) {
         ReturnModel returnModel = new ReturnModel();
         WxMpOAuth2AccessToken accessToken;
         WxMpUser wxMpUser;
@@ -146,13 +147,18 @@ public class CoreController extends GenericController {
             renderString(response, returnModel);
             //保存wxMpUser到数据库
             String openId = wxMpUser.getOpenId();
-            
+            //重定向到课程列表
+            return new ModelAndView("redirect:/wechat/course_list?openId="+openId);
+
+
+
         } catch (WxErrorException e) {
             returnModel.setResult(false);
             returnModel.setReason(e.getError().toString());
             renderString(response, returnModel);
             this.logger.error(e.getError().toString());
         }
+        return null;
     }
 
     /**

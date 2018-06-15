@@ -1,5 +1,8 @@
 package com.github.weixin.demo.util;
 
+import org.apache.commons.lang3.StringUtils;
+
+import javax.servlet.http.HttpServletRequest;
 import java.security.MessageDigest;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -41,6 +44,24 @@ public class MD5Util {
         int d1 = n / 16;
         int d2 = n % 16;
         return HEX_DIGITS[d1] + HEX_DIGITS[d2];
+    }
+
+    public static String getIp2(HttpServletRequest request) {
+        String ip = request.getHeader("X-Forwarded-For");
+        if(StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)){
+            //多次反向代理后会有多个ip值，第一个ip才是真实ip
+            int index = ip.indexOf(",");
+            if(index != -1){
+                return ip.substring(0,index);
+            }else{
+                return ip;
+            }
+        }
+        ip = request.getHeader("X-Real-IP");
+        if(StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)){
+            return ip;
+        }
+        return request.getRemoteAddr();
     }
 
 }
