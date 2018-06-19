@@ -41,7 +41,7 @@ public class WxPayConfiguration {
 		payConfig.setSubAppId(this.subAppId);
 		payConfig.setSubMchId(this.subMchId);
 		payConfig.setKeyPath(this.keyPath);
-
+        payConfig.useSandbox();
 		return payConfig;
 	}
 

@@ -1,5 +1,8 @@
 package com.github.weixin.demo.config;
 
+import com.github.weixin.demo.domain.Register;
+import com.github.weixin.demo.util.ResultSetToFormat;
+import com.google.gson.Gson;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.bean.menu.WxMenu;
 import me.chanjar.weixin.common.bean.menu.WxMenuButton;
@@ -9,6 +12,9 @@ import me.chanjar.weixin.mp.api.WxMpInMemoryConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.api.impl.WxMpServiceImpl;
 
+import java.sql.*;
+import java.util.List;
+
 import static me.chanjar.weixin.common.api.WxConsts.MenuButtonType;
 
 /**
@@ -16,6 +22,8 @@ import static me.chanjar.weixin.common.api.WxConsts.MenuButtonType;
  * Email:liumingbo2008@gmail.com
  */
 public class MenuConfig {
+
+    private static String cost;
 
     /**
      * 定义菜单结构
@@ -32,13 +40,13 @@ public class MenuConfig {
         button1.setType(MenuButtonType.VIEW);
         button1.setName("微官网");
 //		button1.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
-        button1.setUrl("http://www.fjshhdzx.cn/weisite/cmsController.do?goPage&page=index");
+        button1.setUrl("http://localhost:8080/weisite/cmsController.do?goPage&page=index");
         WxMenuButton button3 = new WxMenuButton();
         button3.setType(MenuButtonType.VIEW);
         button3.setName("在线报名");
 
 //        WxMpService wxMpService = ...;
-        String url = "http://www.fjshhdzx.cn/getOAuth2UserInfo";
+        String url = "http://localhost:8080/wechat/course_list";
 //        wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
 //		button1.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
         button3.setUrl(wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, ""));
@@ -129,6 +137,12 @@ public class MenuConfig {
      * @param args
      */
     public static void main(String[] args) {
+        madeMune();
+//        searchCourseList("1");
+
+    }
+
+    private static void madeMune() {
         MainConfig mainConfig = new MainConfig("wxfd04fee4b7f7a651",
             "0027e67ffa9aee90b7b8004ce41369db",
             "shanghang",
@@ -140,5 +154,55 @@ public class MenuConfig {
             e.printStackTrace();
         }
     }
+
+    private static void searchCourseList(String course_id) {
+        Connection conn = null;
+        String sql;
+
+        String url = "jdbc:mysql://localhost:3306/weixin_db?"
+            + "user=yanglong&password=Willyang4862!&useUnicode=true&characterEncoding=utf8";
+
+        try {
+            // 之所以要使用下面这条语句，是因为要使用MySQL的驱动，所以我们要把它驱动起来，
+            // 可以通过Class.forName把它加载进去，也可以通过初始化来驱动起来，下面三种形式都可以
+            Class.forName("com.mysql.jdbc.Driver");// 动态加载mysql驱动
+
+
+            // 一个Connection代表一个数据库连接
+            conn = DriverManager.getConnection(url);
+            // Statement里面带有很多方法，比如executeUpdate可以实现插入，更新和删除等
+            Statement stmt = conn.createStatement();
+            StringBuilder sbSql = new StringBuilder();
+            sbSql.append("select cost from tb_course where course_id="+course_id);
+
+
+
+            ResultSet rs = stmt.executeQuery(sbSql.toString());// executeQuery会返回结果的集合，否则返回空值
+            System.out.println(sbSql.toString());
+            ResultSetMetaData md = rs.getMetaData(); //获得结果集结构信息,元数据
+            int columnCount = md.getColumnCount();   //获得列数
+            if (columnCount > 0) {
+                List<Object> objects = ResultSetToFormat.RsToJson(rs);
+                String s = objects.get(0).toString();
+
+                Register register = new Gson().fromJson(s, Register.class);
+               System.out.print(register.getCost());
+            }
+
+
+        } catch (Exception e) {
+            System.out.println("MySQL操作错误");
+            e.printStackTrace();
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+
 
 }

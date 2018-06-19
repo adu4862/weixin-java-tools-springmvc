@@ -3,6 +3,7 @@ package com.github.weixin.demo.util;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.InetAddress;
 import java.security.MessageDigest;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -47,21 +48,33 @@ public class MD5Util {
     }
 
     public static String getIp2(HttpServletRequest request) {
-        String ip = request.getHeader("X-Forwarded-For");
-        if(StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)){
-            //多次反向代理后会有多个ip值，第一个ip才是真实ip
-            int index = ip.indexOf(",");
-            if(index != -1){
-                return ip.substring(0,index);
-            }else{
-                return ip;
+        String ip = request.getHeader("x-forwarded-for");
+        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("Proxy-Client-IP");
+        }
+        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getRemoteAddr();
+            if(ip.equals("127.0.0.1")){
+                //根据网卡取本机配置的IP
+                InetAddress inet=null;
+                try {
+                    inet = InetAddress.getLocalHost();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                ip= inet.getHostAddress();
             }
         }
-        ip = request.getHeader("X-Real-IP");
-        if(StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)){
-            return ip;
+        // 多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
+        if(ip != null && ip.length() > 15){
+            if(ip.indexOf(",")>0){
+                ip = ip.substring(0,ip.indexOf(","));
+            }
         }
-        return request.getRemoteAddr();
+        return ip;
     }
 
 }

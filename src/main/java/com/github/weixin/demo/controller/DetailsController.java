@@ -43,7 +43,7 @@ public class DetailsController {
         }
         ModelAndView mav = new ModelAndView("details");
         //将参数返回给页面
-        mav.addObject("course_id", "http://www.fjshhdzx.cn/wechat/order_info?course_id="
+        mav.addObject("course_id", "http://localhost:8080/wechat/order_info?course_id="
             + course_id + "&cost="+cost+"&openId="+openId);
         return mav;
     }

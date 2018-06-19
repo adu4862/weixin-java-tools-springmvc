@@ -70,37 +70,37 @@ public class PaymentController extends GenericController {
      * @param response
      * @param request
      */
-    @RequestMapping(value = "/getJSSDKPayInfo")
-    public void getJSSDKPayInfo(HttpServletResponse response,
-                                HttpServletRequest request) {
-        String ip2 = MD5Util.getIp2(request);
-        ReturnModel returnModel = new ReturnModel();
-        WxPayUnifiedOrderRequest prepayInfo = WxPayUnifiedOrderRequest.newBuilder()
-            .openid(request.getParameter("openId"))//公众号支付），此参数必传，此参数为微信用户在商户对应appid下的唯一标识
-            .outTradeNo(request.getParameter("out_trade_no"))//	商户系统内部订单号，要求32个字符内，只能是数字、大小写字母_-|* 且在同一个商户号下唯一
-            .totalFee(Integer.valueOf(request.getParameter("total_fee")))//	订单总金额，单位为分，详见支付金额
-            .body(request.getParameter("body"))//商品描述
-            //2、交易类型trade_type
-            //JSAPI--公众号支付、NATIVE--原生扫码支付、APP--app支付，统一下单接口trade_type的传参可参考这里
-            //
-            //MICROPAY--刷卡支付，刷卡支付有单独的支付接口，不调用统一下单接口
-            .tradeType("JSAPI")
-            .spbillCreateIp(ip2)//用户终端ip
-            .notifyUrl("http://www.fjshhdzx.cn/weixin_pay/")//异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。
-            .build();
-
-        try {
-            Map<String, String> payInfo = this.payService.getPayInfo(prepayInfo);
-            returnModel.setResult(true);
-            returnModel.setDatum(payInfo);
-            renderString(response, returnModel);
-        } catch (WxPayException e) {
-            returnModel.setResult(false);
-            returnModel.setReason(e.getErrCodeDes());
-            renderString(response, returnModel);
-            this.logger.error(e.getErrCodeDes());
-        }
-    }
+//    @RequestMapping(value = "/wechat/getJSSDKPayInfo")
+//    public void getJSSDKPayInfo(HttpServletResponse response,
+//                                HttpServletRequest request) {
+//        String ip2 = MD5Util.getIp2(request);
+//        ReturnModel returnModel = new ReturnModel();
+//        WxPayUnifiedOrderRequest prepayInfo = WxPayUnifiedOrderRequest.newBuilder()
+//            .openid(request.getParameter("openId"))//公众号支付），此参数必传，此参数为微信用户在商户对应appid下的唯一标识
+//            .outTradeNo(request.getParameter("out_trade_no"))//	商户系统内部订单号，要求32个字符内，只能是数字、大小写字母_-|* 且在同一个商户号下唯一
+//            .totalFee(Integer.valueOf(request.getParameter("total_fee")))//	订单总金额，单位为分，详见支付金额
+//            .body(request.getParameter("body"))//商品描述
+//            //2、交易类型trade_type
+//            //JSAPI--公众号支付、NATIVE--原生扫码支付、APP--app支付，统一下单接口trade_type的传参可参考这里
+//            //
+//            //MICROPAY--刷卡支付，刷卡支付有单独的支付接口，不调用统一下单接口
+//            .tradeType("JSAPI")
+//            .spbillCreateIp(ip2)//用户终端ip
+//            .notifyUrl("http://localhost:8080/weixin_pay/")//异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。
+//            .build();
+//
+//        try {
+//            Map<String, String> payInfo = this.payService.getPayInfo(prepayInfo);
+//            returnModel.setResult(true);
+//            returnModel.setDatum(payInfo);
+//            renderString(response, returnModel);
+//        } catch (WxPayException e) {
+//            returnModel.setResult(false);
+//            returnModel.setReason(e.getErrCodeDes());
+//            renderString(response, returnModel);
+//            this.logger.error(e.getErrCodeDes());
+//        }
+//    }
 
     /**
      * 微信通知支付结果的回调地址，notify_url
@@ -111,30 +111,30 @@ public class PaymentController extends GenericController {
     @RequestMapping(value = "/weixin_pay")
     public void getJSSDKCallbackData(HttpServletRequest request,
                                      HttpServletResponse response) {
-        try {
-            synchronized (this) {
-                Map<String, String> kvm = XMLUtil.parseRequestXmlToMap(request);
-                if (SignUtils.checkSign(kvm, null, this.payConfig.getMchKey())) {
-                    if (kvm.get("result_code").equals("SUCCESS")) {
-                        //TODO(user) 微信服务器通知此回调接口支付成功后，通知给业务系统做处理
-                        logger.info("out_trade_no: " + kvm.get("out_trade_no") + " pay SUCCESS!");
-                        response.getWriter().write("<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[ok]]></return_msg></xml>");
-                    } else {
-                        this.logger.error("out_trade_no: "
-                            + kvm.get("out_trade_no") + " result_code is FAIL");
-                        response.getWriter().write(
-                            "<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[result_code is FAIL]]></return_msg></xml>");
-                    }
-                } else {
-                    response.getWriter().write(
-                        "<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[check signature FAIL]]></return_msg></xml>");
-                    this.logger.error("out_trade_no: " + kvm.get("out_trade_no")
-                        + " check signature FAIL");
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            synchronized (this) {
+//                Map<String, String> kvm = XMLUtil.parseRequestXmlToMap(request);
+//                if (SignUtils.checkSign(kvm, null, this.payConfig.getMchKey())) {
+//                    if (kvm.get("result_code").equals("SUCCESS")) {
+//                        //TODO(user) 微信服务器通知此回调接口支付成功后，通知给业务系统做处理
+//                        logger.info("out_trade_no: " + kvm.get("out_trade_no") + " pay SUCCESS!");
+//                        response.getWriter().write("<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[ok]]></return_msg></xml>");
+//                    } else {
+//                        this.logger.error("out_trade_no: "
+//                            + kvm.get("out_trade_no") + " result_code is FAIL");
+//                        response.getWriter().write(
+//                            "<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[result_code is FAIL]]></return_msg></xml>");
+//                    }
+//                } else {
+//                    response.getWriter().write(
+//                        "<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[check signature FAIL]]></return_msg></xml>");
+//                    this.logger.error("out_trade_no: " + kvm.get("out_trade_no")
+//                        + " check signature FAIL");
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     @RequestMapping(value = "entPay")

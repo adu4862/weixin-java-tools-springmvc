@@ -1,5 +1,14 @@
 package com.github.weixin.demo.controller;
 
+import com.github.binarywang.wxpay.bean.request.WxPayUnifiedOrderRequest;
+import com.github.binarywang.wxpay.config.WxPayConfig;
+import com.github.binarywang.wxpay.exception.WxPayException;
+import com.github.binarywang.wxpay.service.WxPayService;
+import com.github.weixin.demo.domain.Register;
+import com.github.weixin.demo.util.MD5Util;
+import com.github.weixin.demo.util.ResultSetToFormat;
+import com.github.weixin.demo.util.ReturnModel;
+import com.google.gson.Gson;
 import me.chanjar.weixin.mp.api.WxMpService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,11 +16,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,12 +38,22 @@ public class CreateOrderController {
     @Autowired
     private WxMpService wxService;
     private String orderId;
+    private String cost;
+
+    @Autowired
+    private WxPayConfig payConfig;
+    @Autowired
+    private WxPayService payService;
+
+//    @Autowired
+//    private WxMpService wxService;
 
     //
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 //    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView get(@RequestParam(name = "course_id", required = false) String course_id,
+    public void get(HttpServletResponse response,HttpServletRequest request,
+                            @RequestParam(name = "course_id", required = false) String course_id,
                             @RequestParam(name = "cost", required = false) String cost,
                             @RequestParam(name = "name", required = false) String name,
                             @RequestParam(name = "sex", required = false) String sex,
@@ -47,9 +67,13 @@ public class CreateOrderController {
                             @RequestParam(name = "hobby", required = false) String hobby,
                             @RequestParam(name = "openId", required = false) String openId
     ) {
-        this.logger.info("\n：[{}]");
+        ReturnModel returnModel = new ReturnModel();
+        String ip2 = MD5Util.getIp2(request);
+        this.logger.info("\n：[{course_id},{cost},{name},{sex},{school}]",course_id,cost,name,sex,school,phone,grade);
         String lang = "zh_CN"; //语言
 //        WxMpUser user = wxMpService.getUserService().userInfo(openid,lang);
+//        course_id =
+        String s = searchCourseList(course_id);
 
         //存数据库并生成订单id
         writeToDb(course_id, cost, name, sex, school, phone, grade, father_name, father_phone, mother_name, mother_phone, hobby, openId);
@@ -57,12 +81,93 @@ public class CreateOrderController {
 
         //重定向到支付
         //传给微信后台获取预支付id
-        int i = Integer.parseInt(cost) * 100;
-        ModelAndView mav = new ModelAndView("redirect:/getJSSDKPayInfo?openId=" + openId+"&out_trade_no="+orderId+"&body=测试一毛钱"+"&total_fee="+i);
+
+        Double aDouble = Double.valueOf(s);
+        int i = (int) (aDouble * 100);
+//        ModelAndView mav = new ModelAndView("redirect:/wechat/getJSSDKPayInfo?openId=" + openId + "&out_trade_no=" + orderId + "&body=测试一毛钱" + "&total_fee=" + i);
 
 //        mav.addObject("pay_order", list);
-        return mav;
+//        ModelAndView  model = new ModelAndView("forward:/wechat/getJSSDKPayInfo");
+//        model.addObject("openId", openId);
+//        model.addObject("out_trade_no", orderId);
+//        model.addObject("body", "测试一毛钱");
+//        model.addObject("total_fee", i);
+//        return model;
+        WxPayUnifiedOrderRequest prepayInfo = WxPayUnifiedOrderRequest.newBuilder()
+            .openid(openId)//公众号支付），此参数必传，此参数为微信用户在商户对应appid下的唯一标识
+            .outTradeNo(orderId)//	商户系统内部订单号，要求32个字符内，只能是数字、大小写字母_-|* 且在同一个商户号下唯一
+            .totalFee(i)//	订单总金额，单位为分，详见支付金额
+            .body("测试一毛钱")//商品描述
+            //2、交易类型trade_type
+            //JSAPI--公众号支付、NATIVE--原生扫码支付、APP--app支付，统一下单接口trade_type的传参可参考这里
+            //
+            //MICROPAY--刷卡支付，刷卡支付有单独的支付接口，不调用统一下单接口
+            .tradeType("JSAPI")
+            .spbillCreateIp(ip2)//用户终端ip
+            .notifyUrl("http://localhost:8080/weixin_pay/")//异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。
+            .build();
+
+        try {
+            Map<String, String> payInfo = this.payService.getPayInfo(prepayInfo);
+            returnModel.setResult(true);
+            returnModel.setDatum(payInfo);
+            renderString(response, returnModel);
+        } catch (WxPayException e) {
+            returnModel.setResult(false);
+            returnModel.setReason(e.getErrCodeDes());
+            renderString(response, returnModel);
+            this.logger.error(e.getErrCodeDes());
+        }
     }
+
+    private String searchCourseList(String course_id) {
+        Connection conn = null;
+        String sql;
+
+        String url = "jdbc:mysql://localhost:3306/weixin_db?"
+            + "user=yanglong&password=Willyang4862!&useUnicode=true&characterEncoding=utf8";
+
+        try {
+            // 之所以要使用下面这条语句，是因为要使用MySQL的驱动，所以我们要把它驱动起来，
+            // 可以通过Class.forName把它加载进去，也可以通过初始化来驱动起来，下面三种形式都可以
+            Class.forName("com.mysql.jdbc.Driver");// 动态加载mysql驱动
+
+
+            // 一个Connection代表一个数据库连接
+            conn = DriverManager.getConnection(url);
+            // Statement里面带有很多方法，比如executeUpdate可以实现插入，更新和删除等
+            Statement stmt = conn.createStatement();
+            StringBuilder sbSql = new StringBuilder();
+            sbSql.append("select cost from tb_course where course_id=" + course_id);
+
+
+            ResultSet rs = stmt.executeQuery(sbSql.toString());// executeQuery会返回结果的集合，否则返回空值
+            System.out.println(sbSql.toString());
+            ResultSetMetaData md = rs.getMetaData(); //获得结果集结构信息,元数据
+            int columnCount = md.getColumnCount();   //获得列数
+            if (columnCount > 0) {
+                List<Object> objects = ResultSetToFormat.RsToJson(rs);
+                String s = objects.get(0).toString();
+
+                Register register = new Gson().fromJson(s, Register.class);
+                return register.getCost();
+            }
+
+
+        } catch (Exception e) {
+            System.out.println("MySQL操作错误");
+            e.printStackTrace();
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return "";
+
+    }
+
 
     private void writeToDb(String course_id, String cost, String name, String sex, String school, String phone, String grade,
                            String father_name, String father_phone, String mother_name, String mother_phone, String hobby, String openId) {
@@ -86,10 +191,11 @@ public class CreateOrderController {
             // Statement里面带有很多方法，比如executeUpdate可以实现插入，更新和删除等
             Statement stmt = conn.createStatement();
 
-            sql = "insert into tb_movie_detail2(course_id,cost,name,sex,school,phone,grade,father_name,father_phone,mother_name,mother_phone,hobby,openId)" +
-                " values('" + course_id + "','" + cost + "','" + name + "','" + school + "','" + phone + "','" + grade + "','" + father_name + "','" + father_phone + "','" + mother_name
+            sql = "insert into tb_register(course_id,cost,name,sex,school,phone,grade,father_name,father_phone,mother_name,mother_phone,hobby,openId)" +
+                " values('" + course_id + "','" + cost + "','" + name + "','" + sex+ "','" + school + "','" + phone + "','" + grade + "','" + father_name + "','" + father_phone + "','" + mother_name
                 + "','" + mother_phone + "','" + hobby + "','" + openId
                 + "')";
+            System.out.println(sql);
             int result = stmt.executeUpdate(sql);
             if (result > 0) {
                 orderId = "od" + System.currentTimeMillis();
@@ -110,6 +216,39 @@ public class CreateOrderController {
             }
         }
 
+    }
+
+
+    /**
+     * 客户端返回JSON字符串
+     *
+     * @param response
+     * @param object
+     * @return
+     */
+    protected String renderString(HttpServletResponse response, Object object) {
+        return renderString(response, new Gson().toJson(object), "application/json");
+    }
+
+    /**
+     * 客户端返回字符串
+     *
+     * @param response
+     * @param string
+     * @return
+     */
+    protected String renderString(HttpServletResponse response, String string, String type) {
+        try {
+            response.reset();
+            response.setContentType(type);
+            response.setCharacterEncoding("utf-8");
+            //解决跨域问题
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.getWriter().print(string);
+            return null;
+        } catch (IOException e) {
+            return null;
+        }
     }
 
 

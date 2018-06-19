@@ -22,69 +22,69 @@
           href="http://new.9dcm.net/addons/fx_activity/app/resource/components/dropload/dropload.css?v=20171106">
 
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-    <script type="text/javascript">
-        window.sysinfo = window.sysinfo || {
-            "uniacid": 3,
-            "acid": "3",
-            "siteroot": "http:\/\/new.9dcm.net\/",
-            "siteurl": "http:\/\/new.9dcm.net\/app\/index.php?i=3&c=entry&m=fx_activity&do=home&ac=join&op=display&activityid=78",
-            "attachurl": "http:\/\/new.9dcm.net\/attachment\/",
-            "cookie": {"pre": "bde9_"},
-            "openid": "o1o3BwS8-mewE3P0yu0Mlqcg4cUE",
-            "MODULE_URL": "http:\/\/new.9dcm.net\/addons\/fx_activity\/"
-        } || {};
+    <%--<script type="text/javascript">--%>
+        <%--window.sysinfo = window.sysinfo || {--%>
+            <%--"uniacid": 3,--%>
+            <%--"acid": "3",--%>
+            <%--"siteroot": "http:\/\/new.9dcm.net\/",--%>
+            <%--"siteurl": "http:\/\/new.9dcm.net\/app\/index.php?i=3&c=entry&m=fx_activity&do=home&ac=join&op=display&activityid=78",--%>
+            <%--"attachurl": "http:\/\/new.9dcm.net\/attachment\/",--%>
+            <%--"cookie": {"pre": "bde9_"},--%>
+            <%--"openid": "o1o3BwS8-mewE3P0yu0Mlqcg4cUE",--%>
+            <%--"MODULE_URL": "http:\/\/new.9dcm.net\/addons\/fx_activity\/"--%>
+        <%--} || {};--%>
 
-        // jssdk config 对象
-        jssdkconfig = {
-            "appId": "wx6d1da488e028291b",
-            "nonceStr": "bzcHV7MM97C0L78T",
-            "timestamp": "1529026574",
-            "signature": "f8aee7ee410ae19783bc9040713da85229aa8621"
-        } || {};
+        <%--// jssdk config 对象--%>
+        <%--jssdkconfig = {--%>
+            <%--"appId": "wx6d1da488e028291b",--%>
+            <%--"nonceStr": "bzcHV7MM97C0L78T",--%>
+            <%--"timestamp": "1529026574",--%>
+            <%--"signature": "f8aee7ee410ae19783bc9040713da85229aa8621"--%>
+        <%--} || {};--%>
 
-        // 是否启用调试
-        jssdkconfig.debug = false;
+        <%--// 是否启用调试--%>
+        <%--jssdkconfig.debug = false;--%>
 
-        jssdkconfig.jsApiList = [
-            'checkJsApi',
-            'onMenuShareTimeline',
-            'onMenuShareAppMessage',
-            'onMenuShareQQ',
-            'onMenuShareWeibo',
-            'hideMenuItems',
-            'showMenuItems',
-            'hideAllNonBaseMenuItem',
-            'showAllNonBaseMenuItem',
-            'translateVoice',
-            'startRecord',
-            'stopRecord',
-            'onRecordEnd',
-            'playVoice',
-            'pauseVoice',
-            'stopVoice',
-            'uploadVoice',
-            'downloadVoice',
-            'chooseImage',
-            'previewImage',
-            'uploadImage',
-            'downloadImage',
-            'getNetworkType',
-            'openLocation',
-            'getLocation',
-            'hideOptionMenu',
-            'showOptionMenu',
-            'closeWindow',
-            'scanQRCode',
-            'chooseWXPay',
-            'openProductSpecificView',
-            'addCard',
-            'chooseCard',
-            'openCard'
-        ];
+        <%--jssdkconfig.jsApiList = [--%>
+            <%--'checkJsApi',--%>
+            <%--'onMenuShareTimeline',--%>
+            <%--'onMenuShareAppMessage',--%>
+            <%--'onMenuShareQQ',--%>
+            <%--'onMenuShareWeibo',--%>
+            <%--'hideMenuItems',--%>
+            <%--'showMenuItems',--%>
+            <%--'hideAllNonBaseMenuItem',--%>
+            <%--'showAllNonBaseMenuItem',--%>
+            <%--'translateVoice',--%>
+            <%--'startRecord',--%>
+            <%--'stopRecord',--%>
+            <%--'onRecordEnd',--%>
+            <%--'playVoice',--%>
+            <%--'pauseVoice',--%>
+            <%--'stopVoice',--%>
+            <%--'uploadVoice',--%>
+            <%--'downloadVoice',--%>
+            <%--'chooseImage',--%>
+            <%--'previewImage',--%>
+            <%--'uploadImage',--%>
+            <%--'downloadImage',--%>
+            <%--'getNetworkType',--%>
+            <%--'openLocation',--%>
+            <%--'getLocation',--%>
+            <%--'hideOptionMenu',--%>
+            <%--'showOptionMenu',--%>
+            <%--'closeWindow',--%>
+            <%--'scanQRCode',--%>
+            <%--'chooseWXPay',--%>
+            <%--'openProductSpecificView',--%>
+            <%--'addCard',--%>
+            <%--'chooseCard',--%>
+            <%--'openCard'--%>
+        <%--];--%>
 
-        wx.config(jssdkconfig);
+        <%--wx.config(jssdkconfig);--%>
 
-    </script><!--兼容图片上传1.0-->
+    <%--</script><!--兼容图片上传1.0-->--%>
     <script>var app_module_name = 'fx_activity';</script>
     <script type="text/javascript" src="http://new.9dcm.net/app/resource/js/app/util.js?v=20171206"></script>
     <script type="text/javascript" src="http://new.9dcm.net/app/resource/js/require.js?v=20171106"></script>
@@ -240,9 +240,9 @@
         <input type="hidden" name="activityid" value="78"/>
         <input type="hidden" name="optionid" value="0"/>
         <input type="hidden" name="token" value="M1Q4"/>
-        <input type="hidden" name="cost" value=${cost}/>
-        <input type="hidden" name="openId" value=${openId}/>
-        <input type="hidden" name="course_id" value=${course_id}/>
+        <input type="hidden" value="${cost}" name="cost"/>
+        <input type="hidden" value="${openId}" name="openId"/>
+        <input type="hidden" value="${course_id}" name="course_id"/>
     </footer>
     <div class="mui-content">
         <ul class="mui-table-view mui-help-top" style="margin-top:0;">
@@ -546,19 +546,19 @@
             $.ajax({
                 type: 'GET',
                 // url: "http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=home&ac=join&op=validquota&activityid=78&optionid=0&teamnum=" + form['teamnum'].value,
-                url: "http://www.fjshhdzx.cn/wechat/create_order?name="+form['member[realname]'].value
-                +"&phone="+form['member[mobile]'].value
-                +"&sex="+form['form_item_val_0'].value
-                +"&school="+form['form_item_val_1'].value
-                +"&grade="+form['form_item_val_2'].value
-                +"&father_name="+form['form_item_val_3'].value
-                +"&father_phone="+form['form_item_val_4'].value
-                +"&mother_name="+form['form_item_val_5'].value
-                +"&mother_phone="+form['form_item_val_6'].value
-                +"&hobby="+form['form_item_val_7'].value
-                +"&cost="+form['cost'].value
-                +"&course_id="+form['course_id'].value
-                +"&openId="+form['openId'].value
+                url: "http://localhost:8080/wechat/create_order?name=" + form['member[realname]'].value
+                + "&phone=" + form['member[mobile]'].value
+                + "&sex=" + form['form_item_val_0'].value
+                + "&school=" + form['form_item_val_1'].value
+                + "&grade=" + form['form_item_val_2'].value
+                + "&father_name=" + form['form_item_val_3'].value
+                + "&father_phone=" + form['form_item_val_4'].value
+                + "&mother_name=" + form['form_item_val_5'].value
+                + "&mother_phone=" + form['form_item_val_6'].value
+                + "&hobby=" + form['form_item_val_7'].value
+                + "&cost=" + form['cost'].value
+                + "&course_id=" + form['course_id'].value
+                + "&openId=" + form['openId'].value
                 //
                 ,
                 dataType: 'json',
