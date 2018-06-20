@@ -94,7 +94,7 @@
             title: "分享标题",
             desc: "",
             link: window.location.href,
-            imgUrl: "http://new.9dcm.net/attachment/images/3/2018/01/rJ652LwFKaGXxa2Tk6HTX2gL20PajX.jpg"
+            imgUrl: "http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg"
         };
         wx.ready(function () {
             var _sharedata = {
@@ -342,7 +342,7 @@
     </style>
     <div class="footer latecolor">
         <a href="javascript:;">
-            <img src="http://new.9dcm.net/attachment/images/3/2018/01/rJ652LwFKaGXxa2Tk6HTX2gL20PajX.jpg" height="30"/>龙海市青少年校外活动中心</a>
+            <img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg" height="30"/>上杭县青少年学生校外活动中心</a>
     </div>
 </div>
 <style type="text/css">

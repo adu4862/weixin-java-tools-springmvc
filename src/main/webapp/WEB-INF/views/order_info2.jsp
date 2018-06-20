@@ -39,7 +39,7 @@
             <%--title: "分享标题",--%>
             <%--desc: "",--%>
             <%--link: window.location.href,--%>
-            <%--imgUrl: "http://new.9dcm.net/attachment/images/3/2018/01/rJ652LwFKaGXxa2Tk6HTX2gL20PajX.jpg"--%>
+            <%--imgUrl: "http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg"--%>
         <%--};--%>
         <%--wx.ready(function () {--%>
             <%--var _sharedata = {--%>

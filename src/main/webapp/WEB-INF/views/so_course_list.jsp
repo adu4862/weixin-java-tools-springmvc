@@ -94,7 +94,7 @@
             title: "分享标题",
             desc: "",
             link: window.location.href,
-            imgUrl: "http://new.9dcm.net/attachment/images/3/2018/01/rJ652LwFKaGXxa2Tk6HTX2gL20PajX.jpg"
+            imgUrl: "http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg"
         };
         wx.ready(function () {
             var _sharedata = {
@@ -407,7 +407,7 @@ Copyright 2016 Administrator. All rights reserved.
         <div style="float: right;opacity: 0.75;color: #000000;"></div>
         <div class="m_guide">
             <div style="margin-left: auto;margin-right: auto;background-color: rgba(0, 0, 0, 0);">
-                <img src="http://new.9dcm.net/attachment/images/3/2018/01/rJ652LwFKaGXxa2Tk6HTX2gL20PajX.jpg"
+                <img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg"
                      style="width: 200px;height: 200px;">
             </div>
             <div class="m_how" style="margin-top: 10px;">
@@ -417,7 +417,7 @@ Copyright 2016 Administrator. All rights reserved.
     </div>
 </div>
 <div class="subscribe">
-    <div class="img"><img src="http://new.9dcm.net/attachment/images/3/2018/01/rJ652LwFKaGXxa2Tk6HTX2gL20PajX.jpg">
+    <div class="img"><img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg">
     </div>
     <div class="text">
         <p>欢迎来到<font>上杭县青少年学生校外活动中心</font></p>
@@ -536,7 +536,7 @@ Copyright 2016 Administrator. All rights reserved.
             </style>
             <div class="footer latecolor">
                 <a href="javascript:;">
-                    <img src="http://new.9dcm.net/attachment/images/3/2018/01/rJ652LwFKaGXxa2Tk6HTX2gL20PajX.jpg"
+                    <img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg"
                          height="30"/>上杭县青少年学生校外活动中心</a>
             </div>
         </div>

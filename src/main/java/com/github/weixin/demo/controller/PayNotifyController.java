@@ -51,6 +51,7 @@ public class PayNotifyController {
                     if (kvm.get("result_code").equals("SUCCESS")) {
                         //TODO(user) 微信服务器通知此回调接口支付成功后，通知给业务系统做处理
 
+
                         logger.info("out_trade_no: " + kvm.get("out_trade_no") + " pay SUCCESS!");
                         response.getWriter().write("<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[ok]]></return_msg></xml>");
                     } else {
@@ -65,6 +66,8 @@ public class PayNotifyController {
                     this.logger.error("out_trade_no: " + kvm.get("out_trade_no")
                         + " check signature FAIL");
                 }
+
+
             }
         } catch (Exception e) {
             e.printStackTrace();

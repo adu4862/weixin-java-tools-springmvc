@@ -628,7 +628,7 @@ Copyright 2016 Administrator. All rights reserved.
         <div style="float: right;opacity: 0.75;color: #000000;"></div>
         <div class="m_guide">
             <div style="margin-left: auto;margin-right: auto;background-color: rgba(0, 0, 0, 0);">
-                <img src="http://new.9dcm.net/attachment/images/3/2018/01/rJ652LwFKaGXxa2Tk6HTX2gL20PajX.jpg"
+                <img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg"
                      style="width: 200px;height: 200px;">
             </div>
             <div class="m_how" style="margin-top: 10px;">
@@ -638,10 +638,10 @@ Copyright 2016 Administrator. All rights reserved.
     </div>
 </div>
 <div class="subscribe">
-    <div class="img"><img src="http://new.9dcm.net/attachment/images/3/2018/01/rJ652LwFKaGXxa2Tk6HTX2gL20PajX.jpg">
+    <div class="img"><img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg">
     </div>
     <div class="text">
-        <p>欢迎来到<font>龙海市青少年校外活动中心</font></p>
+        <p>欢迎来到<font>上杭县青少年学生校外活动中心</font></p>
         <p>打开公众号，享受专属服务</p>
     </div>
     <div class="btn">
@@ -726,10 +726,10 @@ Copyright 2016 Administrator. All rights reserved.
             <div class="mui-card mui-one mui-two" style="margin-bottom:0px">
                 <div class="mui-card-header mui-card-media">
                     <a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=profile&op=display&id=0&muid=0">
-                        <img src="http://new.9dcm.net/attachment/images/3/2018/01/rJ652LwFKaGXxa2Tk6HTX2gL20PajX.jpg">
+                        <img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg">
                         <span class="mui-ext-icon mui-icon-renzheng3"></span>
                         <div class="mui-media-body">
-                            <span class="mui-ellipsis">龙海市青少年校外活动中心</span>
+                            <span class="mui-ellipsis">上杭县青少年学生校外活动中心</span>
                             <p class="mui-small">108位粉丝</p>
                             <i class="mui-badge mui-badge-orange mui-pull-right js-merch-follow" data-follow="1"
                                data-id="0" data-muid="0" onClick="javascript:return false;">+ 关注</i>
@@ -747,12 +747,12 @@ Copyright 2016 Administrator. All rights reserved.
                     <ul class="mui-table-view mui-table-view-chevron">
                         <li class="mui-table-view-cell mui-media">
                             <a class="mui-navigate-right mui-icon-phone1"
-                               onClick="openFun.wxMap(24.435048,117.805566,'地点名称','龙海市青少年校外活动中心');">
+                               onClick="openFun.wxMap(24.435048,117.805566,'地点名称','上杭县青少年学生校外活动中心');">
                                 <div class="mui-media-body">
                                     <div class="mui-media-content-inner">
                                         <p style="display:none">地点名称</p>
                                         <p class="mui-ext-icon mui-icon-dingwei">
-                                            <span class="mui-pl15 mui-ellipsis-2">龙海市青少年校外活动中心</span>
+                                            <span class="mui-pl15 mui-ellipsis-2">上杭县青少年学生校外活动中心</span>
                                         </p>
                                     </div>
                                 </div>
@@ -779,7 +779,7 @@ Copyright 2016 Administrator. All rights reserved.
                         <p>2018年春季招生新生报名须知</p>
                         <p></p>
                         <p>
-                            1、本次招生采用微信报名，必须关注中心微信公众号（龙海市青少年校外活动中心）才能使用在线报名功能。报名前家长应认真阅读《2018年春季招生简章》，熟悉报名流程和了解有关注意事项。注册信息提交前务必要认真核对，确保真实准确。&nbsp;</p>
+                            1、本次招生采用微信报名，必须关注中心微信公众号（上杭县青少年学生校外活动中心）才能使用在线报名功能。报名前家长应认真阅读《2018年春季招生简章》，熟悉报名流程和了解有关注意事项。注册信息提交前务必要认真核对，确保真实准确。&nbsp;</p>
                         <p></p>
                         <p>2、
                             本中心每期招收新生的班级均为基础班，报名前请家长认真参照《招生课程计划表》中各培训课程及班级的招生对象年级和上课时段，充分考虑孩子的兴趣、意向，选择合适的课程及班级。报名成功后，中心一概不接受调班要求。</p>
@@ -805,7 +805,7 @@ Copyright 2016 Administrator. All rights reserved.
                         <p>招生对象：三年级</p>
                         <p>上课时间：周日（上午10:20-11:50）</p>
                         <p>任课教师：柯秋珍</p>
-                        <p>教室：龙海市青少年校外活动中心二楼204</p>
+                        <p>教室：上杭县青少年学生校外活动中心二楼204</p>
                         <p>补招4人，在教师指导下购买学习用品</p></div>
                 </div>
                 <div class="mui-card-footer js-show">
