@@ -77,7 +77,7 @@ public class CourseSoResultController {
         mav.addObject("list", list);
 
         mav.addObject("openId", this.openId);
-        mav.addObject("urlWithOpenId", "http://localhost:8080/wechat/my?openId=" + this.openId);
+        mav.addObject("urlWithOpenId", "http://www.fjshhdzx.cn/wechat/my?openId=" + this.openId);
         return mav;
     }
 
@@ -99,8 +99,8 @@ public class CourseSoResultController {
             // Statement里面带有很多方法，比如executeUpdate可以实现插入，更新和删除等
             Statement stmt = conn.createStatement();
 
-            sql = "insert into wxmpuser(subscribe,openId,nickname,headImgUrl,unionId,sex,city) values" +
-                "('"+bean.getSubscribe()+"','"+bean.getOpenId()+"','"+bean.getNickname()+"','"+bean.getHeadImgUrl()+"','"
+            sql = "insert into wxmpuser(openId,nickname,headImgUrl,unionId,sex,city) values" +
+                "('"+bean.getOpenId()+"','"+bean.getNickname()+"','"+bean.getHeadImgUrl()+"','"
                 +bean.getUnionId()+"','"+bean.getSex()+"','"+bean.getCity()+"')";
             int result = stmt.executeUpdate(sql);
 
@@ -151,7 +151,7 @@ public class CourseSoResultController {
                     Object object = rs.getObject(i);
                     if ("course_id".equals(columnName)) {
                         String s = object.toString();
-                        rowData.put(columnName, "http://localhost:8080/wechat/details?course_id=" + s + "&openId=" + openId);
+                        rowData.put(columnName, "http://www.fjshhdzx.cn/wechat/details?course_id=" + s + "&openId=" + openId);
                     } else {
 
                         rowData.put(columnName, object);

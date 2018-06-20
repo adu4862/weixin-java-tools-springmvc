@@ -40,17 +40,17 @@ public class MenuConfig {
         button1.setType(MenuButtonType.VIEW);
         button1.setName("微官网");
 //		button1.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
-        button1.setUrl("http://localhost:8080/weisite/cmsController.do?goPage&page=index");
+        button1.setUrl("http://www.fjshhdzx.cn/weisite/cmsController.do?goPage&page=index");
         WxMenuButton button3 = new WxMenuButton();
         button3.setType(MenuButtonType.VIEW);
         button3.setName("在线报名");
 
 //        WxMpService wxMpService = ...;
-        String url = "http://localhost:8080/wechat/course_list";
+        String url = "http://www.fjshhdzx.cn/wechat/course_list";
 //        wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
 //		button1.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
-        button3.setUrl(wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, ""));
-        System.out.println(wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, ""));
+        button3.setUrl(wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_BASE, ""));
+        System.out.println(wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_BASE, ""));
 //		WxMenuButton button2 = new WxMenuButton();
 //		button2.setName("我是卖家");
 //

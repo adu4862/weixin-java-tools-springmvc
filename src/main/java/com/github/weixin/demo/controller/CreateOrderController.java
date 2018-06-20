@@ -10,6 +10,7 @@ import com.github.weixin.demo.util.ResultSetToFormat;
 import com.github.weixin.demo.util.ReturnModel;
 import com.google.gson.Gson;
 import me.chanjar.weixin.mp.api.WxMpService;
+import org.apache.http.util.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
-@RequestMapping("/wechat/create_order")
+@RequestMapping("/weixin_pay/create_order")
 public class CreateOrderController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private String title;
@@ -52,7 +50,7 @@ public class CreateOrderController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 //    @RequestMapping(method = RequestMethod.GET)
-    public void get(HttpServletResponse response,HttpServletRequest request,
+    public ModelAndView get(HttpServletResponse response, HttpServletRequest request,
                             @RequestParam(name = "course_id", required = false) String course_id,
                             @RequestParam(name = "cost", required = false) String cost,
                             @RequestParam(name = "name", required = false) String name,
@@ -67,9 +65,10 @@ public class CreateOrderController {
                             @RequestParam(name = "hobby", required = false) String hobby,
                             @RequestParam(name = "openId", required = false) String openId
     ) {
+        ModelAndView modelAndView = new ModelAndView("wxPay");
         ReturnModel returnModel = new ReturnModel();
         String ip2 = MD5Util.getIp2(request);
-        this.logger.info("\n：[{course_id},{cost},{name},{sex},{school}]",course_id,cost,name,sex,school,phone,grade);
+        this.logger.info("\n：[{course_id},{cost},{name},{sex},{school}]", course_id, cost, name, sex, school, phone, grade);
         String lang = "zh_CN"; //语言
 //        WxMpUser user = wxMpService.getUserService().userInfo(openid,lang);
 //        course_id =
@@ -104,20 +103,48 @@ public class CreateOrderController {
             //MICROPAY--刷卡支付，刷卡支付有单独的支付接口，不调用统一下单接口
             .tradeType("JSAPI")
             .spbillCreateIp(ip2)//用户终端ip
-            .notifyUrl("http://localhost:8080/weixin_pay/")//异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。
+            .notifyUrl("http://www.fjshhdzx.cn/weixin_pay_notify/")//异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。
             .build();
+        String url = "";
 
         try {
             Map<String, String> payInfo = this.payService.getPayInfo(prepayInfo);
             returnModel.setResult(true);
             returnModel.setDatum(payInfo);
             renderString(response, returnModel);
+
+            String timeStamp = payInfo.get("timeStamp");
+            String sign = payInfo.get("paySign");
+            String aPackage = payInfo.get("package");
+            String nonceStr = payInfo.get("nonceStr");
+            if (!TextUtils.isEmpty(aPackage)) {
+                modelAndView.addObject("timeStamp", timeStamp);
+                modelAndView.addObject("nonceStr", nonceStr);
+                modelAndView.addObject("wxPackage", aPackage);
+                modelAndView.addObject("signType", "MD5");
+                modelAndView.addObject("paySign", sign);
+                modelAndView.addObject("appid", payConfig.getAppId());
+
+//                url = "redirect:/pay?timeStamp="
+//                    + timeStamp
+//                    + "&nonceStr=" + nonceStr
+//                    + "&package=" + aPackage
+//                    + "&signType=MD5" + "&paySign=" + sign
+//                    + "&appid=" + payConfig.getAppId();
+            }else {
+                this.logger.info("订单号:" + orderId + "错误信息:" );
+            }
+
+
         } catch (WxPayException e) {
+            e.printStackTrace();
             returnModel.setResult(false);
             returnModel.setReason(e.getErrCodeDes());
             renderString(response, returnModel);
             this.logger.error(e.getErrCodeDes());
         }
+        return modelAndView;
+
     }
 
     private String searchCourseList(String course_id) {
@@ -192,7 +219,7 @@ public class CreateOrderController {
             Statement stmt = conn.createStatement();
 
             sql = "insert into tb_register(course_id,cost,name,sex,school,phone,grade,father_name,father_phone,mother_name,mother_phone,hobby,openId)" +
-                " values('" + course_id + "','" + cost + "','" + name + "','" + sex+ "','" + school + "','" + phone + "','" + grade + "','" + father_name + "','" + father_phone + "','" + mother_name
+                " values('" + course_id + "','" + cost + "','" + name + "','" + sex + "','" + school + "','" + phone + "','" + grade + "','" + father_name + "','" + father_phone + "','" + mother_name
                 + "','" + mother_phone + "','" + hobby + "','" + openId
                 + "')";
             System.out.println(sql);

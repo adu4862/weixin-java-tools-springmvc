@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/weixin_pay")
+@RequestMapping("/weixin_pay_notify")
 public class PayNotifyController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private String title;
@@ -40,7 +40,7 @@ public class PayNotifyController {
 
 
     @ResponseBody
-    @RequestMapping(method = RequestMethod.GET,produces = "text/plain;charset=UTF-8")
+    @RequestMapping(method = RequestMethod.POST,produces = "text/plain;charset=UTF-8")
 //    @RequestMapping(method = RequestMethod.GET)
     public void get(HttpServletRequest request,
                             HttpServletResponse response) {
@@ -50,6 +50,7 @@ public class PayNotifyController {
                 if (SignUtils.checkSign(kvm, null, this.payConfig.getMchKey())) {
                     if (kvm.get("result_code").equals("SUCCESS")) {
                         //TODO(user) 微信服务器通知此回调接口支付成功后，通知给业务系统做处理
+
                         logger.info("out_trade_no: " + kvm.get("out_trade_no") + " pay SUCCESS!");
                         response.getWriter().write("<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[ok]]></return_msg></xml>");
                     } else {

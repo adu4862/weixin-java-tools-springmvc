@@ -65,7 +65,7 @@ public class PyaInfoController {
 //            //MICROPAY--刷卡支付，刷卡支付有单独的支付接口，不调用统一下单接口
 //            .tradeType("JSAPI")
 //            .spbillCreateIp(ip2)//用户终端ip
-//            .notifyUrl("http://localhost:8080/weixin_pay/")//异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。
+//            .notifyUrl("http://www.fjshhdzx.cn/weixin_pay/")//异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。
 //            .build();
 //
 //        try {

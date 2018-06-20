@@ -86,7 +86,7 @@ public class PaymentController extends GenericController {
 //            //MICROPAY--刷卡支付，刷卡支付有单独的支付接口，不调用统一下单接口
 //            .tradeType("JSAPI")
 //            .spbillCreateIp(ip2)//用户终端ip
-//            .notifyUrl("http://localhost:8080/weixin_pay/")//异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。
+//            .notifyUrl("http://www.fjshhdzx.cn/weixin_pay/")//异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。
 //            .build();
 //
 //        try {
@@ -108,34 +108,34 @@ public class PaymentController extends GenericController {
      * @param request
      * @param response
      */
-    @RequestMapping(value = "/weixin_pay")
-    public void getJSSDKCallbackData(HttpServletRequest request,
-                                     HttpServletResponse response) {
-//        try {
-//            synchronized (this) {
-//                Map<String, String> kvm = XMLUtil.parseRequestXmlToMap(request);
-//                if (SignUtils.checkSign(kvm, null, this.payConfig.getMchKey())) {
-//                    if (kvm.get("result_code").equals("SUCCESS")) {
-//                        //TODO(user) 微信服务器通知此回调接口支付成功后，通知给业务系统做处理
-//                        logger.info("out_trade_no: " + kvm.get("out_trade_no") + " pay SUCCESS!");
-//                        response.getWriter().write("<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[ok]]></return_msg></xml>");
-//                    } else {
-//                        this.logger.error("out_trade_no: "
-//                            + kvm.get("out_trade_no") + " result_code is FAIL");
-//                        response.getWriter().write(
-//                            "<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[result_code is FAIL]]></return_msg></xml>");
-//                    }
-//                } else {
-//                    response.getWriter().write(
-//                        "<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[check signature FAIL]]></return_msg></xml>");
-//                    this.logger.error("out_trade_no: " + kvm.get("out_trade_no")
-//                        + " check signature FAIL");
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-    }
+//    @RequestMapping(value = "/weixin_pay")
+//    public void getJSSDKCallbackData(HttpServletRequest request,
+//                                     HttpServletResponse response) {
+////        try {
+////            synchronized (this) {
+////                Map<String, String> kvm = XMLUtil.parseRequestXmlToMap(request);
+////                if (SignUtils.checkSign(kvm, null, this.payConfig.getMchKey())) {
+////                    if (kvm.get("result_code").equals("SUCCESS")) {
+////                        //TODO(user) 微信服务器通知此回调接口支付成功后，通知给业务系统做处理
+////                        logger.info("out_trade_no: " + kvm.get("out_trade_no") + " pay SUCCESS!");
+////                        response.getWriter().write("<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[ok]]></return_msg></xml>");
+////                    } else {
+////                        this.logger.error("out_trade_no: "
+////                            + kvm.get("out_trade_no") + " result_code is FAIL");
+////                        response.getWriter().write(
+////                            "<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[result_code is FAIL]]></return_msg></xml>");
+////                    }
+////                } else {
+////                    response.getWriter().write(
+////                        "<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[check signature FAIL]]></return_msg></xml>");
+////                    this.logger.error("out_trade_no: " + kvm.get("out_trade_no")
+////                        + " check signature FAIL");
+////                }
+////            }
+////        } catch (Exception e) {
+////            e.printStackTrace();
+////        }
+//    }
 
     @RequestMapping(value = "entPay")
     public void payToIndividual(HttpServletResponse response,
