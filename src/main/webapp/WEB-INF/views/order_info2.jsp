@@ -200,7 +200,7 @@
             <div class="mui-input-row mui-help">
                 <label>手机</label>
                 <input type="number" name="member[mobile]" id="mobile" placeholder="手机 (必填)" pattern="[0-9]*"
-                       value="18686868686"/>
+                       value=""/>
             </div>
             <input name="form_id[]" type="hidden" class="form-control form_id" value="928"/>
             <input name="essential" type="hidden" value="0" title="性别" data-type="3"/>

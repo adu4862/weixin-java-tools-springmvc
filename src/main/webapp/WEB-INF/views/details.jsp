@@ -637,19 +637,19 @@ Copyright 2016 Administrator. All rights reserved.
         </div>
     </div>
 </div>
-<div class="subscribe">
-    <div class="img"><img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg">
-    </div>
-    <div class="text">
-        <p>欢迎来到<font>上杭县青少年学生校外活动中心</font></p>
-        <p>打开公众号，享受专属服务</p>
-    </div>
-    <div class="btn">
-        <a class="lizhuanz" href="javascript:;">
-            <div class="buttonn">立即打开</div>
-        </a>
-    </div>
-</div>
+<%--<div class="subscribe">--%>
+    <%--<div class="img"><img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg">--%>
+    <%--</div>--%>
+    <%--<div class="text">--%>
+        <%--<p>欢迎来到<font>上杭县青少年学生校外活动中心</font></p>--%>
+        <%--<p>打开公众号，享受专属服务</p>--%>
+    <%--</div>--%>
+    <%--<div class="btn">--%>
+        <%--<a class="lizhuanz" href="javascript:;">--%>
+            <%--<div class="buttonn">立即打开</div>--%>
+        <%--</a>--%>
+    <%--</div>--%>
+<%--</div>--%>
 <script>
     // $(document).on('tap', '.js-follow', function () {
     //     util.alert('请分享此连接到微信打开', ' ', function (e) {

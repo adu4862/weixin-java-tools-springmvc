@@ -53,17 +53,18 @@ public class CreateOrderController {
     public ModelAndView get(HttpServletResponse response, HttpServletRequest request,
                             @RequestParam(name = "course_id", required = false) String course_id,
                             @RequestParam(name = "cost", required = false) String cost,
-                            @RequestParam(name = "name", required = false) String name,
-                            @RequestParam(name = "sex", required = false) String sex,
-                            @RequestParam(name = "school", required = false) String school,
-                            @RequestParam(name = "phone", required = false) String phone,
-                            @RequestParam(name = "grade", required = false) String grade,
-                            @RequestParam(name = "father_name", required = false) String father_name,
-                            @RequestParam(name = "father_phone", required = false) String father_phone,
-                            @RequestParam(name = "mother_name", required = false) String mother_name,
-                            @RequestParam(name = "mother_phone", required = false) String mother_phone,
-                            @RequestParam(name = "hobby", required = false) String hobby,
-                            @RequestParam(name = "openId", required = false) String openId
+                            @RequestParam(name = "member[realname]", required = false) String name,
+                            @RequestParam(name = "form_item_val_0", required = false) String sex,
+                            @RequestParam(name = "form_item_val_1", required = false) String school,
+                            @RequestParam(name = "member[mobile]", required = false) String phone,
+                            @RequestParam(name = "form_item_val_2", required = false) String grade,
+                            @RequestParam(name = "form_item_val_3", required = false) String father_name,
+                            @RequestParam(name = "form_item_val_4", required = false) String father_phone,
+                            @RequestParam(name = "form_item_val_5", required = false) String mother_name,
+                            @RequestParam(name = "form_item_val_6", required = false) String mother_phone,
+                            @RequestParam(name = "form_item_val_7", required = false) String hobby,
+                            @RequestParam(name = "openId", required = false) String openId,
+                            @RequestParam(name = "form_item_val_8", required = false) String address
     ) {
         ModelAndView modelAndView = new ModelAndView("wxPay");
         ReturnModel returnModel = new ReturnModel();
@@ -75,7 +76,7 @@ public class CreateOrderController {
         String s = searchCourseList(course_id);
 
         //存数据库并生成订单id
-        writeToDb(course_id, cost, name, sex, school, phone, grade, father_name, father_phone, mother_name, mother_phone, hobby, openId);
+        writeToDb(course_id, cost, name, sex, school, phone, grade, father_name, father_phone, mother_name, mother_phone, hobby, openId,address);
 
 
         //重定向到支付
@@ -197,7 +198,7 @@ public class CreateOrderController {
 
 
     private void writeToDb(String course_id, String cost, String name, String sex, String school, String phone, String grade,
-                           String father_name, String father_phone, String mother_name, String mother_phone, String hobby, String openId) {
+                           String father_name, String father_phone, String mother_name, String mother_phone, String hobby, String openId, String address) {
         Connection conn = null;
         String sql;
         // MySQL的JDBC URL编写方式：jdbc:mysql://主机名称：连接端口/数据库的名称?参数=值
@@ -217,18 +218,15 @@ public class CreateOrderController {
             conn = DriverManager.getConnection(url);
             // Statement里面带有很多方法，比如executeUpdate可以实现插入，更新和删除等
             Statement stmt = conn.createStatement();
+            orderId =course_id+ "_" + System.currentTimeMillis();
 
-            sql = "insert into tb_register(course_id,cost,name,sex,school,phone,grade,father_name,father_phone,mother_name,mother_phone,hobby,openId)" +
+            sql = "insert into tb_register(course_id,cost,name,sex,school,phone,grade,father_name,father_phone,mother_name,mother_phone,hobby,openId,orderId,address)" +
                 " values('" + course_id + "','" + cost + "','" + name + "','" + sex + "','" + school + "','" + phone + "','" + grade + "','" + father_name + "','" + father_phone + "','" + mother_name
-                + "','" + mother_phone + "','" + hobby + "','" + openId
+                + "','" + mother_phone + "','" + hobby + "','" + openId+ "','" + orderId+ "','" + address
                 + "')";
             System.out.println(sql);
             int result = stmt.executeUpdate(sql);
-            if (result > 0) {
-                orderId = "od" + System.currentTimeMillis();
 
-
-            }
 
         } catch (SQLException e) {
             System.out.println("MySQL操作错误");
