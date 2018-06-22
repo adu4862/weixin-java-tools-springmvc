@@ -258,28 +258,31 @@
 <div class="mui-content">
     <ul class="mui-table-view" style="margin-top: 0;">
         <li class="mui-table-view-cell mui-media">
-            <a class="mui-navigate-right js-popover" data-popover='member'>
-                <img class="mui-media-object mui-pull-left" src="">
+            <%--<a class="mui-navigate-right js-popover" data-popover='member'>--%>
+                <img class="mui-media-object mui-pull-left" src="${headImgUrl}">
                 <div class="mui-media-body">
                     <span></span>
-                    <p class="mui-ellipsis">手机号：待绑定</p>
+                    <p class="mui-ellipsis">昵称：${nickname}</p>
                 </div>
-            </a>
+            <%--</a>--%>
         </li>
+        <%--<li class="mui-table-view-cell js-change" data-type="nickname">--%>
+            <%--<a>昵称<span class="mui-badge mui-badge-inverted">${nickname}</span></a>--%>
+        <%--</li>--%>
     </ul>
     <ul class="mui-table-view mui-grid-view mui-afterbefore-no mui-text-gray" style="margin:0; padding:0;">
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-2">
-            <a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=favorite&"
-               class="mui-text-gray">
-                <span class="mui-ext-icon mui-icon-favorite"></span>
-                <div class="mui-media-body">收藏</div>
-            </a>
+            <%--<a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=favorite&"--%>
+            <%--class="mui-text-gray">--%>
+            <%--<span class="mui-ext-icon mui-icon-favorite"></span>--%>
+            <%--<div class="mui-media-body">收藏</div>--%>
+            <%--</a>--%>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-2">
-            <a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=profile&op=list"><span
-                    class="mui-ext-icon mui-icon-fensi"></span>
-                <div class="mui-media-body">关注</div>
-            </a>
+            <%--<a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=profile&op=list"><span--%>
+            <%--class="mui-ext-icon mui-icon-fensi"></span>--%>
+            <%--<div class="mui-media-body">关注</div>--%>
+            <%--</a>--%>
         </li>
     </ul>
     <div class="mui-card mui-one">
@@ -287,39 +290,40 @@
             <ul class="mui-table-view">
                 <li class="mui-table-view-cell">
                     <a class="mui-navigate-right"
-                       href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list">
+                       href="${orderUrl}">
                         <p>我的报名</p>
                         <span class="mui-badge mui-badge-inverted">全部记录</span>
                     </a>
                 </li>
+
             </ul>
         </div>
-        <div class="mui-card-footer mui-small" style="text-align:center">
-            <a class="mui-card-link mui-text-gray"
-               href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=1">
-                <p>0</p>待付款</a>
-            <a class="mui-card-link mui-text-gray"
-               href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=2">
-                <p>0</p>待参与</a>
-            <a class="mui-card-link mui-text-gray"
-               href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=3">
-                <p>0</p>已完成</a>
-            <a class="mui-card-link mui-text-gray"
-               href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=4">
-                <p>0</p>已取消</a>
-            <a class="mui-card-link mui-text-gray"
-               href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=5">
-                <p>0</p>已退款</a>
-        </div>
+        <%--<div class="mui-card-footer mui-small" style="text-align:center">--%>
+        <%--<a class="mui-card-link mui-text-gray"--%>
+        <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=1">--%>
+        <%--<p>0</p>待付款</a>--%>
+        <%--<a class="mui-card-link mui-text-gray"--%>
+        <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=2">--%>
+        <%--<p>0</p>待参与</a>--%>
+        <%--<a class="mui-card-link mui-text-gray"--%>
+        <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=3">--%>
+        <%--<p>0</p>已完成</a>--%>
+        <%--<a class="mui-card-link mui-text-gray"--%>
+        <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=4">--%>
+        <%--<p>0</p>已取消</a>--%>
+        <%--<a class="mui-card-link mui-text-gray"--%>
+        <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=5">--%>
+        <%--<p>0</p>已退款</a>--%>
+        <%--</div>--%>
     </div>
 
     <ul class="mui-table-view mui-afterbefore-no" style="margin-bottom:20px;">
     </ul>
     <div class="mui-content-padded">
-        <a class="mui-btn mui-btn-orange mui-btn-block"
-           href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=merch&op=display"
-           style="border-radius:100px;">我是主办方</span>
-        </a>
+        <%--<a class="mui-btn mui-btn-orange mui-btn-block"--%>
+        <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=merch&op=display"--%>
+        <%--style="border-radius:100px;">我是主办方</span>--%>
+        <%--</a>--%>
     </div>
     <style type="text/css">
         .footer {
@@ -479,7 +483,7 @@
                     <ul class="mui-table-view">
                         <li class="mui-table-view-cell">
                             <a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=bond&op=mobile&setting=1">手机号<span
-                                    class="mui-badge mui-badge-inverted mui-text-primary">待绑定</span></a>
+                                class="mui-badge mui-badge-inverted mui-text-primary">待绑定</span></a>
                         </li>
                         <li class="mui-table-view-cell js-change" data-type="qq">
                             <a>QQ号<span class="mui-badge mui-badge-inverted mui-text-primary">待绑定</span></a>

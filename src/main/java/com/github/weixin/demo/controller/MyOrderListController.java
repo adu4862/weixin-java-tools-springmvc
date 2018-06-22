@@ -77,7 +77,7 @@ public class MyOrderListController {
             // Statement里面带有很多方法，比如executeUpdate可以实现插入，更新和删除等
             Statement stmt = conn.createStatement();
             StringBuilder sbSql = new StringBuilder();
-            sbSql.append("select out_trade_no,result_code from tb_pay_details where openid=").append(openId);
+            sbSql.append("select out_trade_no,result_code,return_code from tb_pay_details where openid=\'").append(openId).append("\'");
 
 
             ResultSet rs = stmt.executeQuery(sbSql.toString());// executeQuery会返回结果的集合，否则返回空值
@@ -146,7 +146,12 @@ public class MyOrderListController {
 
             while (rs.next()) {
                 Map<String, Object> rowData = new HashMap<String, Object>();
-                rowData.put("支付状态", result_code);
+                if ("SUCCESS".equals(result_code)) {
+                    rowData.put("pay_status", "支付完成");
+                } else {
+                    rowData.put("pay_status", "支付失败");
+                }
+                rowData.put("pay_code", result_code);
                 for (int i = 1; i <= columnCount; i++) {
                     String columnName = md.getColumnName(i);
                     Object object = rs.getObject(i);

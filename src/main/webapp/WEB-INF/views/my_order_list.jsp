@@ -486,22 +486,21 @@ Copyright 2016 Administrator. All rights reserved.
                 </div>
             </div>
             <div id="hot" class="mui-card">
-                <div class="mui-card-header"><h5>热门活动</h5></div>
+                <div class="mui-card-header"><h5>我的订单</h5></div>
                 <div class="mui-card-content">
                     <ul class="mui-table-view">
                         <c:forEach items="${list}" var="user">
                             <li class="mui-table-view-cell mui-media">
-                                <a href="${user.course_id}">
+                                <a href="">
                                     <div class="mui-media-object mui-pull-left"
                                          style="background:url(${user.iamge_url}) no-repeat center">
                                             <%--<img src=user.iamge_url alt="">--%>
                                     </div>
                                     <div class="mui-media-body"><span class="title mui-ellipsis">${user.title}</span>
                                         <p class="mui-ellipsis-2 mui-small">剪纸|三年级</p>
-                                        <p class="mui-small">已报名：<font color="#666666">4 人</font> 剩余名额：<font
-                                            color="#666666">0
-                                            人</font></p>
-                                        <div class="mui-media-footer"><span class="mui-badge">${user.number}</span>
+                                        <p class="mui-small">支付状态：<font color="#666666">${user.pay_status}</font><font
+                                            color="#666666"></font></p>
+                                        <div class="mui-media-footer"><span class="mui-badge">金额: </span>
                                             <span
                                                 class="mui-text-orange mui-rmb">${user.cost}</span></div>
                                     </div>

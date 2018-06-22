@@ -29,11 +29,11 @@ public class UserInfoDaoImpl implements UserInfoDao {
             // Statement里面带有很多方法，比如executeUpdate可以实现插入，更新和删除等
             Statement stmt = conn.createStatement();
             StringBuilder sbSql = new StringBuilder();
-            sbSql.append("select nickname,headImgUrl from wxmpuser where openId = ").append(openId);
+            sbSql.append("select nickname,headImgUrl from wxmpuser where openId = \'").append(openId).append("\'");
 
 
-            ResultSet rs = stmt.executeQuery(sbSql.toString());// executeQuery会返回结果的集合，否则返回空值
             System.out.println(sbSql.toString());
+            ResultSet rs = stmt.executeQuery(sbSql.toString());// executeQuery会返回结果的集合，否则返回空值
             ResultSetMetaData md = rs.getMetaData(); //获得结果集结构信息,元数据
             int columnCount = md.getColumnCount();   //获得列数
 
