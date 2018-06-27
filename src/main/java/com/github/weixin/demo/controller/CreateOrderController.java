@@ -64,7 +64,8 @@ public class CreateOrderController {
                             @RequestParam(name = "form_item_val_6", required = false) String mother_phone,
                             @RequestParam(name = "form_item_val_7", required = false) String hobby,
                             @RequestParam(name = "openId", required = false) String openId,
-                            @RequestParam(name = "form_item_val_8", required = false) String address
+                            @RequestParam(name = "form_item_val_8", required = false) String address,
+                            @RequestParam(name = "body", required = false) String body
     ) {
         ModelAndView modelAndView = new ModelAndView("wxPay");
         ReturnModel returnModel = new ReturnModel();
@@ -97,7 +98,7 @@ public class CreateOrderController {
             .openid(openId)//公众号支付），此参数必传，此参数为微信用户在商户对应appid下的唯一标识
             .outTradeNo(orderId)//	商户系统内部订单号，要求32个字符内，只能是数字、大小写字母_-|* 且在同一个商户号下唯一
             .totalFee(i)//	订单总金额，单位为分，详见支付金额
-            .body("测试一毛钱")//商品描述
+            .body(body)//商品描述
             //2、交易类型trade_type
             //JSAPI--公众号支付、NATIVE--原生扫码支付、APP--app支付，统一下单接口trade_type的传参可参考这里
             //
@@ -125,6 +126,10 @@ public class CreateOrderController {
                 modelAndView.addObject("signType", "MD5");
                 modelAndView.addObject("paySign", sign);
                 modelAndView.addObject("appid", payConfig.getAppId());
+                modelAndView.addObject("money", s);
+                modelAndView.addObject("openId", openId);
+                modelAndView.addObject("body", body);
+                modelAndView.addObject("orderId", orderId);
 
 //                url = "redirect:/pay?timeStamp="
 //                    + timeStamp
@@ -220,9 +225,9 @@ public class CreateOrderController {
             Statement stmt = conn.createStatement();
             orderId =course_id+ "_" + System.currentTimeMillis();
 
-            sql = "insert into tb_register(course_id,cost,name,sex,school,phone,grade,father_name,father_phone,mother_name,mother_phone,hobby,openId,orderId,address)" +
+            sql = "insert into tb_register(course_id,cost,name,sex,school,phone,grade,father_name,father_phone,mother_name,mother_phone,hobby,openId,orderId,address,payed)" +
                 " values('" + course_id + "','" + cost + "','" + name + "','" + sex + "','" + school + "','" + phone + "','" + grade + "','" + father_name + "','" + father_phone + "','" + mother_name
-                + "','" + mother_phone + "','" + hobby + "','" + openId+ "','" + orderId+ "','" + address
+                + "','" + mother_phone + "','" + hobby + "','" + openId+ "','" + orderId+ "','" + address+ "','" + 0
                 + "')";
             System.out.println(sql);
             int result = stmt.executeUpdate(sql);

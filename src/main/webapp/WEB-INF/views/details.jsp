@@ -91,8 +91,8 @@
             src="http://new.9dcm.net/addons/fx_activity/app/resource/components/dropload/dropload.min.js"></script>
     <script type="text/javascript">
         var shareData = {
-            title: "剪纸|三年级|周日（上午10:20-11:50）",
-            desc: "剪纸|三年级",
+            title: "${subject}|${class_name}|${time}",
+            desc: "${subject}|${class_name}",
             link: window.location.href,
             imgUrl: "http://new.9dcm.net/attachment/images/3/2018/01/PtWvtuUZbwEslkbT0hGgWAUlSDSudS.jpg"
         };
@@ -480,18 +480,23 @@
         padding: 3px;
     }
 </style>
+<%--<footer class="mui-bar mui-bar-footer">--%>
+    <%--&lt;%&ndash;<a class="js-btn-join js-follow" href="javascript:;" style="width:3%;">&ndash;%&gt;--%>
+    <%--<a class="js-btn-join js-follow" href=${course_id} style="width:3%;">--%>
+        <%--<span class="mui-btn-orange">我要报名</span>--%>
+    <%--</a>--%>
+<%--</footer>--%>
 <footer class="mui-bar mui-bar-footer">
-    <%--<a class="js-btn-join js-follow" href="javascript:;" style="width:3%;">--%>
-        <a class="js-btn-join js-follow" href=${course_id} style="width:3%;">
-        <span class="mui-btn mui-btn-default mui-btn-block">报名已结束</span>
+    <a class="js-btn-join js-follow" href=${course_id} style="width:3%;">
+        <span class="mui-btn mui-btn-orange mui-btn-block">我要报名</span>
     </a>
 </footer>
-<div id="touchbtn" style="position:fixed; bottom:60px;right:5px;z-index:999;width:45px; height:45px;opacity:0.35">
-    <a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=home&">
-        <span class="mui-ext-icon mui-icon-person"
-              style=" width:45px; height:45px;line-height:1.7;color:#FFF;font-size:18px; text-align:center; background:#FF7B33; display: block; padding: 5px;border-radius: 50%;border: 2px solid #fff; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.28);"></span>
-    </a>
-</div>
+<%--<div id="touchbtn" style="position:fixed; bottom:60px;right:5px;z-index:999;width:45px; height:45px;opacity:0.35">--%>
+<%--<a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=home&">--%>
+<%--<span class="mui-ext-icon mui-icon-person"--%>
+<%--style=" width:45px; height:45px;line-height:1.7;color:#FFF;font-size:18px; text-align:center; background:#FF7B33; display: block; padding: 5px;border-radius: 50%;border: 2px solid #fff; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.28);"></span>--%>
+<%--</a>--%>
+<%--</div>--%>
 <!--
 followed.html
  判断是否已经关注该微信公众号，引导关注
@@ -638,17 +643,17 @@ Copyright 2016 Administrator. All rights reserved.
     </div>
 </div>
 <%--<div class="subscribe">--%>
-    <%--<div class="img"><img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg">--%>
-    <%--</div>--%>
-    <%--<div class="text">--%>
-        <%--<p>欢迎来到<font>上杭县青少年学生校外活动中心</font></p>--%>
-        <%--<p>打开公众号，享受专属服务</p>--%>
-    <%--</div>--%>
-    <%--<div class="btn">--%>
-        <%--<a class="lizhuanz" href="javascript:;">--%>
-            <%--<div class="buttonn">立即打开</div>--%>
-        <%--</a>--%>
-    <%--</div>--%>
+<%--<div class="img"><img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg">--%>
+<%--</div>--%>
+<%--<div class="text">--%>
+<%--<p>欢迎来到<font>上杭县青少年学生校外活动中心</font></p>--%>
+<%--<p>打开公众号，享受专属服务</p>--%>
+<%--</div>--%>
+<%--<div class="btn">--%>
+<%--<a class="lizhuanz" href="javascript:;">--%>
+<%--<div class="buttonn">立即打开</div>--%>
+<%--</a>--%>
+<%--</div>--%>
 <%--</div>--%>
 <script>
     // $(document).on('tap', '.js-follow', function () {
@@ -688,51 +693,51 @@ Copyright 2016 Administrator. All rights reserved.
         <div class="pricebar" id="J_PriceBar">
             <div class="mui-card mui-one" style="margin:0;">
                 <div class="mui-card-header mui-card-media" style="padding-bottom:0;">
-                    <h5 class="mui-ellipsis-2">剪纸|三年级|周日（上午10:20-11:50）</h5>
+                    <h5 class="mui-ellipsis-2"> ${subject}|${class_name}|${time}</h5>
                 </div>
-                <div class="mui-card-footer" style="text-align:center;">
-                    <span><em class="mui-icon mui-icon-eye"></em> 249</span>
-                    <span><em class="mui-icon mui-icon-redo"></em>0</span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span class="" onClick="openFun.setProperty(this,77,'favorite')" data-favorite="1">
-                <em class="mui-ext-icon mui-icon-xihuan"> 0</em></span>
-                </div>
+                <%--<div class="mui-card-footer" style="text-align:center;">--%>
+                <%--<span><em class="mui-icon mui-icon-eye"></em> 249</span>--%>
+                <%--<span><em class="mui-icon mui-icon-redo"></em>0</span>--%>
+                <%--<span></span>--%>
+                <%--<span></span>--%>
+                <%--<span></span>--%>
+                <%--<span></span>--%>
+                <%--<span class="" onClick="openFun.setProperty(this,77,'favorite')" data-favorite="1">--%>
+                <%--<em class="mui-ext-icon mui-icon-xihuan"> 0</em></span>--%>
+                <%--</div>--%>
             </div>
             <div style="position:relative;display: block;overflow: hidden; padding-top:10px;">
                 <div class="subleft avil">
                     <div class="price mui-text-orange">
-                        <strong>免费活动</strong>
+                        <strong>￥${cost}</strong>
                     </div>
                     <div class="information">
                         <div class="oprice" style=" display:none">
                             ¥
                             <del>380.00</del>
                         </div>
-                        <div class="soldcount mui-badge-orange">
-                            <span>已报名&nbsp;4 人</span>
-                        </div>
+                        <%--<div class="soldcount mui-badge-orange">--%>
+                        <%--<span>已报名&nbsp;4 人</span>--%>
+                        <%--</div>--%>
                     </div>
                 </div>
-                <div class="countdown">
-                    <span class="txt" style="font-size:20px; line-height:1.8">名额已满</span>
-                </div>
+                <%--<div class="countdown">--%>
+                <%--<span class="txt" style="font-size:20px; line-height:1.8">名额已满</span>--%>
+                <%--</div>--%>
             </div>
         </div>
         <div class="content">
             <!-- 基本信息 -->
             <div class="mui-card mui-one mui-two" style="margin-bottom:0px">
                 <div class="mui-card-header mui-card-media">
-                    <a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=profile&op=display&id=0&muid=0">
+                    <a href="http://www.fjshhdzx.cn/weisite/cmsController.do?goPage&page=index">
                         <img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg">
                         <span class="mui-ext-icon mui-icon-renzheng3"></span>
                         <div class="mui-media-body">
                             <span class="mui-ellipsis">上杭县青少年学生校外活动中心</span>
-                            <p class="mui-small">108位粉丝</p>
-                            <i class="mui-badge mui-badge-orange mui-pull-right js-merch-follow" data-follow="1"
-                               data-id="0" data-muid="0" onClick="javascript:return false;">+ 关注</i>
+                            <%--<p class="mui-small">108位粉丝</p>--%>
+                            <%--<i class="mui-badge mui-badge-orange mui-pull-right js-merch-follow" data-follow="1"--%>
+                            <%--data-id="0" data-muid="0" onClick="javascript:return false;">+ 关注</i>--%>
                         </div>
                     </a>
                 </div>
@@ -757,7 +762,7 @@ Copyright 2016 Administrator. All rights reserved.
                                     </div>
                                 </div>
                             </a>
-                            <a class="mui-tel" href="tel:0596-6560280"></a>
+                            <a class="mui-tel" href="tel:0597-3843617"></a>
                         </li>
                     </ul>
                 </div>
@@ -770,24 +775,16 @@ Copyright 2016 Administrator. All rights reserved.
                 </div>
                 <div class="mui-card-content">
                     <div class="mui-card-content-inner" style="padding:10px;">
+
                         <p class="mui-text-gray">
-                            <span class="mui-text-yellow">报名时间</span><br>
-                            <font color="#FF0000">报名结束</font></p>
-                        <p class="mui-text-gray">
-                            <span class="mui-text-yellow">活动时间</span><br>
-                            <font color="#FF0000">活动结束</font></p>
-                        <p>2018年春季招生新生报名须知</p>
+                            <span class="mui-text-yellow">上课时间</span><br>
+                            <font color="#FF0000">${time}</font></p>
+                        <p>${subject}|${class_name}|${time} 报名须知</p>
                         <p></p>
                         <p>
-                            1、本次招生采用微信报名，必须关注中心微信公众号（上杭县青少年学生校外活动中心）才能使用在线报名功能。报名前家长应认真阅读《2018年春季招生简章》，熟悉报名流程和了解有关注意事项。注册信息提交前务必要认真核对，确保真实准确。&nbsp;</p>
-                        <p></p>
-                        <p>2、
-                            本中心每期招收新生的班级均为基础班，报名前请家长认真参照《招生课程计划表》中各培训课程及班级的招生对象年级和上课时段，充分考虑孩子的兴趣、意向，选择合适的课程及班级。报名成功后，中心一概不接受调班要求。</p>
-                        <p></p>
-                        <p><span style="color:rgb(255,0,0);">特别提示：</span>凡微信抢报成功却随意放弃者，将被中心列入黑名单，今后的报名将受到限制，因此对招生课程、班级无报名意向者切勿随意、盲目抢报，以免影响今后的报名，希望能把报名机会留给有需求的孩子。
+                            <span style="color:rgb(255,0,0);">特别提示：</span>
+                            ${information}
                         </p>
-                        <p></p>
-                        <p>3、本次报名时间从2018年2月1日至2月23日截止。每位注册学员只能选报年龄、班级等条件符合招生要求的班级，每个班级招满计划人数即止。</p>
                         <p></p>
                         <p><span style="color:rgb(255,0,0);">特别提示：</span>报名成功的家长应自行记清所报班级的开班日期和上课时段，开班前活动中心任课教师会与报名成功的家长取得联系，建立班级家长群，家长需随时关注班级群的通知，确保按时参加培训。
                         </p></div>
@@ -801,316 +798,290 @@ Copyright 2016 Administrator. All rights reserved.
                 </div>
                 <div class="mui-card-content" style="overflow:hidden;">
                     <div class="mui-card-content-inner" style="padding:10px;">
-                        <p>2017年秋季班补录科目</p>
-                        <p>招生对象：三年级</p>
-                        <p>上课时间：周日（上午10:20-11:50）</p>
-                        <p>任课教师：柯秋珍</p>
-                        <p>教室：上杭县青少年学生校外活动中心二楼204</p>
-                        <p>补招4人，在教师指导下购买学习用品</p></div>
-                </div>
-                <div class="mui-card-footer js-show">
-                    <span class="mui-ext-icon mui-text-orange" style="width:100%;">查看全部详情 </span>
-                </div>
-                <script>$(function () {
-                    setTimeout(function () {
-                        var h1 = 3000, h2 = $('.js-detail').find('.mui-card-content-inner').height();
-                        if (h2 > h1) {
-                            $('.js-detail').find('.mui-card-content').css('max-height', '2000px');
-                            $('.js-detail').find('.mui-card-footer').show()
-                        } else {
+                        <p>${subject}</p>
+                        <p>招生对象：${class_name}</p>
+                        <p>上课时间：${time}</p>
+                        <p>任课教师：${teacher}</p>
+                        <p>教室：${classroom}</p>
+                    </div>
+                    <div class="mui-card-footer js-show">
+                        <span class="mui-ext-icon mui-text-orange" style="width:100%;">查看全部详情 </span>
+                    </div>
+                    <script>$(function () {
+                        setTimeout(function () {
+                            var h1 = 3000, h2 = $('.js-detail').find('.mui-card-content-inner').height();
+                            if (h2 > h1) {
+                                $('.js-detail').find('.mui-card-content').css('max-height', '2000px');
+                                $('.js-detail').find('.mui-card-footer').show()
+                            } else {
+                                $('.js-detail').find('.mui-card-content').css('max-height', 'none');
+                                $('.js-detail').find('.mui-card-footer').hide()
+                            }
+                        }, 200);
+                        $('.js-detail').delegate(".js-show", "tap", function (e) {
                             $('.js-detail').find('.mui-card-content').css('max-height', 'none');
-                            $('.js-detail').find('.mui-card-footer').hide()
-                        }
-                    }, 200);
-                    $('.js-detail').delegate(".js-show", "tap", function (e) {
-                        $('.js-detail').find('.mui-card-content').css('max-height', 'none');
-                        $(this).removeClass('js-show').addClass('js-hide');
-                        $(this).find('span').text('收起详情 ')
-                    });
-                    $('.js-detail').delegate(".js-hide", "tap", function (e) {
-                        $('.js-detail').find('.mui-card-content').css('max-height', '2000px');
-                        $(this).removeClass('js-hide').addClass('js-show');
-                        $(this).find('span').text('查看全部详情 ')
-                    })
-                });</script>
-            </div>
-            <div class="M_detail" style="margin:0;">
-                <div class="mod_tab" style="display:none"><span>男士：人&nbsp;&nbsp;&nbsp;&nbsp;女士：人</span></div>
-                <ul class="mui-table-view mui-before-no" style="margin-top:10px">
-                    <li class="mui-table-view-cell">
-                        <a class="mui-navigate-right"
-                           href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=home&ac=user&&activityid=77">
-                            <p>已报名(4)</p><span class="mui-badge mui-badge-inverted">更多报名</span></a>
-                    </li>
-                </ul>
-                <div class="detail-item detail-more">
-                    <a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=home&ac=user&&activityid=77"
-                       class="more-user">
-                        <div class="bm-user">
-                            <img src="http://thirdwx.qlogo.cn/mmopen/9OV53FciaOQ18EpDHa5flg6Avpr2icticAwnjZkfYVCqOkFAZZ5PhkvM6NfBIibHq1c3UX2dqvCW0IQP54iad8ecWqBXBsGIPlAT8/132"/>
-                            <p class="mui-small mui-ellipsis mui-text-gray">苏友煌</p>
-                        </div>
-                        <div class="bm-user">
-                            <img src="http://wx.qlogo.cn/mmopen/9OV53FciaOQ0XSY3qib7IuIqTYbdaAxm5ibV6gByZwqqRgZnLBoR2ofh0VTPiaoE7DWRlyTiaf9f4dQY9HmUwQKibQOcJuU2ktQ1DC/132"/>
-                            <p class="mui-small mui-ellipsis mui-text-gray">游妍茹</p>
-                        </div>
-                        <div class="bm-user">
-                            <img src="http://wx.qlogo.cn/mmopen/9OV53FciaOQ0XSY3qib7IuIpBRDYL5LZxBeiaz48F1vzicIU1nnwAI1pzRJjsCVd04Vheuib7IlEgyQlyIiawoNOdVZAJC0FJr42EM/132"/>
-                            <p class="mui-small mui-ellipsis mui-text-gray">魏聪颖</p>
-                        </div>
-                        <div class="bm-user">
-                            <img src="http://wx.qlogo.cn/mmopen/PiajxSqBRaEJGl7zajQeDwiamlloa5EuFmfFuV3TtkbtoxLc6b0ibO9TuibAwdoCL7LCibkGXcGRMdawYGyJx1RJic0w/132"/>
-                            <p class="mui-small mui-ellipsis mui-text-gray">庄依</p>
-                        </div>
-                    </a>
+                            $(this).removeClass('js-show').addClass('js-hide');
+                            $(this).find('span').text('收起详情 ')
+                        });
+                        $('.js-detail').delegate(".js-hide", "tap", function (e) {
+                            $('.js-detail').find('.mui-card-content').css('max-height', '2000px');
+                            $(this).removeClass('js-hide').addClass('js-show');
+                            $(this).find('span').text('查看全部详情 ')
+                        })
+                    });</script>
                 </div>
-            </div>
 
-            <div style="height:65px;"></div>
+
+                <div style="height:65px;"></div>
+            </div>
         </div>
     </div>
-</div>
-<div id="cover"></div>
-<div id="guide"><img src="http://new.9dcm.net/addons/fx_activity/app/resource/images/guide.png"></div>
-<script>
-    var container = "unknown";
-    var openFun = {
-        wxMap: function (lat, lng, name, address) {
-            if (container == 'wechat') {
-                wx.ready(function () {
-                    wx.openLocation({
-                        latitude: lat, // 纬度，浮点数，范围为90 ~ -90
-                        longitude: lng, // 经度，浮点数，范围为180 ~ -180。
-                        name: name, // 位置名
-                        address: address, // 地址详情说明
-                        scale: 16, // 地图缩放级别,整形值,范围从1~28。默认为最大
-                        infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+    <div id="cover"></div>
+    <div id="guide"><img src="http://new.9dcm.net/addons/fx_activity/app/resource/images/guide.png"></div>
+    <script>
+        var container = "unknown";
+        var openFun = {
+            wxMap: function (lat, lng, name, address) {
+                if (container == 'wechat') {
+                    wx.ready(function () {
+                        wx.openLocation({
+                            latitude: lat, // 纬度，浮点数，范围为90 ~ -90
+                            longitude: lng, // 经度，浮点数，范围为180 ~ -180。
+                            name: name, // 位置名
+                            address: address, // 地址详情说明
+                            scale: 16, // 地图缩放级别,整形值,范围从1~28。默认为最大
+                            infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+                        });
                     });
-                });
-            } else {
-                location.href = "http://apis.map.qq.com/uri/v1/marker?marker=coord:" + lat + "," + lng + ";title:" + name + ";addr:" + address + "&referer=myapp";
-            }
-        },
-        loadstore: function () {
-            var latitude, longitude;
-            wx.ready(function () {
-                wx.getLocation({
-                    type: 'gcj02', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
-                    success: function (res) {
-                        latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-                        longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-                        var speed = res.speed; // 速度，以米/每秒计
-                        var accuracy = res.accuracy; // 位置精度
-                        //alert(latitude+','+longitude);
-                    }
-                });
+                } else {
+                    location.href = "http://apis.map.qq.com/uri/v1/marker?marker=coord:" + lat + "," + lng + ";title:" + name + ";addr:" + address + "&referer=myapp";
+                }
+            },
+            loadstore: function () {
+                var latitude, longitude;
+                wx.ready(function () {
+                    wx.getLocation({
+                        type: 'gcj02', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+                        success: function (res) {
+                            latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                            longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                            var speed = res.speed; // 速度，以米/每秒计
+                            var accuracy = res.accuracy; // 位置精度
+                            //alert(latitude+','+longitude);
+                        }
+                    });
 
-            });
-            $.post("http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=detail&op=distance", {
-                lat_a: latitude,
-                lng_a: longitude
-            }, function (data) {
-                //alert(data.stores);
-            }, 'json');
-        },
-        setProperty: function (obj, id, op) {/*收藏 */
-            var total_favo = parseInt($(obj).find('em').text());
-            var favorite = parseInt($(obj).attr('data-favorite'));
+                });
+                $.post("http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=detail&op=distance", {
+                    lat_a: latitude,
+                    lng_a: longitude
+                }, function (data) {
+                    //alert(data.stores);
+                }, 'json');
+            },
+            setProperty: function (obj, id, op) {/*收藏 */
+                var total_favo = parseInt($(obj).find('em').text());
+                var favorite = parseInt($(obj).attr('data-favorite'));
+                util.loading();
+                $.post("http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=detail&op=favorite", {
+                    activityid: id,
+                    favorite: favorite,
+                    type: 'detail'
+                }, function (d) {
+                    util.loading().close();
+                    if (op == 'favorite') {
+                        if (d.result == '1') {
+                            ;
+                            util.toast('操作成功');
+                            $(obj).attr("data-favorite", d.data);
+                            $(obj).toggleClass("mui-active");
+                            $(obj).find('em').text(' ' + (d.data ? total_favo + 1 : total_favo - 1));
+                        } else if (d.result == 2) {
+                            if (container == 'wechat') {
+                                util.confirm('还未注册，点击确认自动注册？', ' ', function (e) {
+                                    if (e.index == 1) {
+                                        location.href = "http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=auth&ac=oauth&op=info";
+                                    }
+                                });
+                            } else {
+                                util.tips('需要在微信中打开');
+                            }
+                        } else {
+                            util.tips('操作失败');
+                        }
+                    }
+                }, "json");
+            }
+        }
+
+        //关注
+        $('.js-merch-follow').on("tap", function (e) {
+            var $this = $(this);
             util.loading();
-            $.post("http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=detail&op=favorite", {
-                activityid: id,
-                favorite: favorite,
+            $.post("http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=profile&op=follow", {
+                id: $this.data('id'),
+                muid: $this.data('muid'),
+                follow: $this.attr('data-follow'),
                 type: 'detail'
             }, function (d) {
                 util.loading().close();
-                if (op == 'favorite') {
-                    if (d.result == '1') {
-                        ;
-                        util.toast('操作成功');
-                        $(obj).attr("data-favorite", d.data);
-                        $(obj).toggleClass("mui-active");
-                        $(obj).find('em').text(' ' + (d.data ? total_favo + 1 : total_favo - 1));
-                    } else if (d.result == 2) {
-                        if (container == 'wechat') {
-                            util.confirm('还未注册，点击确认自动注册？', ' ', function (e) {
-                                if (e.index == 1) {
-                                    location.href = "http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=auth&ac=oauth&op=info";
-                                }
-                            });
-                        } else {
-                            util.tips('需要在微信中打开');
-                        }
+                if (d.result == 1) {
+                    util.tips('操作成功');
+                    $this.attr("data-follow", d.data);
+                    $this.toggleClass("mui-badge-orange");
+                    $this.text(d.data ? '+ 关注' : '已关注');
+                } else if (d.result == 2) {
+                    if (container == 'wechat') {
+                        util.confirm('还未注册，点击确认自动注册？', ' ', function (e) {
+                            if (e.index == 1) {
+                                location.href = "http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=auth&ac=oauth&op=info";
+                            }
+                        });
                     } else {
-                        util.tips('操作失败');
+                        util.tips('需要在微信中打开');
                     }
+                } else {
+                    util.tips('操作失败', '', 'error');
                 }
             }, "json");
-        }
-    }
+        });
+        /* 浮标拖动动作 */
+        var drag = document.getElementById('touchbtn'),
+            winWeight = window.innerWidth,
+            winHeight = window.innerHeight - 50,
+            middleWin = winWeight / 2,
+            middleHin = winHeight / 6,
+            endTouchX = 0,
+            endTouchY = 0,
+            iTime = 0;
 
-    //关注
-    $('.js-merch-follow').on("tap", function (e) {
-        var $this = $(this);
-        util.loading();
-        $.post("http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=profile&op=follow", {
-            id: $this.data('id'),
-            muid: $this.data('muid'),
-            follow: $this.attr('data-follow'),
-            type: 'detail'
-        }, function (d) {
-            util.loading().close();
-            if (d.result == 1) {
-                util.tips('操作成功');
-                $this.attr("data-follow", d.data);
-                $this.toggleClass("mui-badge-orange");
-                $this.text(d.data ? '+ 关注' : '已关注');
-            } else if (d.result == 2) {
-                if (container == 'wechat') {
-                    util.confirm('还未注册，点击确认自动注册？', ' ', function (e) {
-                        if (e.index == 1) {
-                            location.href = "http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=auth&ac=oauth&op=info";
+        function touchMove(ev) {
+            ev.preventDefault();
+            var ev = ev.touches[0];
+            drag.style.top = (ev.pageY - 30) + 'px';
+            drag.style.left = (ev.pageX - 30) + 'px';
+            endTouchX = ev.pageX;
+            endTouchY = ev.pageY;
+        }
+
+        drag.addEventListener('touchstart', function (ev) {
+                clearTimeout(iTime);
+                $(drag).fadeTo(50, 0.85);
+                document.addEventListener('touchmove', touchMove, false);
+                document.addEventListener('touchend', function (ev) {
+                        document.ontouchmove = null;
+                        document.ontouchend = null;
+                        if (endTouchY < middleHin && endTouchX > 80 && endTouchX < winWeight - 80) { //停靠上边
+                            //drag.style.top = '2px';
+                            $(drag).stop().animate({top: '2px'}, 160, function () {
+                                iTime = setTimeout(function () {
+                                    $(drag).fadeTo(600, 0.35)
+                                }, 3800);
+                            });
+                        } else if (endTouchY > middleHin * 5 && endTouchX > 80 && endTouchX < winWeight - 80) { //停靠下边
+                            $(drag).stop().animate({top: winHeight - 55 + 'px'}, 160, function () {
+                                iTime = setTimeout(function () {
+                                    $(drag).fadeTo(600, 0.35)
+                                }, 3800);
+                            });
+                        } else {
+                            if (endTouchX > 0 && endTouchX < middleWin) { //停靠左边
+                                $(drag).stop().animate({left: '2px'}, 160, function () {
+                                    iTime = setTimeout(function () {
+                                        $(drag).fadeTo(600, 0.35)
+                                    }, 3800);
+                                });
+
+                            } else if (endTouchX != 0) { //停靠右边
+                                $(drag).stop().animate({left: winWeight - 50 + 'px'}, 160, function () {
+                                    iTime = setTimeout(function () {
+                                        $(drag).fadeTo(600, 0.35)
+                                    }, 3800);
+                                });
+                            }
                         }
-                    });
-                } else {
-                    util.tips('需要在微信中打开');
-                }
-            } else {
-                util.tips('操作失败', '', 'error');
+                        document.removeEventListener('touchmove', touchMove, false);
+                    },
+                    false)
+            },
+            false)
+        //计时
+        var sh, joinstime = "2018-02-01 19:00:00", joinetime = "2018-02-23 19:00:00";
+        FreshTime(".clockrun", joinstime, joinetime);
+        sh = setInterval(function () {
+            FreshTime(".clockrun", joinstime, joinetime)
+        }, 1000);
+
+        function FreshTime(id, starttime, endtime) {
+            var st = starttime.replace(/-/g, "/"),//开始时间
+                et = endtime.replace(/-/g, "/");//结束时间
+            st = new Date(st);//开始时间
+            et = new Date(et);//结束时间
+            //console.log(st);
+            var nowtime = new Date(),//当前时间
+                start_time = parseInt(st.getTime()),
+                end_time = parseInt(et.getTime()),
+                now_time = parseInt(nowtime.getTime()),
+                lefttime = -1;
+            if (start_time > now_time) {
+                lefttime = parseInt((start_time - now_time) / 1000);
+            } else if (end_time > now_time) {
+                lefttime = parseInt((end_time - now_time) / 1000);
+                //console.log(lefttime);
             }
-        }, "json");
-    });
-    /* 浮标拖动动作 */
-    var drag = document.getElementById('touchbtn'),
-        winWeight = window.innerWidth,
-        winHeight = window.innerHeight - 50,
-        middleWin = winWeight / 2,
-        middleHin = winHeight / 6,
-        endTouchX = 0,
-        endTouchY = 0,
-        iTime = 0;
-
-    function touchMove(ev) {
-        ev.preventDefault();
-        var ev = ev.touches[0];
-        drag.style.top = (ev.pageY - 30) + 'px';
-        drag.style.left = (ev.pageX - 30) + 'px';
-        endTouchX = ev.pageX;
-        endTouchY = ev.pageY;
-    }
-
-    drag.addEventListener('touchstart', function (ev) {
-            clearTimeout(iTime);
-            $(drag).fadeTo(50, 0.85);
-            document.addEventListener('touchmove', touchMove, false);
-            document.addEventListener('touchend', function (ev) {
-                    document.ontouchmove = null;
-                    document.ontouchend = null;
-                    if (endTouchY < middleHin && endTouchX > 80 && endTouchX < winWeight - 80) { //停靠上边
-                        //drag.style.top = '2px';
-                        $(drag).stop().animate({top: '2px'}, 160, function () {
-                            iTime = setTimeout(function () {
-                                $(drag).fadeTo(600, 0.35)
-                            }, 3800);
-                        });
-                    } else if (endTouchY > middleHin * 5 && endTouchX > 80 && endTouchX < winWeight - 80) { //停靠下边
-                        $(drag).stop().animate({top: winHeight - 55 + 'px'}, 160, function () {
-                            iTime = setTimeout(function () {
-                                $(drag).fadeTo(600, 0.35)
-                            }, 3800);
-                        });
-                    } else {
-                        if (endTouchX > 0 && endTouchX < middleWin) { //停靠左边
-                            $(drag).stop().animate({left: '2px'}, 160, function () {
-                                iTime = setTimeout(function () {
-                                    $(drag).fadeTo(600, 0.35)
-                                }, 3800);
-                            });
-
-                        } else if (endTouchX != 0) { //停靠右边
-                            $(drag).stop().animate({left: winWeight - 50 + 'px'}, 160, function () {
-                                iTime = setTimeout(function () {
-                                    $(drag).fadeTo(600, 0.35)
-                                }, 3800);
-                            });
-                        }
-                    }
-                    document.removeEventListener('touchmove', touchMove, false);
-                },
-                false)
-        },
-        false)
-    //计时
-    var sh, joinstime = "2018-02-01 19:00:00", joinetime = "2018-02-23 19:00:00";
-    FreshTime(".clockrun", joinstime, joinetime);
-    sh = setInterval(function () {
-        FreshTime(".clockrun", joinstime, joinetime)
-    }, 1000);
-
-    function FreshTime(id, starttime, endtime) {
-        var st = starttime.replace(/-/g, "/"),//开始时间
-            et = endtime.replace(/-/g, "/");//结束时间
-        st = new Date(st);//开始时间
-        et = new Date(et);//结束时间
-        //console.log(st);
-        var nowtime = new Date(),//当前时间
-            start_time = parseInt(st.getTime()),
-            end_time = parseInt(et.getTime()),
-            now_time = parseInt(nowtime.getTime()),
-            lefttime = -1;
-        if (start_time > now_time) {
-            lefttime = parseInt((start_time - now_time) / 1000);
-        } else if (end_time > now_time) {
-            lefttime = parseInt((end_time - now_time) / 1000);
-            //console.log(lefttime);
-        }
-        //var bar_width =  (1-(lefttime/3600))*100+"%"; //计算进度条百分比
-        // if (lefttime >= 0) {
-        //     dd = parseInt((lefttime / 86400));
-        //     hh = parseInt((lefttime / 3600)) - dd * 24;
-        //     mm = parseInt((lefttime / 60) % 60);
-        //     ss = parseInt(lefttime % 60);
-        //     if (start_time > now_time) {
-        //         $('#J_CountDownTxt').text('距报名开始');
-        //         $('.js-btn-join').find('span.mui-btn').text('报名还未开始');
-        //         $(id).html('<span id="ti_time_day">' + dd + '</span> 天 <span id="ti_time_hour">' + hh + '</span>:<span id="ti_time_min">' + mm + '</span>:<span id="ti_time_sec">' + ss + '</span>');
-        //     } else
-        //         if (end_time > now_time) {
-                var hasoption = parseInt("0");
-                var guanzhu = parseInt("2");
-                var follow = parseInt("");
-                $('#J_CountDownTxt').text('距报名结束');
-                // if (((guanzhu == 2 && follow) || guanzhu == 1) && container == 'wechat') {
-                //     if (hasoption) {
-                //         $('.js-btn-join').attr('href', 'javascript:;');
-                //         $('.js-btn-join').addClass('js-selector');
-                //     } else {
-                //         $('.js-btn-join').attr('href', "");
-                //     }
-                // }
-                $('.js-btn-join').find('span.mui-btn').text('我要报名');
-                $('.js-btn-join').find('span.mui-btn').removeClass('mui-btn-default');
-                $('.js-btn-join').find('span.mui-btn').addClass('mui-btn-orange');
-                $(id).html('<span id="ti_time_day">' + dd + '</span> 天 <span id="ti_time_hour">' + hh + '</span>:<span id="ti_time_min">' + mm + '</span>:<span id="ti_time_sec">' + ss + '</span>');
+            //var bar_width =  (1-(lefttime/3600))*100+"%"; //计算进度条百分比
+            // if (lefttime >= 0) {
+            //     dd = parseInt((lefttime / 86400));
+            //     hh = parseInt((lefttime / 3600)) - dd * 24;
+            //     mm = parseInt((lefttime / 60) % 60);
+            //     ss = parseInt(lefttime % 60);
+            //     if (start_time > now_time) {
+            //         $('#J_CountDownTxt').text('距报名开始');
+            //         $('.js-btn-join').find('span.mui-btn').text('报名还未开始');
+            //         $(id).html('<span id="ti_time_day">' + dd + '</span> 天 <span id="ti_time_hour">' + hh + '</span>:<span id="ti_time_min">' + mm + '</span>:<span id="ti_time_sec">' + ss + '</span>');
+            //     } else
+            //         if (end_time > now_time) {
+            var hasoption = parseInt("0");
+            var guanzhu = parseInt("2");
+            var follow = parseInt("");
+            $('#J_CountDownTxt').text('我要报名');
+            // if (((guanzhu == 2 && follow) || guanzhu == 1) && container == 'wechat') {
+            //     if (hasoption) {
+            //         $('.js-btn-join').attr('href', 'javascript:;');
+            //         $('.js-btn-join').addClass('js-selector');
+            //     } else {
+            //         $('.js-btn-join').attr('href', "");
+            //     }
+            // }
+            $('.js-btn-join').find('span.mui-btn').text('我要报名');
+            $('.js-btn-join').find('span.mui-btn').removeClass('mui-btn-default');
+            $('.js-btn-join').find('span.mui-btn').addClass('mui-btn-orange');
+            $(id).html('<span id="ti_time_day">' + dd + '</span> 天 <span id="ti_time_hour">' + hh + '</span>:<span id="ti_time_min">' + mm + '</span>:<span id="ti_time_sec">' + ss + '</span>');
+            if (${isFull}){
+                $('.js-btn-join').find('span.mui-btn').text('报名已满');
+                $('.js-btn-join').find('span.mui-btn').removeClass('mui-btn-orange');
+                $('.js-btn-join').find('span.mui-btn').addClass('mui-btn-default');
+            }
             // }
             //$('#progressbar').css("width",bar_width);
-        // }
-        // else {
-        //     $('.js-btn-join').attr('href', 'javascript:;');
-        //     $('.js-btn-join').removeClass('js-selector');
-        //     $('.js-btn-join').find('span.mui-btn').text('报名结束');
-        //     $('.js-btn-join').find('span.mui-btn').addClass('mui-btn-default');
-        //     $('.js-btn-join').find('span.mui-btn').removeClass('mui-btn-orange');
-        //     $('#J_CountDownTxt').text('报名已结束');
-        //     $(id).html('<span id="ti_time_day">00</span> 天 <span id="ti_time_hour">00</span>:<span id="ti_time_min">00</span>:<span id="ti_time_sec">00</span>');
-        // }
-    }
+            // }
+            // else {
+            //     $('.js-btn-join').attr('href', 'javascript:;');
+            //     $('.js-btn-join').removeClass('js-selector');
+            //     $('.js-btn-join').find('span.mui-btn').text('我要报名');
+            //     $('.js-btn-join').find('span.mui-btn').addClass('mui-btn-default');
+            //     $('.js-btn-join').find('span.mui-btn').removeClass('mui-btn-orange');
+            //     $('#J_CountDownTxt').text('报名已结束');
+            //     $(id).html('<span id="ti_time_day">00</span> 天 <span id="ti_time_hour">00</span>:<span id="ti_time_min">00</span>:<span id="ti_time_sec">00</span>');
+            // }
+        }
 
-    //阅读量计数器
-    $.post("http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=detail&op=read&id=77", function (d) {
-    }, "json");
-</script>
-<script>;</script>
-<script type="text/javascript"
-        src="http://new.9dcm.net/app/index.php?i=3&c=utility&a=visit&do=showjs&m=fx_activity"></script>
+        //阅读量计数器
+        $.post("http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=detail&op=read&id=77", function (d) {
+        }, "json");
+    </script>
+    <script type="text/javascript"
+            src="http://new.9dcm.net/app/index.php?i=3&c=utility&a=visit&do=showjs&m=fx_activity"></script>
 </body>
+
 </html>

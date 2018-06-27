@@ -26,6 +26,14 @@ public class DetailsController {
     @Autowired
     private WxMpService wxService;
     private String cost;
+    private Object subject;
+    private Object class_name;
+    private Object time;
+    private Object classroom;
+    private Object teacher;
+    private Object information;
+    private int number;
+    private int pay_number;
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
@@ -38,13 +46,41 @@ public class DetailsController {
 //        WxMpUser user = wxMpService.getUserService().userInfo(openid,lang);
         searchCourse(course_id);
         if (list.size()>0) {
-            Map<String, Object> stringObjectMap = list.get(0);
-            cost = (String) stringObjectMap.get("cost");
+            Map<String, Object> map = list.get(0);
+            cost = (String) map.get("cost");
+            subject = map.get("subject");
+            class_name = map.get("class_name");
+            time = map.get("time");
+            classroom = map.get("classroom");
+            teacher = map.get("teacher");
+            information = map.get("information");
+            number = (int) map.get("number");
+            pay_number = (int) map.get("pay_number");
+//            map.get("cost")
         }
         ModelAndView mav = new ModelAndView("details");
         //将参数返回给页面
-        mav.addObject("course_id", "http://www.fjshhdzx.cn/wechat/order_info?course_id="
-            + course_id + "&cost="+cost+"&openId="+openId);
+
+        mav.addObject("subject", subject);
+        mav.addObject("class_name", class_name);
+        mav.addObject("time", time);
+        mav.addObject("classroom", classroom);
+        mav.addObject("teacher", teacher);
+        mav.addObject("cost", cost);
+        mav.addObject("information", information);
+        mav.addObject("number", number);
+        mav.addObject("pay_number", pay_number);
+        boolean isFull = false;
+        if (number > pay_number) {
+            isFull = false;
+        } else {
+            isFull = true;
+        }
+        if (!isFull) {
+            mav.addObject("course_id", "http://www.fjshhdzx.cn/wechat/order_info?course_id="
+                + course_id + "&cost="+cost+"&openId="+openId+"&body="+subject.toString()+"|"+class_name.toString()+"|"+"|"+time.toString());
+        }
+        mav.addObject("isFull", isFull);
         return mav;
     }
 

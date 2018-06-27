@@ -181,6 +181,7 @@
         <input type="hidden" value="${cost}" name="cost"/>
         <input type="hidden" value="${openId}" name="openId"/>
         <input type="hidden" value="${course_id}" name="course_id"/>
+        <input type="hidden" value="${body}" name="body"/>
     </footer>
     <div class="mui-content">
         <ul class="mui-table-view mui-help-top" style="margin-top:0;">

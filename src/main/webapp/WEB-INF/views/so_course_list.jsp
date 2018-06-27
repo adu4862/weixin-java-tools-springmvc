@@ -493,15 +493,14 @@ Copyright 2016 Administrator. All rights reserved.
                             <li class="mui-table-view-cell mui-media">
                                 <a href="${user.course_id}">
                                     <div class="mui-media-object mui-pull-left"
-                                         style="background:url(${user.iamge_url}) no-repeat center">
+                                         style="background:url(http://new.9dcm.net/attachment/images/3/2018/05/cY3nLM5dmMl3884444pyPyBWL3VlvP.jpg) no-repeat center">
                                             <%--<img src=user.iamge_url alt="">--%>
                                     </div>
-                                    <div class="mui-media-body"><span class="title mui-ellipsis">${user.title}</span>
-                                        <p class="mui-ellipsis-2 mui-small">剪纸|三年级</p>
-                                        <p class="mui-small">已报名：<font color="#666666">4 人</font> 剩余名额：<font
-                                            color="#666666">0
-                                            人</font></p>
-                                        <div class="mui-media-footer"><span class="mui-badge">${user.number}</span>
+                                    <div class="mui-media-body"><span class="title mui-ellipsis">${user.subject}|${user.class_name}</span>
+                                        <p class="mui-ellipsis-2 mui-small"></p>
+                                        <p class="mui-small">已报名：<font color="#666666">${user.pay_number} 人</font> 剩余名额：<font
+                                            color="#666666">${user.remain_number} 人</font></p>
+                                        <div class="mui-media-footer"><span class="mui-badge">预招: ${user.number}人</span>
                                             <span
                                                 class="mui-text-orange mui-rmb">${user.cost}</span></div>
                                     </div>
@@ -511,9 +510,9 @@ Copyright 2016 Administrator. All rights reserved.
 
                     </ul>
                 </div>
-                <div class="mui-card-footer"><a
-                    href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=activity&op=display">查看更多</a>
-                </div>
+                <%--<div class="mui-card-footer"><a--%>
+                    <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=activity&op=display">查看更多</a>--%>
+                <%--</div>--%>
             </div>
             <style type="text/css">
                 .footer {

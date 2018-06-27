@@ -29,7 +29,8 @@ public class OrderInfoController {
 //    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView get(@RequestParam(name = "course_id", required = false) String course_id,
                             @RequestParam(name = "cost", required = false) String cost,
-                            @RequestParam(name = "openId", required = false) String openId
+                            @RequestParam(name = "openId", required = false) String openId,
+                            @RequestParam(name = "body", required = false) String body
                     ) {
         this.logger.info("\n：[{}]");
 //        searchCourseList();
@@ -41,6 +42,7 @@ public class OrderInfoController {
         mav.addObject("course_id",  course_id);
         mav.addObject("cost",  cost);
         mav.addObject("openId",  openId);
+        mav.addObject("body",  body);
         return mav;
     }
 

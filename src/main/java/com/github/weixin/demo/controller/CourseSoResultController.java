@@ -38,13 +38,24 @@ public class CourseSoResultController {
     protected WxMpService wxMpService;
     @Autowired
     protected CoreService coreService;
+    private ModelAndView mav;
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
     public ModelAndView get(@RequestParam(name = "openId", required = false) String openId,
                             @RequestParam(name = "code", required = false) String code) {
         this.logger.info("\n课程列表：[{}]");
-        this.openId = openId;
+        mav = new ModelAndView("so_course_list");
+        if (!TextUtils.isEmpty( this.openId)) {
+//            this.openId =openId;
+            searchCourseList();
+            mav.addObject("list", list);
+
+            mav.addObject("openId", this.openId);
+            mav.addObject("urlWithOpenId", "http://www.fjshhdzx.cn/wechat/my?openId=" + this.openId);
+            return mav;
+        }
+
         if (!TextUtils.isEmpty(code)) {
             ReturnModel returnModel = new ReturnModel();
             WxMpOAuth2AccessToken accessToken;
@@ -56,9 +67,13 @@ public class CourseSoResultController {
                 returnModel.setResult(true);
                 returnModel.setDatum(wxMpUser);
                 //保存wxMpUser到数据库
-                writeToDb(wxMpUser);
                 this.openId = wxMpUser.getOpenId();
+                writeToDb(wxMpUser);
                 //重定向到课程列表
+                searchCourseList();
+
+
+                //将参数返回给页面
 
 
             } catch (WxErrorException e) {
@@ -67,17 +82,15 @@ public class CourseSoResultController {
 //                renderString(response, returnModel);
                 this.logger.error(e.getError().toString());
             }
+            mav.addObject("list", list);
+
+            mav.addObject("openId", this.openId);
+            mav.addObject("urlWithOpenId", "http://www.fjshhdzx.cn/wechat/my?openId=" + this.openId);
+            return mav;
         }
 
 
-        searchCourseList();
 
-        ModelAndView mav = new ModelAndView("so_course_list");
-        //将参数返回给页面
-        mav.addObject("list", list);
-
-        mav.addObject("openId", this.openId);
-        mav.addObject("urlWithOpenId", "http://www.fjshhdzx.cn/wechat/my?openId=" + this.openId);
         return mav;
     }
 
@@ -157,6 +170,10 @@ public class CourseSoResultController {
                         rowData.put(columnName, object);
                     }
                 }
+                int number = (int) rowData.get("number");
+                int pay_number = (int) rowData.get("pay_number");
+                int remain_number = number - pay_number;
+                rowData.put("remain_number", remain_number);
                 list.add(rowData);
 
             }
