@@ -70,16 +70,18 @@ public class TemplateMessageController extends GenericController {
         }
 
         orderPaySuccessTemplate.setToUser(request.getParameter("openId"));
-        orderPaySuccessTemplate.setTemplateId("ENp7UwpOtlhvieebUvDm0mK4n0hTvbH0Me83HdBUvC0");
+        orderPaySuccessTemplate.setTemplateId("g5vMwAeslQxt9by9F9V5fjyuvuJYRtTVph-gKwI2H9Y");
         orderPaySuccessTemplate.setUrl(request.getParameter("url"));
-        WxMpTemplateData firstData = new WxMpTemplateData("first", "订单支付成功", TEMPLATE_FRONT_COLOR);
-        WxMpTemplateData orderMoneySumData = new WxMpTemplateData("orderMoneySum", request.getParameter("orderMoneySum"), TEMPLATE_FRONT_COLOR);
-        WxMpTemplateData orderProductNameData = new WxMpTemplateData("orderProductName", request.getParameter("orderProductName"), TEMPLATE_FRONT_COLOR);
-//        WxMpTemplateData remarkData = new WxMpTemplateData("Remark", request.getParameter("remark"), TEMPLATE_FRONT_COLOR);
+        WxMpTemplateData firstData = new WxMpTemplateData("first", "你好，你已成功购买课程", TEMPLATE_FRONT_COLOR);
+        WxMpTemplateData orderMoneySumData = new WxMpTemplateData("keyword1", "微信支付"+request.getParameter("orderMoneySum")+"元", TEMPLATE_FRONT_COLOR);
+        WxMpTemplateData orderProductNameData = new WxMpTemplateData("keyword2", request.getParameter("orderProductName"), TEMPLATE_FRONT_COLOR);
+        WxMpTemplateData orderProductIdData = new WxMpTemplateData("keyword3", orderId, TEMPLATE_FRONT_COLOR);
+        WxMpTemplateData remarkData = new WxMpTemplateData("remark", "", TEMPLATE_FRONT_COLOR);
         orderPaySuccessTemplate.addData(firstData)
             .addData(orderMoneySumData)
-            .addData(orderProductNameData);
-//            .addData(remarkData);
+            .addData(orderProductNameData)
+            .addData(orderProductIdData)
+            .addData(remarkData);
         try {
             wxMpService.getTemplateMsgService()
                 .sendTemplateMsg(orderPaySuccessTemplate);
@@ -110,11 +112,11 @@ public class TemplateMessageController extends GenericController {
                                                 HttpServletRequest request) {
         WxMpTemplateMessage orderPaySuccessTemplate = WxMpTemplateMessage.builder().build();
         orderPaySuccessTemplate.setToUser(request.getParameter("openid"));
-        orderPaySuccessTemplate.setTemplateId("X8ccwRF4EAx7VHFQGzi78Gl0C3GcpGpYgWk-HFFOWA0");
+        orderPaySuccessTemplate.setTemplateId("g5vMwAeslQxt9by9F9V5fjyuvuJYRtTVph-gKwI2H9Y");
         orderPaySuccessTemplate.setUrl(request.getParameter("url"));
-        WxMpTemplateData firstData = new WxMpTemplateData("first", "订单状态更新", TEMPLATE_FRONT_COLOR);
-        WxMpTemplateData orderMoneySumData = new WxMpTemplateData("OrderSn", request.getParameter("OrderSn"), TEMPLATE_FRONT_COLOR);
-        WxMpTemplateData orderProductNameData = new WxMpTemplateData("OrderStatus", request.getParameter("OrderStatus"), TEMPLATE_FRONT_COLOR);
+        WxMpTemplateData firstData = new WxMpTemplateData("first", "你好，你已成功购买课程", TEMPLATE_FRONT_COLOR);
+        WxMpTemplateData orderMoneySumData = new WxMpTemplateData("keyword1", request.getParameter("OrderSn"), TEMPLATE_FRONT_COLOR);
+        WxMpTemplateData orderProductNameData = new WxMpTemplateData("keyword2", request.getParameter("OrderStatus"), TEMPLATE_FRONT_COLOR);
         WxMpTemplateData remarkData = new WxMpTemplateData("remark", request.getParameter("remark"), TEMPLATE_FRONT_COLOR);
         orderPaySuccessTemplate.addData(firstData)
             .addData(orderMoneySumData)
