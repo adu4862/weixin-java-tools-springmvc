@@ -5,6 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.github.weixin.demo.dao.impl.CourseDaoImpl;
 import com.github.weixin.demo.dao.impl.OrderDaoImpl;
+import com.github.weixin.demo.domain.ResponseEntity;
+import com.github.weixin.demo.util.ResponseUtils;
+import com.google.gson.Gson;
+import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,14 +39,24 @@ public class TemplateMessageController extends GenericController {
     protected WxMpConfigStorage configStorage;
     @Autowired
     protected WxMpService wxMpService;
+    private String orderId;
 
     @RequestMapping(value = "notifyOrderPaySuccessTemplate")
-    public ModelAndView notifyOrderPaySuccessTemplate(HttpServletResponse response,
+    public void notifyOrderPaySuccessTemplate(HttpServletResponse response,
                                                       HttpServletRequest request) {
         WxMpTemplateMessage orderPaySuccessTemplate = WxMpTemplateMessage.builder().build();
-        String orderId = request.getParameter("orderId");
+        if (!TextUtils.isEmpty(orderId)) {
+            if (orderId.equals(request.getParameter("orderId"))) {
+                ResponseEntity responseEntity = new ResponseEntity();
+                responseEntity.setMsg("该订单已处理");
+                rend(response, true, responseEntity);
+                return;
+            }
+        }
+
+        orderId = request.getParameter("orderId");
         //更改订单信息
-        boolean b = new OrderDaoImpl().updateOrder(orderId, "set payed =1" );
+        boolean b = new OrderDaoImpl().updateOrder(orderId, "set payed =1 " );
         String course_id = orderId.split("_")[0];
         //更改课程已支付报名数量
         CourseDaoImpl courseDao = new CourseDaoImpl();
@@ -73,10 +87,22 @@ public class TemplateMessageController extends GenericController {
             logger.error(e.getMessage().toString());
         }
 
-        ModelAndView modelAndView = new ModelAndView("redirect://wechat/my_order_list?openId="+request.getParameter("openId"));
+//        ModelAndView modelAndView = new ModelAndView("redirect://wechat/my_order_list?openId="+request.getParameter("openId"));
+//
+//        return modelAndView;
+        ResponseEntity responseEntity = new ResponseEntity();
+        rend(response, true, responseEntity);
 
-        return modelAndView;
+    }
 
+    private void rend(HttpServletResponse response, boolean b, ResponseEntity responseEntity) {
+        if (b) {
+            responseEntity.setSuccess(true);
+            ResponseUtils.renderJson(response, new Gson().toJson(responseEntity));
+        } else {
+            responseEntity.setMsg("Some errors occured.");
+            ResponseUtils.renderJson(response, new Gson().toJson(responseEntity));
+        }
     }
 
     @RequestMapping(value = "notifyOrderStatusUpdateTemplate")

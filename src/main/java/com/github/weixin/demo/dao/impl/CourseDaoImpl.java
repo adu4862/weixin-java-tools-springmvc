@@ -32,7 +32,7 @@ public class CourseDaoImpl implements CourseDao {
             Statement stmt = conn.createStatement();
             StringBuilder sbSql = new StringBuilder();
             sbSql.append("select * from tb_course ");
-            if (TextUtils.isEmpty(sqlString)) {
+            if (!TextUtils.isEmpty(sqlString)) {
                 sbSql.append(sqlString);
             }
 
@@ -86,7 +86,7 @@ public class CourseDaoImpl implements CourseDao {
             // Statement里面带有很多方法，比如executeUpdate可以实现插入，更新和删除等
             Statement stmt = conn.createStatement();
 
-            sql = "UPDATE  tb_course "+sqlString+"WHERE course_id =  "+courseId;
+            sql = "UPDATE  tb_course "+sqlString+" WHERE course_id =  "+courseId;
             System.out.println(sql);
             int result = stmt.executeUpdate(sql);
             return result > 0;

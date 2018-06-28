@@ -45,7 +45,7 @@ public class DetailsController {
         String lang = "zh_CN"; //语言
 //        WxMpUser user = wxMpService.getUserService().userInfo(openid,lang);
         searchCourse(course_id);
-        if (list.size()>0) {
+        if (list.size() > 0) {
             Map<String, Object> map = list.get(0);
             cost = (String) map.get("cost");
             subject = map.get("subject");
@@ -76,10 +76,10 @@ public class DetailsController {
         } else {
             isFull = true;
         }
-        if (!isFull) {
-            mav.addObject("course_id", "http://www.fjshhdzx.cn/wechat/order_info?course_id="
-                + course_id + "&cost="+cost+"&openId="+openId+"&body="+subject.toString()+"|"+class_name.toString()+"|"+"|"+time.toString());
-        }
+
+        mav.addObject("course_id", "http://www.fjshhdzx.cn/wechat/order_info?course_id="
+            + course_id + "&openId=" + openId + "&body=" + subject.toString() + "|" + class_name.toString() + "|" + "|" + time.toString() + "&cost=" + cost);
+
         mav.addObject("isFull", isFull);
         return mav;
     }

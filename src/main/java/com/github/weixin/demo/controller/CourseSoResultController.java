@@ -30,7 +30,7 @@ public class CourseSoResultController {
     private String movInfoOuter;
     private String detail = "";
     private List<Map<String, Object>> list = new ArrayList<>();
-    private String openId;
+//    private String openId;
 
     @Autowired
     protected WxMpConfigStorage configStorage;
@@ -46,13 +46,13 @@ public class CourseSoResultController {
                             @RequestParam(name = "code", required = false) String code) {
         this.logger.info("\n课程列表：[{}]");
         mav = new ModelAndView("so_course_list");
-        if (!TextUtils.isEmpty( this.openId)) {
+        if (!TextUtils.isEmpty(openId)) {
 //            this.openId =openId;
-            searchCourseList();
+            searchCourseList(openId);
             mav.addObject("list", list);
 
-            mav.addObject("openId", this.openId);
-            mav.addObject("urlWithOpenId", "http://www.fjshhdzx.cn/wechat/my?openId=" + this.openId);
+            mav.addObject("openId", openId);
+            mav.addObject("urlWithOpenId", "http://www.fjshhdzx.cn/wechat/my?openId=" + openId);
             return mav;
         }
 
@@ -67,10 +67,10 @@ public class CourseSoResultController {
                 returnModel.setResult(true);
                 returnModel.setDatum(wxMpUser);
                 //保存wxMpUser到数据库
-                this.openId = wxMpUser.getOpenId();
+                openId = wxMpUser.getOpenId();
                 writeToDb(wxMpUser);
                 //重定向到课程列表
-                searchCourseList();
+                searchCourseList(openId);
 
 
                 //将参数返回给页面
@@ -84,11 +84,10 @@ public class CourseSoResultController {
             }
             mav.addObject("list", list);
 
-            mav.addObject("openId", this.openId);
-            mav.addObject("urlWithOpenId", "http://www.fjshhdzx.cn/wechat/my?openId=" + this.openId);
+            mav.addObject("openId", openId);
+            mav.addObject("urlWithOpenId", "http://www.fjshhdzx.cn/wechat/my?openId=" + openId);
             return mav;
         }
-
 
 
         return mav;
@@ -113,8 +112,8 @@ public class CourseSoResultController {
             Statement stmt = conn.createStatement();
 
             sql = "insert into wxmpuser(openId,nickname,headImgUrl,unionId,sex,city) values" +
-                "('"+bean.getOpenId()+"','"+bean.getNickname()+"','"+bean.getHeadImgUrl()+"','"
-                +bean.getUnionId()+"','"+bean.getSex()+"','"+bean.getCity()+"')";
+                "('" + bean.getOpenId() + "','" + bean.getNickname() + "','" + bean.getHeadImgUrl() + "','"
+                + bean.getUnionId() + "','" + bean.getSex() + "','" + bean.getCity() + "')";
             int result = stmt.executeUpdate(sql);
 
         } catch (Exception e) {
@@ -130,7 +129,7 @@ public class CourseSoResultController {
 
     }
 
-    private void searchCourseList() {
+    private void searchCourseList(String openId) {
         list = new ArrayList<>();
         Connection conn = null;
         String sql;

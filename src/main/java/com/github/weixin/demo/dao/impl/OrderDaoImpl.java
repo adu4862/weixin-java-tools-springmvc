@@ -86,7 +86,7 @@ public class OrderDaoImpl implements OrderDao {
             // Statement里面带有很多方法，比如executeUpdate可以实现插入，更新和删除等
             Statement stmt = conn.createStatement();
 
-            sql = "UPDATE  tb_register "+sqlString+"WHERE orderId =  \'"+ orderId+"\'";
+            sql = "UPDATE  tb_register "+sqlString+" WHERE orderId =  \'"+ orderId+"\'";
             System.out.println(sql);
             int result = stmt.executeUpdate(sql);
             return result > 0;

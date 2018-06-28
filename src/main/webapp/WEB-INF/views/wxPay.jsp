@@ -189,10 +189,11 @@
 </form>
 <article class="charge">
     <section class="content">
-        <h2>课程: ${body}</h2>
+        <h2>课程: 剪纸2|三年级||周六（下午4:00-5:30）</h2>
 
         <p class="copy-right">收款方:上杭县青少年学生校外活动中心 </p>
-        <div class="price">价格：<strong>￥${money}</strong></div>
+        <div class="price">价格：<strong>￥0.01
+        </strong></div>
         <div class="operation"><a class="btn-green" id="getBrandWCPayRequest"
                                   href="javascript:void(0);" onclick="callpay()" class="ljzf_but all_w">立即支付</a>
         </div>
@@ -200,35 +201,8 @@
 </article>
 </body>
 <script type="text/javascript">
-    function onBridgeReady() {
-        WeixinJSBridge.invoke('getBrandWCPayRequest', {
-            "appId": $("#appId").val(),
-            "timeStamp": $("#timeStamp").val(),
-            "nonceStr": $("#nonceStr").val(),
-            "package": $("#package").val(),
-            "signType": "MD5",
-            "paySign": $("#paySign").val()
-        }, function (res) {
-            if (res.err_msg == "get_brand_wcpay_request:ok") {
-                alert("微信支付成功!");
-                //重定向跳转
-                // 以下方式直接跳转
-                <%--window.location.href = 'http://www.fjshhdzx.cn/wechat/my_order_list?openId=${openId}';--%>
-                // 以下方式定时跳转
-                <%--setTimeout("javascript:location.href='http://www.fjshhdzx.cn/wechat/my_order_list?openId=${openId}'", 500);--%>
-                setTimeout("javascript:location.href='http://www.fjshhdzx.cn/templateMessage/notifyOrderPaySuccessTemplate?" +
-                    "openId=${openId}&url=http://www.fjshhdzx.cn/wechat/my_order_list?openId=${openId}&orderMoneySum=${money}&orderProductName=${body}&orderId=${orderId}'", 500);
-            } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
-                alert("用户取消支付!");
-                setTimeout("javascript:location.href='http://www.fjshhdzx.cn/wechat/my_order_list?openId=${openId}'", 500);
-            } else {
-                alert("支付失败!");
-                setTimeout("javascript:location.href='http://www.fjshhdzx.cn/wechat/my_order_list?openId=${openId}'", 500);
-            }
-        })
-    }
-
     function callpay() {
+        // alert('diaoqi');
         if (typeof WeixinJSBridge == "undefined") {
             if (document.addEventListener) {
                 document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
@@ -240,5 +214,53 @@
             onBridgeReady();
         }
     }
+    function onBridgeReady() {
+        WeixinJSBridge.invoke('getBrandWCPayRequest', {
+            "appId": $("#appId").val(),
+            "timeStamp": $("#timeStamp").val(),
+            "nonceStr": $("#nonceStr").val(),
+            "package": $("#package").val(),
+            "signType": "MD5",
+            "paySign": $("#paySign").val()
+        }, function (res) {
+            if (res.err_msg == "get_brand_wcpay_request:ok") {
+                // alert("微信支付成功!");
+                //重定向跳转
+                // 以下方式直接跳转
+
+                // 以下方式定时跳转
+
+             <%--setTimeout("javascript:location.href='http://www.fjshhdzx.cn/templateMessage/notifyOrderPaySuccessTemplate?openId=${openId}&orderId=${orderId}&orderMoneySum=${money}&orderProductName=${body}'", 500);--%>
+
+                <%--setTimeout("javascript:location.href='http://www.fjshhdzx.cn/wechat/my_order_list?openId=${openId}'", 500);--%>
+                $.ajax({
+                    url: 'http://www.fjshhdzx.cn/templateMessage/notifyOrderPaySuccessTemplate',
+                    type: 'GET',     // 请求类型，常用的有 GET 和 POST
+                    data: {
+                        <%--openId=${openId}&orderId=${orderId}&orderMoneySum=${money}&orderProductName=${body}--%>
+                        openId :'${openId}',
+                        orderId:'${orderId}',
+                        orderMoneySum:${money},
+                        orderProductName:'${body}'
+                    },
+                    success: function() { // 接口调用成功回调函数
+                        setTimeout("javascript:location.href='http://www.fjshhdzx.cn/wechat/my?openId=${openId}'", 500);
+
+                    },
+                    error: function() {
+                        setTimeout("javascript:location.href='http://www.fjshhdzx.cn/wechat/my?openId=${openId}'", 500);
+                    }
+                });
+            } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                // alert("用户取消支付!");
+                setTimeout("javascript:location.href='http://www.fjshhdzx.cn/wechat/my?openId=${openId}'", 500);
+            } else {
+                // alert("支付失败!");
+                setTimeout("javascript:location.href='http://www.fjshhdzx.cn/wechat/my?openId=${openId}'", 500);
+            }
+        })
+    }
+
+
 </script>
 </html>

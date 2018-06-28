@@ -480,23 +480,13 @@
         padding: 3px;
     }
 </style>
-<%--<footer class="mui-bar mui-bar-footer">--%>
-    <%--&lt;%&ndash;<a class="js-btn-join js-follow" href="javascript:;" style="width:3%;">&ndash;%&gt;--%>
-    <%--<a class="js-btn-join js-follow" href=${course_id} style="width:3%;">--%>
-        <%--<span class="mui-btn-orange">我要报名</span>--%>
-    <%--</a>--%>
-<%--</footer>--%>
+
 <footer class="mui-bar mui-bar-footer">
-    <a class="js-btn-join js-follow" href=${course_id} style="width:3%;">
-        <span class="mui-btn mui-btn-orange mui-btn-block">我要报名</span>
+    <a class="js-btn-join js-follow" href=${course_id} >
+        <span class="mui-btn mui-btn-orange mui-btn-block" id="btn_follow">我要报名</span>
     </a>
 </footer>
-<%--<div id="touchbtn" style="position:fixed; bottom:60px;right:5px;z-index:999;width:45px; height:45px;opacity:0.35">--%>
-<%--<a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=home&">--%>
-<%--<span class="mui-ext-icon mui-icon-person"--%>
-<%--style=" width:45px; height:45px;line-height:1.7;color:#FFF;font-size:18px; text-align:center; background:#FF7B33; display: block; padding: 5px;border-radius: 50%;border: 2px solid #fff; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.28);"></span>--%>
-<%--</a>--%>
-<%--</div>--%>
+
 <!--
 followed.html
  判断是否已经关注该微信公众号，引导关注
@@ -673,6 +663,16 @@ Copyright 2016 Administrator. All rights reserved.
             }
         }, "json");
     });
+    if (${isFull}){
+        $(".js-btn-join").attr('disabled', 'true');
+        $(".js-btn-join").attr('datahref',$("a").attr("href"));
+        $(".js-btn-join").removeAttr('href');
+        $('.js-btn-join').find('span.mui-btn').text('报名已满');
+        $('.js-btn-join').find('span.mui-btn').removeClass('mui-btn-orange');
+        $('.js-btn-join').find('span.mui-btn').addClass('mui-btn-default');
+    }
+
+
 </script>
 <div class="mui-content">
     <div class="mui-scroll-ext">
@@ -839,6 +839,7 @@ Copyright 2016 Administrator. All rights reserved.
     <div id="cover"></div>
     <div id="guide"><img src="http://new.9dcm.net/addons/fx_activity/app/resource/images/guide.png"></div>
     <script>
+
         var container = "unknown";
         var openFun = {
             wxMap: function (lat, lng, name, address) {
@@ -1029,51 +1030,12 @@ Copyright 2016 Administrator. All rights reserved.
                 lefttime = parseInt((end_time - now_time) / 1000);
                 //console.log(lefttime);
             }
-            //var bar_width =  (1-(lefttime/3600))*100+"%"; //计算进度条百分比
-            // if (lefttime >= 0) {
-            //     dd = parseInt((lefttime / 86400));
-            //     hh = parseInt((lefttime / 3600)) - dd * 24;
-            //     mm = parseInt((lefttime / 60) % 60);
-            //     ss = parseInt(lefttime % 60);
-            //     if (start_time > now_time) {
-            //         $('#J_CountDownTxt').text('距报名开始');
-            //         $('.js-btn-join').find('span.mui-btn').text('报名还未开始');
-            //         $(id).html('<span id="ti_time_day">' + dd + '</span> 天 <span id="ti_time_hour">' + hh + '</span>:<span id="ti_time_min">' + mm + '</span>:<span id="ti_time_sec">' + ss + '</span>');
-            //     } else
-            //         if (end_time > now_time) {
+
             var hasoption = parseInt("0");
             var guanzhu = parseInt("2");
             var follow = parseInt("");
-            $('#J_CountDownTxt').text('我要报名');
-            // if (((guanzhu == 2 && follow) || guanzhu == 1) && container == 'wechat') {
-            //     if (hasoption) {
-            //         $('.js-btn-join').attr('href', 'javascript:;');
-            //         $('.js-btn-join').addClass('js-selector');
-            //     } else {
-            //         $('.js-btn-join').attr('href', "");
-            //     }
-            // }
-            $('.js-btn-join').find('span.mui-btn').text('我要报名');
-            $('.js-btn-join').find('span.mui-btn').removeClass('mui-btn-default');
-            $('.js-btn-join').find('span.mui-btn').addClass('mui-btn-orange');
-            $(id).html('<span id="ti_time_day">' + dd + '</span> 天 <span id="ti_time_hour">' + hh + '</span>:<span id="ti_time_min">' + mm + '</span>:<span id="ti_time_sec">' + ss + '</span>');
-            if (${isFull}){
-                $('.js-btn-join').find('span.mui-btn').text('报名已满');
-                $('.js-btn-join').find('span.mui-btn').removeClass('mui-btn-orange');
-                $('.js-btn-join').find('span.mui-btn').addClass('mui-btn-default');
-            }
-            // }
-            //$('#progressbar').css("width",bar_width);
-            // }
-            // else {
-            //     $('.js-btn-join').attr('href', 'javascript:;');
-            //     $('.js-btn-join').removeClass('js-selector');
-            //     $('.js-btn-join').find('span.mui-btn').text('我要报名');
-            //     $('.js-btn-join').find('span.mui-btn').addClass('mui-btn-default');
-            //     $('.js-btn-join').find('span.mui-btn').removeClass('mui-btn-orange');
-            //     $('#J_CountDownTxt').text('报名已结束');
-            //     $(id).html('<span id="ti_time_day">00</span> 天 <span id="ti_time_hour">00</span>:<span id="ti_time_min">00</span>:<span id="ti_time_sec">00</span>');
-            // }
+
+
         }
 
         //阅读量计数器
