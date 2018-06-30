@@ -65,6 +65,9 @@ public class CreateOrderController {
                             @RequestParam(name = "form_item_val_7", required = false) String hobby,
                             @RequestParam(name = "openId", required = false) String openId,
                             @RequestParam(name = "form_item_val_8", required = false) String address,
+                            @RequestParam(name = "form_item_val_9", required = false) String age,
+                            @RequestParam(name = "subject", required = false) String subject,
+                            @RequestParam(name = "msg", required = false) String msg,
                             @RequestParam(name = "body", required = false) String body
     ) {
         ModelAndView modelAndView = new ModelAndView("wxPay");
@@ -77,7 +80,7 @@ public class CreateOrderController {
         String s = searchCourseList(course_id);
 
         //存数据库并生成订单id
-        writeToDb(course_id, cost, name, sex, school, phone, grade, father_name, father_phone, mother_name, mother_phone, hobby, openId,address);
+        writeToDb(course_id, cost, name, sex, school, phone, grade, father_name, father_phone, mother_name, mother_phone, hobby, openId,address,subject,msg,age);
 
 
         //重定向到支付
@@ -85,15 +88,7 @@ public class CreateOrderController {
 
         Double aDouble = Double.valueOf(s);
         int i = (int) (aDouble * 100);
-//        ModelAndView mav = new ModelAndView("redirect:/wechat/getJSSDKPayInfo?openId=" + openId + "&out_trade_no=" + orderId + "&body=测试一毛钱" + "&total_fee=" + i);
-
-//        mav.addObject("pay_order", list);
-//        ModelAndView  model = new ModelAndView("forward:/wechat/getJSSDKPayInfo");
-//        model.addObject("openId", openId);
-//        model.addObject("out_trade_no", orderId);
-//        model.addObject("body", "测试一毛钱");
-//        model.addObject("total_fee", i);
-//        return model;
+        //生成预支付订单
         WxPayUnifiedOrderRequest prepayInfo = WxPayUnifiedOrderRequest.newBuilder()
             .openid(openId)//公众号支付），此参数必传，此参数为微信用户在商户对应appid下的唯一标识
             .outTradeNo(orderId)//	商户系统内部订单号，要求32个字符内，只能是数字、大小写字母_-|* 且在同一个商户号下唯一
@@ -130,13 +125,6 @@ public class CreateOrderController {
                 modelAndView.addObject("openId", openId);
                 modelAndView.addObject("body", body);
                 modelAndView.addObject("orderId", orderId);
-
-//                url = "redirect:/pay?timeStamp="
-//                    + timeStamp
-//                    + "&nonceStr=" + nonceStr
-//                    + "&package=" + aPackage
-//                    + "&signType=MD5" + "&paySign=" + sign
-//                    + "&appid=" + payConfig.getAppId();
             }else {
                 this.logger.info("订单号:" + orderId + "错误信息:" );
             }
@@ -203,7 +191,7 @@ public class CreateOrderController {
 
 
     private void writeToDb(String course_id, String cost, String name, String sex, String school, String phone, String grade,
-                           String father_name, String father_phone, String mother_name, String mother_phone, String hobby, String openId, String address) {
+                           String father_name, String father_phone, String mother_name, String mother_phone, String hobby, String openId, String address, String subject, String msg, String age) {
         Connection conn = null;
         String sql;
         // MySQL的JDBC URL编写方式：jdbc:mysql://主机名称：连接端口/数据库的名称?参数=值
@@ -223,11 +211,12 @@ public class CreateOrderController {
             conn = DriverManager.getConnection(url);
             // Statement里面带有很多方法，比如executeUpdate可以实现插入，更新和删除等
             Statement stmt = conn.createStatement();
-            orderId =course_id+ "_" + System.currentTimeMillis();
+            long order_time = System.currentTimeMillis();
+            orderId =course_id+ "_" + order_time;
 
-            sql = "insert into tb_register(course_id,cost,name,sex,school,phone,grade,father_name,father_phone,mother_name,mother_phone,hobby,openId,orderId,address,payed)" +
+            sql = "insert into tb_register(course_id,cost,name,sex,school,phone,grade,father_name,father_phone,mother_name,mother_phone,hobby,openId,orderId,address,payed,subject,msg,age,order_time)" +
                 " values('" + course_id + "','" + cost + "','" + name + "','" + sex + "','" + school + "','" + phone + "','" + grade + "','" + father_name + "','" + father_phone + "','" + mother_name
-                + "','" + mother_phone + "','" + hobby + "','" + openId+ "','" + orderId+ "','" + address+ "','" + 0
+                + "','" + mother_phone + "','" + hobby + "','" + openId+ "','" + orderId+ "','" + address+ "','" + 0+ "','" + subject+ "','" + msg+ "','" + age+ "','" + order_time
                 + "')";
             System.out.println(sql);
             int result = stmt.executeUpdate(sql);

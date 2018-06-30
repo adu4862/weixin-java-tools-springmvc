@@ -30,6 +30,7 @@ public class OrderInfoController {
     public ModelAndView get(@RequestParam(name = "course_id", required = false) String course_id,
                             @RequestParam(name = "cost", required = false) String cost,
                             @RequestParam(name = "openId", required = false) String openId,
+                            @RequestParam(name = "subject", required = false) String subject,
                             @RequestParam(name = "body", required = false) String body
                     ) {
         this.logger.info("\n：[{}]");
@@ -43,6 +44,7 @@ public class OrderInfoController {
         mav.addObject("cost",  cost);
         mav.addObject("openId",  openId);
         mav.addObject("body",  body);
+        mav.addObject("subject",  subject);
         return mav;
     }
 

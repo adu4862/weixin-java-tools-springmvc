@@ -78,7 +78,7 @@ public class DetailsController {
         }
 
         mav.addObject("course_id", "http://www.fjshhdzx.cn/wechat/order_info?course_id="
-            + course_id + "&openId=" + openId + "&body=" + subject.toString() + "|" + class_name.toString() + "|" + "|" + time.toString() + "&cost=" + cost);
+            + course_id + "&openId=" + openId + "&body=" + subject.toString() + "|" + class_name.toString() + "|" + "|" + time.toString() + "&cost=" + cost+ "&subject=" + subject);
 
         mav.addObject("isFull", isFull);
         return mav;

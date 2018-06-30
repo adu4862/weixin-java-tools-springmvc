@@ -182,6 +182,7 @@
         <input type="hidden" value="${openId}" name="openId"/>
         <input type="hidden" value="${course_id}" name="course_id"/>
         <input type="hidden" value="${body}" name="body"/>
+        <input type="hidden" value="${subject}" name="subject"/>
     </footer>
     <div class="mui-content">
         <ul class="mui-table-view mui-help-top" style="margin-top:0;">
@@ -203,6 +204,11 @@
                 <input type="number" name="member[mobile]" id="mobile" placeholder="手机 (必填)" pattern="[0-9]*"
                        value=""/>
             </div>
+            <div class="mui-input-row">
+                <label>年龄</label>
+                <input name="form_item_val_9" value="" type="text" placeholder="请输入年龄">
+            </div>
+            <input name="form_id[]" type="hidden" class="form-control form_id" value="929"/>
             <input name="form_id[]" type="hidden" class="form-control form_id" value="928"/>
             <input name="essential" type="hidden" value="0" title="性别" data-type="3"/>
             <div class="mui-input-row">
@@ -236,34 +242,24 @@
             <input name="form_id[]" type="hidden" class="form-control form_id" value="929"/>
 
             <div class="mui-input-row">
-                <label>家长（父亲）</label>
-                <input name="form_item_val_3" value="" type="text" placeholder="请输入家长（父亲）">
+                <label>家长姓名 </label>
+                <input name="form_item_val_3" value="" type="text" placeholder="请输入家长姓名">
             </div>
             <input name="form_id[]" type="hidden" class="form-control form_id" value="925"/>
-            <input name="essential" type="hidden" value="4" title="电话" data-type="3"/>
+            <input name="essential" type="hidden" value="4" title="家长电话" data-type="3"/>
             <div class="mui-input-row">
-                <label>电话</label>
-                <input name="form_item_val_4" value="" type="text" placeholder="请输入电话 (必填)">
+                <label>家长电话</label>
+                <input name="form_item_val_4" value="" type="number"   placeholder="请输入电话 (必填)">
             </div>
             <input name="form_id[]" type="hidden" class="form-control form_id" value="930"/>
-            <input name="essential" type="hidden" value="5" title="家长（母亲）" data-type="3"/>
-            <div class="mui-input-row">
-                <label>家长（母亲）</label>
-                <input name="form_item_val_5" value="" type="text" placeholder="请输入家长（母亲） (必填)">
-            </div>
-            <input name="form_id[]" type="hidden" class="form-control form_id" value="927"/>
-            <input name="essential" type="hidden" value="6" title="电话" data-type="3"/>
-            <div class="mui-input-row">
-                <label>电话</label>
-                <input name="form_item_val_6" value="" type="text" placeholder="请输入电话 (必填)">
-            </div>
+
             <ul class="mui-table-view">
                 <li class="mui-table-view-cell mui-pl15" style="display:none">
                     <a class="mui-navigate-right js-marketing" href="#">主办方优惠<span
                         class="mui-badge mui-badge-inverted"></span></a>
                 </li>
                 <li class="mui-table-view-cell">
-                    <textarea id="textarea" class="mui-input-clear" name="msg" placeholder="给主办方留言"
+                    <textarea id="textarea" class="mui-input-clear" name="msg" placeholder="留言"
                               style="padding:3px;"></textarea>
                 </li>
             </ul>
