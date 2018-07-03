@@ -68,6 +68,7 @@ public class CreateOrderController {
                             @RequestParam(name = "form_item_val_9", required = false) String age,
                             @RequestParam(name = "subject", required = false) String subject,
                             @RequestParam(name = "msg", required = false) String msg,
+                            @RequestParam(name = "class_type", required = false) int class_type,
                             @RequestParam(name = "body", required = false) String body
     ) {
         ModelAndView modelAndView = new ModelAndView("wxPay");
@@ -80,7 +81,7 @@ public class CreateOrderController {
         String s = searchCourseList(course_id);
 
         //存数据库并生成订单id
-        writeToDb(course_id, cost, name, sex, school, phone, grade, father_name, father_phone, mother_name, mother_phone, hobby, openId,address,subject,msg,age);
+        writeToDb(course_id, cost, name, sex, school, phone, grade, father_name, father_phone, mother_name, mother_phone, hobby, openId,address,subject,msg,age,class_type);
 
 
         //重定向到支付
@@ -191,7 +192,7 @@ public class CreateOrderController {
 
 
     private void writeToDb(String course_id, String cost, String name, String sex, String school, String phone, String grade,
-                           String father_name, String father_phone, String mother_name, String mother_phone, String hobby, String openId, String address, String subject, String msg, String age) {
+                           String father_name, String father_phone, String mother_name, String mother_phone, String hobby, String openId, String address, String subject, String msg, String age, int class_type) {
         Connection conn = null;
         String sql;
         // MySQL的JDBC URL编写方式：jdbc:mysql://主机名称：连接端口/数据库的名称?参数=值
@@ -214,9 +215,9 @@ public class CreateOrderController {
             long order_time = System.currentTimeMillis();
             orderId =course_id+ "_" + order_time;
 
-            sql = "insert into tb_register(course_id,cost,name,sex,school,phone,grade,father_name,father_phone,mother_name,mother_phone,hobby,openId,orderId,address,payed,subject,msg,age,order_time)" +
+            sql = "insert into tb_register(course_id,cost,name,sex,school,phone,grade,father_name,father_phone,mother_name,mother_phone,hobby,openId,orderId,address,payed,subject,msg,age,order_time,class_type)" +
                 " values('" + course_id + "','" + cost + "','" + name + "','" + sex + "','" + school + "','" + phone + "','" + grade + "','" + father_name + "','" + father_phone + "','" + mother_name
-                + "','" + mother_phone + "','" + hobby + "','" + openId+ "','" + orderId+ "','" + address+ "','" + 0+ "','" + subject+ "','" + msg+ "','" + age+ "','" + order_time
+                + "','" + mother_phone + "','" + hobby + "','" + openId+ "','" + orderId+ "','" + address+ "','" + 0+ "','" + subject+ "','" + msg+ "','" + age+ "','" + order_time+ "','" + class_type
                 + "')";
             System.out.println(sql);
             int result = stmt.executeUpdate(sql);

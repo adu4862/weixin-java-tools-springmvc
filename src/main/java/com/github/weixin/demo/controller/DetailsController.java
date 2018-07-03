@@ -34,6 +34,7 @@ public class DetailsController {
     private Object information;
     private int number;
     private int pay_number;
+    private int class_type;
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
@@ -56,6 +57,7 @@ public class DetailsController {
             information = map.get("information");
             number = (int) map.get("number");
             pay_number = (int) map.get("pay_number");
+            class_type = (int) map.get("class_type");
 //            map.get("cost")
         }
         ModelAndView mav = new ModelAndView("details");
@@ -70,6 +72,7 @@ public class DetailsController {
         mav.addObject("information", information);
         mav.addObject("number", number);
         mav.addObject("pay_number", pay_number);
+        mav.addObject("class_type", class_type);
         boolean isFull = false;
         if (number > pay_number) {
             isFull = false;
@@ -78,7 +81,10 @@ public class DetailsController {
         }
 
         mav.addObject("course_id", "http://www.fjshhdzx.cn/wechat/order_info?course_id="
-            + course_id + "&openId=" + openId + "&body=" + subject.toString() + "|" + class_name.toString() + "|" + "|" + time.toString() + "&cost=" + cost+ "&subject=" + subject);
+            + course_id + "&openId=" + openId + "&body=" + subject.toString() + "|" + class_name.toString() + "|" + "|" + time.toString()
+            + "&cost=" + cost + "&class_type=" + class_type
+
+            + "&subject=" + subject);
 
         mav.addObject("isFull", isFull);
         return mav;

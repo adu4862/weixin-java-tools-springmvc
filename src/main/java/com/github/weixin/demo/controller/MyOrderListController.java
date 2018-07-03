@@ -1,5 +1,6 @@
 package com.github.weixin.demo.controller;
 
+import com.github.weixin.demo.dao.impl.OrderDaoImpl;
 import com.github.weixin.demo.domain.PayDetails;
 import com.github.weixin.demo.service.CoreService;
 import com.github.weixin.demo.util.ResultSetToFormat;
@@ -27,7 +28,6 @@ public class MyOrderListController {
     private String movInfoOuter;
     private String detail = "";
     private List<Map<String, Object>> list = new ArrayList<>();
-    private String openId;
 
     @Autowired
     protected WxMpConfigStorage configStorage;
@@ -42,22 +42,26 @@ public class MyOrderListController {
     public ModelAndView get(@RequestParam(name = "openId", required = false) String openId
                             ) {
         this.logger.info("\n课程列表：[{}]");
-        this.openId = openId;
 
 
 
-        searchMyOrder();
+//        searchMyOrder(openId);
+//        searchMyOrderList(openId);
+        OrderDaoImpl orderDao = new OrderDaoImpl();
+        String sql = " where openId = \'" + openId +"\' and payed = 1";
+        List<Map<String, Object>> orderList = orderDao.getOrderList(sql);
 
         ModelAndView mav = new ModelAndView("my_order_list");
         //将参数返回给页面
-        mav.addObject("list", list);
+        mav.addObject("list", orderList);
 
-        mav.addObject("openId", this.openId);
-        mav.addObject("urlWithOpenId", "http://www.fjshhdzx.cn/wechat/my?openId=" + this.openId);
+        mav.addObject("openId", openId);
+        mav.addObject("urlWithOpenId", "http://www.fjshhdzx.cn/wechat/my?openId=" + openId);
+        mav.addObject("urlWithOpenId1", "http://www.fjshhdzx.cn/wechat/course_list?openId=" + openId);
         return mav;
     }
 
-    private void searchMyOrder() {
+    private void searchMyOrder(String openId) {
         list = new ArrayList<>();
         detailList = new ArrayList<>();
         Connection conn = null;

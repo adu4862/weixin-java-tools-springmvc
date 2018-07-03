@@ -183,6 +183,7 @@
         <input type="hidden" value="${course_id}" name="course_id"/>
         <input type="hidden" value="${body}" name="body"/>
         <input type="hidden" value="${subject}" name="subject"/>
+        <input type="hidden" value="${class_type}" name="class_type"/>
     </footer>
     <div class="mui-content">
         <ul class="mui-table-view mui-help-top" style="margin-top:0;">
@@ -206,7 +207,7 @@
             </div>
             <div class="mui-input-row">
                 <label>年龄</label>
-                <input name="form_item_val_9" value="" type="text" placeholder="请输入年龄">
+                <input name="form_item_val_9" value="" type="number" placeholder="请输入年龄">
             </div>
             <input name="form_id[]" type="hidden" class="form-control form_id" value="929"/>
             <input name="form_id[]" type="hidden" class="form-control form_id" value="928"/>

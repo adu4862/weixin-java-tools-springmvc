@@ -1,6 +1,7 @@
 package com.github.weixin.demo.controller;
 
 import me.chanjar.weixin.mp.api.WxMpService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class OrderInfoController {
                             @RequestParam(name = "cost", required = false) String cost,
                             @RequestParam(name = "openId", required = false) String openId,
                             @RequestParam(name = "subject", required = false) String subject,
+                            @RequestParam(name = "class_type", required = false) int class_type,
+
                             @RequestParam(name = "body", required = false) String body
                     ) {
         this.logger.info("\n：[{}]");
@@ -44,6 +47,10 @@ public class OrderInfoController {
         mav.addObject("cost",  cost);
         mav.addObject("openId",  openId);
         mav.addObject("body",  body);
+        mav.addObject("class_type",  class_type);
+        if (StringUtils.isEmpty(subject)) {
+            subject = body.split("|")[0];
+        }
         mav.addObject("subject",  subject);
         return mav;
     }

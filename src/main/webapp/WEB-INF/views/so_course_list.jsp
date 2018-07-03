@@ -371,7 +371,7 @@ Copyright 2016 Administrator. All rights reserved.
                             <li class="mui-table-view-cell mui-media">
                                 <a href="${user.course_id}">
                                     <div class="mui-media-object mui-pull-left"
-                                         style="background:url(http://new.9dcm.net/attachment/images/3/2018/05/cY3nLM5dmMl3884444pyPyBWL3VlvP.jpg) no-repeat center">
+                                         style="background:url(${user.image_url}) no-repeat center">
                                             <%--<img src=user.iamge_url alt="">--%>
                                     </div>
                                     <div class="mui-media-body"><span
