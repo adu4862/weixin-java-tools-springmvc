@@ -46,7 +46,7 @@ public class MenuConfig {
         button3.setName("在线报名");
 
 //        WxMpService wxMpService = ...;
-        String url = "http://www.fjshhdzx.cn/wechat/course_list";
+        String url = "http://www.fjshhdzx.cn/wechat/index";
 //        wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
 //		button1.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
         button3.setUrl(wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_BASE, ""));

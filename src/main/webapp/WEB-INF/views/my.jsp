@@ -21,6 +21,7 @@
           href="http://new.9dcm.net/addons/fx_activity/app/resource/components/dropload/dropload.css?v=20171106">
 
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <link rel="stylesheet" type="text/css"href="http://my-photos.changs1992.cn/iconfont_2.css"/>
     <script type="text/javascript">
         window.sysinfo = window.sysinfo || {
             "uniacid": 3,
@@ -232,14 +233,14 @@
     }
 </style>
 <nav class="mui-bar mui-bar-tab" id="bar">
-    <a class="mui-tab-item" href="http://www.fjshhdzx.cn/wechat/course_list">
-        <span class="mui-icon mui-ext-icon mui-icon-activity"></span>
+    <a class="mui-tab-item" href="${homeUrl}">
+        <span class="mui-icon iconfont icon-faxian"></span>
         <span class="mui-tab-label">报名</span>
     </a>
 
     <a class="mui-tab-item"
-       href="http://www.fjshhdzx.cn/wechat/my">
-        <span class="mui-icon mui-ext-icon mui-icon-person"></span>
+       href=${myUrl}>
+        <span class="mui-icon iconfont icon-my"></span>
         <span class="mui-tab-label">我的</span>
     </a>
 </nav>
@@ -291,8 +292,8 @@
                 <li class="mui-table-view-cell">
                     <a class="mui-navigate-right"
                        href="${orderUrl}">
-                        <p>我的报名</p>
-                        <span class="mui-badge mui-badge-inverted">全部记录</span>
+                        <p >我的报名</p>
+                        <%--<span class="mui-badge  iconfont icon-gengduo">全部记录</span>--%>
                     </a>
                 </li>
 

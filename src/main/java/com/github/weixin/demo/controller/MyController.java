@@ -44,12 +44,20 @@ public class MyController {
         String lang = "zh_CN"; //语言
 //        WxMpUser user = wxMpService.getUserService().userInfo(openId,lang);
 
-        WxMpUser user = new UserInfoDaoImpl().getUserInfo(openId);
+//        WxMpUser user = new UserInfoDaoImpl().getUserInfo(openId);
+        WxMpUser wxMpUser = null;
+        try {
+            wxMpUser = this.wxMpService.getUserService().userInfo(openId, lang);
+        } catch (WxErrorException e) {
+            this.logger.error(e.getError().toString());
+        }
 
         ModelAndView mav = new ModelAndView("my");
         //将参数返回给页面
-        mav.addObject("headImgUrl", user.getHeadImgUrl());
-        mav.addObject("nickname", user.getNickname());
+        mav.addObject("headImgUrl", wxMpUser.getHeadImgUrl());
+        mav.addObject("nickname", wxMpUser.getNickname());
+        mav.addObject("homeUrl", "http://www.fjshhdzx.cn/wechat/course_list?openId=" + openId);
+        mav.addObject("myUrl", "http://www.fjshhdzx.cn/wechat/my?openId=" + openId);
         mav.addObject("orderUrl", "http://www.fjshhdzx.cn/wechat/my_order_list?openId=" + openId);
 
         return mav;

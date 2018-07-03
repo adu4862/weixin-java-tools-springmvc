@@ -13,7 +13,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-    <link rel="shortcut icon" href="http://new.9dcm.net/attachment/images/global/wechat.jpg"/>
     <link rel="stylesheet" type="text/css" href="http://new.9dcm.net/app/resource/css/common.min.css?v=20171106">
     <link rel="stylesheet" type="text/css"
           href="http://new.9dcm.net/addons/fx_activity/app/resource/components/mui/mui.ext.css?v=20171206">
@@ -21,64 +20,6 @@
           href="http://new.9dcm.net/addons/fx_activity/app/resource/components/dropload/dropload.css?v=20171106">
 
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-    <script type="text/javascript">
-        window.sysinfo = window.sysinfo || {
-            "uniacid": 3,
-            "acid": "3",
-            "siteroot": "http:\/\/new.9dcm.net\/",
-            "siteurl": "http:\/\/new.9dcm.net\/app\/index.php?i=3&c=entry&m=fx_activity&do=home&ac=index&op=display",
-            "attachurl": "http:\/\/new.9dcm.net\/attachment\/",
-            "cookie": {"pre": "bde9_"},
-            "MODULE_URL": "http:\/\/new.9dcm.net\/addons\/fx_activity\/"
-        } || {};
-
-        // jssdk config 对象
-        jssdkconfig = null || {};
-
-        // 是否启用调试
-        jssdkconfig.debug = false;
-
-        jssdkconfig.jsApiList = [
-            'checkJsApi',
-            'onMenuShareTimeline',
-            'onMenuShareAppMessage',
-            'onMenuShareQQ',
-            'onMenuShareWeibo',
-            'hideMenuItems',
-            'showMenuItems',
-            'hideAllNonBaseMenuItem',
-            'showAllNonBaseMenuItem',
-            'translateVoice',
-            'startRecord',
-            'stopRecord',
-            'onRecordEnd',
-            'playVoice',
-            'pauseVoice',
-            'stopVoice',
-            'uploadVoice',
-            'downloadVoice',
-            'chooseImage',
-            'previewImage',
-            'uploadImage',
-            'downloadImage',
-            'getNetworkType',
-            'openLocation',
-            'getLocation',
-            'hideOptionMenu',
-            'showOptionMenu',
-            'closeWindow',
-            'scanQRCode',
-            'chooseWXPay',
-            'openProductSpecificView',
-            'addCard',
-            'chooseCard',
-            'openCard'
-        ];
-
-        wx.config(jssdkconfig);
-
-    </script><!--兼容图片上传1.0-->
-    <script>var app_module_name = 'fx_activity';</script>
     <script type="text/javascript" src="http://new.9dcm.net/app/resource/js/app/util.js?v=20171206"></script>
     <script type="text/javascript" src="http://new.9dcm.net/app/resource/js/require.js?v=20171106"></script>
     <script type="text/javascript"
@@ -89,40 +30,8 @@
     <script type="text/javascript" src="http://new.9dcm.net/app/resource/js/app/common.js?v=20171106"></script>
     <script type="text/javascript"
             src="http://new.9dcm.net/addons/fx_activity/app/resource/components/dropload/dropload.min.js"></script>
-    <script type="text/javascript">
-        var shareData = {
-            title: "分享标题",
-            desc: "",
-            link: window.location.href,
-            imgUrl: "http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg"
-        };
-        wx.ready(function () {
-            var _sharedata = {
-                title: shareData.title,
-                desc: shareData.desc,
-                link: shareData.link,
-                imgUrl: shareData.imgUrl,
-                success: function () {
-                    var url = "http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=detail&op=share&";
-                    var share_action = "";
-                    if (share_action == '1') {
-                        $.post(url, function (d) {
-                            if (d.result == 1) {
-                                util.alert('恭喜您获取 ' + d.data + ' 积分', ' ');
-                            } else if (d.result == 2) {
-                                util.alert(d.data, ' ');
-                            }
-                        }, "json");
-                    }
-                },
-                cancel: function () {
-                }
-            };
-            wx.onMenuShareAppMessage(_sharedata);
-            wx.onMenuShareTimeline(_sharedata);
-            wx.onMenuShareQQ(_sharedata);
-        });
-    </script>
+
+    <link rel="stylesheet" type="text/css"href="http://my-photos.changs1992.cn/iconfont_2.css"/>
 </head>
 <body>
 <span class="mui-ext-icon"></span><span class="fa"></span>
@@ -416,48 +325,17 @@ Copyright 2016 Administrator. All rights reserved.
         </div>
     </div>
 </div>
-<%--<div class="subscribe">--%>
-    <%--<div class="img"><img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg">--%>
-    <%--</div>--%>
-    <%--<div class="text">--%>
-        <%--<p>欢迎来到<font>上杭县青少年学生校外活动中心</font></p>--%>
-        <%--<p>打开公众号，享受专属服务</p>--%>
-    <%--</div>--%>
-    <%--<div class="btn">--%>
-        <%--<a class="lizhuanz" href="javascript:;">--%>
-            <%--<div class="buttonn">立即打开</div>--%>
-        <%--</a>--%>
-    <%--</div>--%>
-<%--</div>--%>
-<script>
-    $(document).on('tap', '.js-follow', function () {
-        util.alert('请分享此连接到微信打开', ' ', function (e) {
-        });
-    })
-    $('.buttonn').on('tap', function () {
-        util.alert('请分享此连接到微信打开', ' ', function (e) {
-        });
-        //$('.subscribe').remove();
-    });
-    $('.top .close').on('click', function (e) {
-        $('.top').hide();
-        $.post("http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=check&ac=check&op=follow", '', function (d) {
-            if (d.result) {
-                window.location.reload();
-            }
-        }, "json");
-    });
-</script>
+
 <nav class="mui-bar mui-bar-tab" id="bar">
 
-    <a class="mui-tab-item" href="http://www.fjshhdzx.cn/wechat/course_list">
-        <span class="mui-icon mui-ext-icon mui-icon-activity"></span>
+    <a class="mui-tab-item" href="${homeUrl}">
+        <span class="mui-icon iconfont icon-faxian"></span>
         <span class="mui-tab-label">报名</span>
     </a>
 
     <a class="mui-tab-item"
-       href=${urlWithOpenId}>
-        <span class="mui-icon mui-ext-icon mui-icon-person"></span>
+       href=${myUrl}>
+        <span class="mui-icon iconfont icon-my"></span>
         <span class="mui-tab-label">我的</span>
     </a>
 </nav>
@@ -496,7 +374,8 @@ Copyright 2016 Administrator. All rights reserved.
                                          style="background:url(http://new.9dcm.net/attachment/images/3/2018/05/cY3nLM5dmMl3884444pyPyBWL3VlvP.jpg) no-repeat center">
                                             <%--<img src=user.iamge_url alt="">--%>
                                     </div>
-                                    <div class="mui-media-body"><span class="title mui-ellipsis">${user.subject}|${user.class_name}</span>
+                                    <div class="mui-media-body"><span
+                                        class="title mui-ellipsis">${user.subject}|${user.class_name}</span>
                                         <p class="mui-ellipsis-2 mui-small"></p>
                                         <p class="mui-small">已报名：<font color="#666666">${user.pay_number} 人</font> 剩余名额：<font
                                             color="#666666">${user.remain_number} 人</font></p>
@@ -510,9 +389,7 @@ Copyright 2016 Administrator. All rights reserved.
 
                     </ul>
                 </div>
-                <%--<div class="mui-card-footer"><a--%>
-                    <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=activity&op=display">查看更多</a>--%>
-                <%--</div>--%>
+
             </div>
             <style type="text/css">
                 .footer {
@@ -541,96 +418,6 @@ Copyright 2016 Administrator. All rights reserved.
         </div>
     </div>
 </div>
-<script>
-    //获得slider插件对象
-    var gallery = mui('.mui-slider');
-    gallery.slider({
-        interval: 5000//自动轮播周期，若为0则不自动播放，默认为0；
-    });
-    var pageStart = 0, pageEnd = 0, totalpage = 0, thispage = 1, thispsize = 100;
-    mui.getJSON("http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=home&ac=index&op=ajax", {
-            page: thispage,
-            psize: thispsize
-        },
-        function (data) {
-            var stime = new Date(), result = '';
-            totalpage = data.tpage;
-            if (data.tpage == 0) {
-                result = '<li class="mui-table-view-cell"><p style="text-align:center">当前没有推荐信息</p><li>';
-            }
-            pageEnd = data.lists.length <= thispsize ? data.lists.length : thispsize;
-            for (var i = pageStart; i < pageEnd; i++) {
-                joinstime = new Date(data.lists[i].joinstime.replace("-", "/").replace("-", "/"));
-                joinetime = new Date(data.lists[i].joinetime.replace("-", "/").replace("-", "/"));
-                starttime = new Date(data.lists[i].starttime.replace("-", "/").replace("-", "/"));
-                endtime = new Date(data.lists[i].endtime.replace("-", "/").replace("-", "/"));
-                sToend1 = joinetime.format('MM月dd日 hh:mm');
-                sToend2 = starttime.format('MM月dd日 hh:mm');//+'~'+endtime.format('MM月dd日 hh:mm')
 
-                var joinnum = parseInt(data.lists[i].joinnum),
-                    quota = parseInt(data.lists[i].quota),
-                    showjoin = parseInt(data.lists[i].showjoin),
-                    aprice = data.lists[i].aprice,
-                    minaprice = data.lists[i].minaprice;
-                if (stime > endtime) {
-                    tpl_status = '<span class="mui-badge">活动结束</span>';
-                } else {
-                    if (joinnum >= quota && quota > 0) {
-                        tpl_status = '<span class="mui-badge mui-badge-danger">名额已满</span>';
-                    } else {
-                        tpl_status = joinstime > stime ? '<span class="mui-badge">还未开始</span>' : (stime > joinetime ? '<span class="mui-badge">报名结束</span>' : '<span class="mui-badge mui-badge-orange">报名中</span>');
-                    }
-                }
-                var ii = 0, tpl_atlas = '', reg = /\"(.*?)\"/g;
-                while (atlas = reg.exec(data.lists[i].atlas)) {
-                    ii++;
-                    tpl_atlas += '<span class="scroll-control-item' + (ii == 1 ? ' mui-col-xs-12' : '') + '"><img src="' + "http://new.9dcm.net/attachment/" + atlas[1] + '"></span>';
-                }
-                tpl_atlas = ii > 1 ? tpl_atlas.replace(/ mui-col-xs-12/g, '') : tpl_atlas;
-                tpl_price = aprice > 0 || minaprice > 0 ? '<span class="mui-text-orange mui-rmb">' + (minaprice ? minaprice + ' 起' : aprice) + '</span>' : '<span class="mui-text-success">免费活动</span>';
-
-                result += '<li class="mui-table-view-cell mui-media">'
-                    + '    <a href="' + "http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=detail&op=display&activityid=" + data.lists[i].id + '">'
-                    + '        <div class="mui-media-object mui-pull-left" style="background:url(' + "http://new.9dcm.net/attachment/" + data.lists[i].thumb + ') no-repeat center"></div>'
-                    + '        <div class="mui-media-body">'
-                    + '            <span class="title mui-ellipsis">' + data.lists[i].title + '</span>'
-                    + '            <p class="mui-ellipsis-2 mui-small">' + data.lists[i].intro + '</p>'
-                    + '            <p class="mui-small">' + (showjoin ? '已报名：<font color="#666666">' + joinnum + ' 人</font> ' : '') + '剩余名额：<font color="#666666">' + (quota > 0 ? (quota - joinnum) + ' 人' : ' 不限') + '</font></p>'
-                    + '            <div class="mui-media-footer">'
-                    + '            ' + tpl_status
-                    + '            ' + tpl_price
-                    + '            </div>'
-                    + '        </div>'
-                    + '    </a>'
-                    + '</li>';
-            }
-            $("#hot").find('.mui-table-view').append(result);
-        });
-    //格式化日期
-    Date.prototype.format = function (format) {
-        var o = {
-            "M+": this.getMonth() + 1,
-            "d+": this.getDate(),
-            "h+": this.getHours(),
-            "m+": this.getMinutes(),
-            "s+": this.getSeconds(),
-            "q+": Math.floor((this.getMonth() + 3) / 3),
-            "S": this.getMilliseconds()
-        }
-        if (/(y+)/.test(format)) {
-            format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-        }
-
-        for (var k in o) {
-            if (new RegExp("(" + k + ")").test(format)) {
-                format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
-            }
-        }
-        return format;
-    }
-</script>
-<script>;</script>
-<script type="text/javascript"
-        src="http://new.9dcm.net/app/index.php?i=3&c=utility&a=visit&do=showjs&m=fx_activity"></script>
 </body>
 </html>

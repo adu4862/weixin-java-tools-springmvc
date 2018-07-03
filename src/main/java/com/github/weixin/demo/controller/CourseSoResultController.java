@@ -7,6 +7,7 @@ import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
 import me.chanjar.weixin.mp.bean.result.WxMpUser;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.util.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.UnsupportedEncodingException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,16 +43,19 @@ public class CourseSoResultController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
     public ModelAndView get(@RequestParam(name = "openId", required = false) String openId,
+                            @RequestParam(name = "class_type", required = false) String class_type,
                             @RequestParam(name = "code", required = false) String code) {
         this.logger.info("\n课程列表：[{}]");
         mav = new ModelAndView("so_course_list");
         if (!TextUtils.isEmpty(openId)) {
 //            this.openId =openId;
-            searchCourseList(openId);
+            searchCourseList(openId,class_type);
             mav.addObject("list", list);
 
             mav.addObject("openId", openId);
             mav.addObject("urlWithOpenId", "http://www.fjshhdzx.cn/wechat/my?openId=" + openId);
+            mav.addObject("homeUrl", "http://www.fjshhdzx.cn/wechat/course_list?openId=" + openId);
+            mav.addObject("myUrl", "http://www.fjshhdzx.cn/wechat/my?openId=" + openId);
             return mav;
         }
 
@@ -70,7 +73,7 @@ public class CourseSoResultController {
                 openId = wxMpUser.getOpenId();
                 writeToDb(wxMpUser);
                 //重定向到课程列表
-                searchCourseList(openId);
+                searchCourseList(openId, class_type);
 
 
                 //将参数返回给页面
@@ -90,7 +93,7 @@ public class CourseSoResultController {
         }
 
 
-        return mav;
+        return null;
     }
 
     private void writeToDb(WxMpUser bean) {
@@ -129,7 +132,7 @@ public class CourseSoResultController {
 
     }
 
-    private void searchCourseList(String openId) {
+    private void searchCourseList(String openId, String class_type) {
         list = new ArrayList<>();
         Connection conn = null;
         String sql;
@@ -149,6 +152,10 @@ public class CourseSoResultController {
             Statement stmt = conn.createStatement();
             StringBuilder sbSql = new StringBuilder();
             sbSql.append("select * from tb_course ");
+            if (StringUtils.isNotEmpty(class_type)) {
+                sbSql .append(" where class_type = "+class_type);
+            }
+
 
 
             ResultSet rs = stmt.executeQuery(sbSql.toString());// executeQuery会返回结果的集合，否则返回空值
