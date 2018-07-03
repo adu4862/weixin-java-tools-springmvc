@@ -123,6 +123,8 @@
             wx.onMenuShareQQ(_sharedata);
         });
     </script>
+
+    <link rel="stylesheet" type="text/css"href="http://my-photos.changs1992.cn/iconfont_2.css"/>
 </head>
 <body>
 <span class="mui-ext-icon"></span><span class="fa"></span>
@@ -450,14 +452,15 @@ Copyright 2016 Administrator. All rights reserved.
 </script>
 <nav class="mui-bar mui-bar-tab" id="bar">
 
+
     <a class="mui-tab-item" href="${urlWithOpenId1}">
-        <span class="mui-icon mui-ext-icon mui-icon-activity"></span>
+        <span class="mui-icon iconfont icon-faxian"></span>
         <span class="mui-tab-label">报名</span>
     </a>
 
     <a class="mui-tab-item"
        href=${urlWithOpenId}>
-        <span class="mui-icon mui-ext-icon mui-icon-person"></span>
+        <span class="mui-icon iconfont icon-my"></span>
         <span class="mui-tab-label">我的</span>
     </a>
 </nav>
