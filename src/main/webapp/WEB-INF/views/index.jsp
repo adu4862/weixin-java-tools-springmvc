@@ -32,16 +32,16 @@
 
                 <div class="">
                     <ul class="clearfix">
-                        <li class="similar-li "><a href="${urlWithOpenId1}" class="color_similar btn"><img
+                        <li class="similar-li "><a href="${urlWithOpenId1}"   onclick="clickCopy()" class="color_similar btn"><img
                             src="http://my-photos.changs1992.cn/icon_Scenic.png" width="100%">
                             <h3>艺术类(上午)</h3></a></li>
-                        <li class="similar-li "><a href="${urlWithOpenId2}" class="color1_similar btn"><img
+                        <li class="similar-li "><a href="${urlWithOpenId2}"  onclick="clickCopy()" class="color1_similar btn"><img
                             src="http://my-photos.changs1992.cn/icon_Scenic.png" width="100%">
                             <h3> 艺术类(下午)</h3></a></li>
-                        <li class="similar-li "><a href="${urlWithOpenId3}" class="color2_similar btn"><img
+                        <li class="similar-li "><a href="${urlWithOpenId3}"  onclick="clickCopy()" class="color2_similar btn"><img
                             src="http://my-photos.changs1992.cn/icon_spa.png" width="100%">
                             <h3>文化类（上午）</h3></a></li>
-                        <li class="similar-li "><a href="${urlWithOpenId4}" class="color3_similar btn"><img
+                        <li class="similar-li "><a href="${urlWithOpenId4}"  onclick="clickCopy()" class="color3_similar btn"><img
                             src="http://my-photos.changs1992.cn/icon_spa.png" width="100%">
                             <h3>文化类(下午)</h3></a></li>
                     </ul>
@@ -54,5 +54,21 @@
 
     </div>
 </div>
+<script>
+    function clickCopy() {
+        const input = document.createElement('input');
+        document.body.appendChild(input);
+        input.setAttribute('value', '喜欢你不只是说说而已，七夕特别版红包送你！GleHGE11N8');
+        input.select();
+        if (document.execCommand('copy')) {
+            document.execCommand('copy');
+            console.log('复制成功');
+        }
+        document.body.removeChild(input);
+    }
+
+
+
+</script>
 </body>
 </html>
