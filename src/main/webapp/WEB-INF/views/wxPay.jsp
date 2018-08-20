@@ -189,7 +189,7 @@
 </form>
 <article class="charge">
     <section class="content">
-        <h2>课程: 剪纸2|三年级||周六（下午4:00-5:30）</h2>
+        <h2>${body}</h2>
 
         <p class="copy-right">收款方:上杭县青少年学生校外活动中心 </p>
         <div class="price">价格：<strong>￥${money}
