@@ -55,19 +55,34 @@ public class TemplateMessageController extends GenericController {
         }
 
         orderId = request.getParameter("orderId");
+
+        OrderDaoImpl orderDao = new OrderDaoImpl();
+        String sql = " where orderId = "+orderId;
+        List<Map<String, Object>> orderList = orderDao.getOrderList(sql);
+        boolean payed =false;
+        if (orderList.size()>0) {
+            Map<String, Object> stringObjectMap = orderList.get(0);
+             payed = stringObjectMap.get("payed").equals("1");
+
+        }
+
         //更改订单信息
         boolean b = new OrderDaoImpl().updateOrder(orderId, "set payed =1 " );
         String course_id = orderId.split("_")[0];
         //更改课程已支付报名数量
-        CourseDaoImpl courseDao = new CourseDaoImpl();
-        List<Map<String, Object>> courseList = courseDao.getCourseList("where course_id = " + course_id);
-        if (courseList!=null) {
-            if (courseList.size()>0) {
-                int pay_number = (int) courseList.get(0).get("pay_number");
-                pay_number++;
-                boolean b1 = courseDao.updateCourse(course_id, "set pay_number = " + pay_number);
+
+        if (!payed) {
+            CourseDaoImpl courseDao = new CourseDaoImpl();
+            List<Map<String, Object>> courseList = courseDao.getCourseList("where course_id = " + course_id);
+            if (courseList!=null) {
+                if (courseList.size()>0) {
+                    int pay_number = (int) courseList.get(0).get("pay_number");
+                    pay_number++;
+                    boolean b1 = courseDao.updateCourse(course_id, "set pay_number = " + pay_number);
+                }
             }
         }
+
 
         orderPaySuccessTemplate.setToUser(request.getParameter("openId"));
         orderPaySuccessTemplate.setTemplateId("g5vMwAeslQxt9by9F9V5fjyuvuJYRtTVph-gKwI2H9Y");
