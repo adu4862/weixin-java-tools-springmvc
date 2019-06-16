@@ -8,19 +8,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href="http://my-photos.changs1992.cn/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="http://my-photos.changs1992.cn/common.css" rel="stylesheet" type="text/css">
-    <link href="http://my-photos.changs1992.cn/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <script src="http://my-photos.changs1992.cn/TouchSlide.1.1.js" type="text/javascript"></script>
-    <script src="http://my-photos.changs1992.cn/jquery.min.1.8.2.js" type="text/javascript"></script>
-    <script src="http://my-photos.changs1992.cn/TouchSlide.1.1.js" type="text/javascript"></script>
+    <link href="http://qiniu1.huanxinchao.com/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="http://qiniu1.huanxinchao.com/common.css" rel="stylesheet" type="text/css">
+    <link href="http://qiniu1.huanxinchao.com/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="http://qiniu1.huanxinchao.com/TouchSlide.1.1.js" type="text/javascript"></script>
+    <script src="http://qiniu1.huanxinchao.com/jquery.min.1.8.2.js" type="text/javascript"></script>
+    <script src="http://qiniu1.huanxinchao.com/TouchSlide.1.1.js" type="text/javascript"></script>
     <title>上杭县青少年学生校外活动中心</title>
 </head>
 <body>
 <div class="container">
     <div class="row">
         <div style="width: 100%;height: 25%">
-            <img src="http://my-photos.changs1992.cn/%E5%B0%81%E9%9D%A211.png" style="height: 100%;width: 100%">
+            <img src="http://qiniu1.huanxinchao.com/%E5%B0%81%E9%9D%A211.png" style="height: 100%;width: 100%">
         </div>
 
         <!---->
@@ -32,17 +32,17 @@
 
                 <div class="">
                     <ul class="clearfix">
-                        <li class="similar-li "><a href="${urlWithOpenId1}"   onclick="clickCopy()" class="color_similar btn"><img
-                            src="http://my-photos.changs1992.cn/icon_Scenic.png" width="100%">
+                        <li class="similar-li "><a href="${urlWithOpenId1}" class="color_similar btn"><img
+                            src="http://qiniu1.huanxinchao.com/icon_Scenic.png" width="100%">
                             <h3>艺术类(上午)</h3></a></li>
-                        <li class="similar-li "><a href="${urlWithOpenId2}"  onclick="clickCopy()" class="color1_similar btn"><img
-                            src="http://my-photos.changs1992.cn/icon_Scenic.png" width="100%">
+                        <li class="similar-li "><a href="${urlWithOpenId2}" class="color1_similar btn"><img
+                            src="http://qiniu1.huanxinchao.com/icon_Scenic.png" width="100%">
                             <h3> 艺术类(下午)</h3></a></li>
-                        <li class="similar-li "><a href="${urlWithOpenId3}"  onclick="clickCopy()" class="color2_similar btn"><img
-                            src="http://my-photos.changs1992.cn/icon_spa.png" width="100%">
+                        <li class="similar-li "><a href="${urlWithOpenId3}" class="color2_similar btn"><img
+                            src="http://qiniu1.huanxinchao.com/icon_spa.png" width="100%">
                             <h3>文化类（上午）</h3></a></li>
-                        <li class="similar-li "><a href="${urlWithOpenId4}"  onclick="clickCopy()" class="color3_similar btn"><img
-                            src="http://my-photos.changs1992.cn/icon_spa.png" width="100%">
+                        <li class="similar-li "><a href="${urlWithOpenId4}" class="color3_similar btn"><img
+                            src="http://qiniu1.huanxinchao.com/icon_spa.png" width="100%">
                             <h3>文化类(下午)</h3></a></li>
                     </ul>
                 </div>

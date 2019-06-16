@@ -39,7 +39,7 @@
             <%--title: "分享标题",--%>
             <%--desc: "",--%>
             <%--link: window.location.href,--%>
-            <%--imgUrl: "http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg"--%>
+            <%--imgUrl: "http://qiniu1.huanxinchao.com/qrcode_for_gh_e7094005914d_258.jpg"--%>
         <%--};--%>
         <%--wx.ready(function () {--%>
             <%--var _sharedata = {--%>
@@ -171,7 +171,7 @@
         display: inline-block !important;
     }
 </style>
-<form action="http://www.fjshhdzx.cn/weixin_pay/create_order" method="get" onSubmit="return check(this)" style="position: initial">
+<form accept-charset="utf-8" action="http://www.fjshhdzx.cn/weixin_pay/create_order" method="get" onSubmit="return check(this)" style="position: initial">
     <footer class="mui-bar mui-bar-footer">
         <button type="submit" class="mui-btn mui-btn-orange mui-btn-block">提交报名</button>
         <input type="hidden" name="submit" value="提交报名"/>
@@ -217,30 +217,7 @@
                 <input name="form_item_val_0" value="" type="text" placeholder="请输入性别 (必填)">
             </div>
             <input name="form_id[]" type="hidden" class="form-control form_id" value="922"/>
-            <input name="essential" type="hidden" value="1" title="学校" data-type="3"/>
-            <div class="mui-input-row">
-                <label>就读学校</label>
-                <input name="form_item_val_1" value="" type="text" placeholder="请输入学校 (必填)">
-            </div>
-            <input name="form_id[]" type="hidden" class="form-control form_id" value="923"/>
 
-            <input name="essential" type="hidden" value="2" title="年级" data-type="3"/>
-            <div class="mui-input-row">
-                <label>年级</label>
-                <input name="form_item_val_2" value="" type="text" placeholder="请输入年级 (必填)">
-            </div>
-            <input name="form_id[]" type="hidden" class="form-control form_id" value="929"/>
-            <div class="mui-input-row">
-                <label>兴趣爱好</label>
-                <input name="form_item_val_7" value="" type="text" placeholder="请输入兴趣爱好">
-            </div>
-            <input name="form_id[]" type="hidden" class="form-control form_id" value="929"/>
-
-            <div class="mui-input-row">
-                <label>家庭住址</label>
-                <input name="form_item_val_8" value="" type="text" placeholder="请输入家庭住址">
-            </div>
-            <input name="form_id[]" type="hidden" class="form-control form_id" value="929"/>
 
             <div class="mui-input-row">
                 <label>家长姓名 </label>

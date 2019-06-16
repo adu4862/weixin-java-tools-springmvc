@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -79,10 +81,20 @@ public class DetailsController {
         } else {
             isFull = true;
         }
+        String body = subject.toString() + "_" + class_name.toString() + "_"  + time.toString();
+        String encode = "";
+        try {
+             encode = URLEncoder.encode(String.valueOf(body), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         mav.addObject("course_id", "http://www.fjshhdzx.cn/wechat/order_info?course_id="
-            + course_id + "&openId=" + openId + "&body=" + subject.toString() + "|" + class_name.toString() + "|" + "|" + time.toString()
-            + "&cost=" + cost + "&class_type=" + class_type
+            + course_id
+            + "&openId=" + openId
+            + "&body=" + encode
+            + "&cost=" + cost
+            + "&class_type=" + class_type
 
             + "&subject=" + subject);
 

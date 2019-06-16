@@ -21,7 +21,7 @@
           href="http://new.9dcm.net/addons/fx_activity/app/resource/components/dropload/dropload.css?v=20171106">
 
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-    <link rel="stylesheet" type="text/css"href="http://my-photos.changs1992.cn/iconfont_2.css"/>
+    <link rel="stylesheet" type="text/css"href="http://qiniu1.huanxinchao.com/iconfont_2.css"/>
     <script type="text/javascript">
         window.sysinfo = window.sysinfo || {
             "uniacid": 3,
@@ -95,7 +95,7 @@
             title: "分享标题",
             desc: "",
             link: window.location.href,
-            imgUrl: "http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg"
+            imgUrl: "http://qiniu1.huanxinchao.com/qrcode_for_gh_e7094005914d_258.jpg"
         };
         wx.ready(function () {
             var _sharedata = {
@@ -347,7 +347,7 @@
     </style>
     <div class="footer latecolor">
         <a href="javascript:;">
-            <img src="http://my-photos.changs1992.cn/qrcode_for_gh_e7094005914d_258.jpg" height="30"/>上杭县青少年学生校外活动中心</a>
+            <img src="http://qiniu1.huanxinchao.com/qrcode_for_gh_e7094005914d_258.jpg" height="30"/>上杭县青少年学生校外活动中心</a>
     </div>
 </div>
 <style type="text/css">

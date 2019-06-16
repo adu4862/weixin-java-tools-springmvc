@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +45,11 @@ public class OrderInfoController {
 
         ModelAndView mav = new ModelAndView("order_info2");
         //将参数返回给页面
+        try {
+            body = URLEncoder.encode(String.valueOf(body), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         mav.addObject("course_id",  course_id);
         mav.addObject("cost",  cost);
         mav.addObject("openId",  openId);
