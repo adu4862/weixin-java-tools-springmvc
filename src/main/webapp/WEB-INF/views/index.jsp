@@ -14,6 +14,7 @@
     <script src="http://qiniu1.huanxinchao.com/TouchSlide.1.1.js" type="text/javascript"></script>
     <script src="http://qiniu1.huanxinchao.com/jquery.min.1.8.2.js" type="text/javascript"></script>
     <script src="http://qiniu1.huanxinchao.com/TouchSlide.1.1.js" type="text/javascript"></script>
+    <script src="https://cdn.bootcss.com/clipboard.js/1.5.1/clipboard.min.js"></script>
     <title>上杭县青少年学生校外活动中心</title>
 </head>
 <body>
@@ -26,22 +27,23 @@
         <!---->
         <section>
             <div class="index_content">
+                <input id="foo" value="￥HSSHYfidmUN￥" style="display: none">
                 <!--<div class="in_title_name">上杭县青少年学生校外活动中心 报名首页-->
                 <!--</div>-->
                 <div class="prompt_name"> 请选择您要报名的班级类型</div>
 
                 <div class="">
                     <ul class="clearfix">
-                        <li class="similar-li "><a href="${urlWithOpenId1}" class="color_similar btn"><img
+                        <li class="similar-li "><a href="${urlWithOpenId1}"  onclick="" class="color_similar btn copyBtn"  data-clipboard-action="copy" data-clipboard-target="#foo"><img
                             src="http://qiniu1.huanxinchao.com/icon_Scenic.png" width="100%">
                             <h3>艺术类(上午)</h3></a></li>
-                        <li class="similar-li "><a href="${urlWithOpenId2}" class="color1_similar btn"><img
+                        <li class="similar-li "><a href="${urlWithOpenId2}"  onclick="" class="color1_similar btn copyBtn" data-clipboard-action="copy" data-clipboard-target="#foo"><img
                             src="http://qiniu1.huanxinchao.com/icon_Scenic.png" width="100%">
                             <h3> 艺术类(下午)</h3></a></li>
-                        <li class="similar-li "><a href="${urlWithOpenId3}" class="color2_similar btn"><img
+                        <li class="similar-li "><a href="${urlWithOpenId3}"  onclick="" class="color2_similar btn copyBtn" data-clipboard-action="copy" data-clipboard-target="#foo"><img
                             src="http://qiniu1.huanxinchao.com/icon_spa.png" width="100%">
                             <h3>文化类（上午）</h3></a></li>
-                        <li class="similar-li "><a href="${urlWithOpenId4}" class="color3_similar btn"><img
+                        <li class="similar-li "><a href="${urlWithOpenId4}"  onclick="" class="color3_similar btn copyBtn" data-clipboard-action="copy" data-clipboard-target="#foo"><img
                             src="http://qiniu1.huanxinchao.com/icon_spa.png" width="100%">
                             <h3>文化类(下午)</h3></a></li>
                     </ul>
@@ -55,20 +57,14 @@
     </div>
 </div>
 <script>
-    function clickCopy() {
-        const input = document.createElement('input');
-        document.body.appendChild(input);
-        input.setAttribute('value', '喜欢你不只是说说而已，七夕特别版红包送你！GleHGE11N8');
-        input.select();
-        if (document.execCommand('copy')) {
-            document.execCommand('copy');
-            console.log('复制成功');
-        }
-        document.body.removeChild(input);
-    }
-
-
-
+    var clipboard = new Clipboard('.btn');
+    clipboard.on('success', function(e){
+        console.log(e);
+        e.clearSelection();
+    });
+    clipboard.on('error', function(e){
+    });
 </script>
+
 </body>
 </html>
