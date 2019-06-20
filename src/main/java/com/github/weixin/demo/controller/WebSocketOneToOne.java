@@ -101,7 +101,7 @@ public class WebSocketOneToOne {
             WebSocketOneToOne con = connections.get(to);
             if(con!=null){
                 if(socketId==con.socketId||con.socketId.equals(socketId)){
-                    con.session.getBasicRemote().sendText(from+"说："+msg);
+                    con.session.getBasicRemote().sendText(msg);
                 }
 
             }
@@ -109,7 +109,7 @@ public class WebSocketOneToOne {
             WebSocketOneToOne confrom = connections.get(from);
             if(confrom!=null){
                 if(socketId==confrom.socketId||confrom.socketId.equals(socketId)){
-                    confrom.session.getBasicRemote().sendText(from+"说："+msg);
+                    confrom.session.getBasicRemote().sendText(msg);
                 }
 
             }
