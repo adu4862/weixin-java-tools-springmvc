@@ -17,7 +17,7 @@ public class CourseDaoImpl implements CourseDao {
         Connection conn = null;
         String sql;
 
-        String url = "jdbc:mysql://localhost:3306/weixin_db?"
+        String url = "jdbc:mysql://47.92.131.178:3306/weixin_db?"
                 + "user=yanglong&password=Willyang4862!&useUnicode=true&characterEncoding=utf8";
 
         try {
@@ -72,7 +72,7 @@ public class CourseDaoImpl implements CourseDao {
         Connection conn = null;
         String sql;
 
-        String url = "jdbc:mysql://localhost:3306/weixin_db?"
+        String url = "jdbc:mysql://47.92.131.178:3306/weixin_db?"
                 + "user=yanglong&password=Willyang4862!&useUnicode=true&characterEncoding=utf8";
 
         try {
@@ -109,7 +109,7 @@ public class CourseDaoImpl implements CourseDao {
         Connection conn = null;
         String sql;
 
-        String url = "jdbc:mysql://localhost:3306/weixin_db?"
+        String url = "jdbc:mysql://47.92.131.178:3306/weixin_db?"
                 + "user=yanglong&password=Willyang4862!&useUnicode=true&characterEncoding=utf8";
 
         try {
@@ -152,7 +152,7 @@ public class CourseDaoImpl implements CourseDao {
         Connection conn = null;
         String sql;
 
-        String url = "jdbc:mysql://localhost:3306/weixin_db?"
+        String url = "jdbc:mysql://47.92.131.178:3306/weixin_db?"
                 + "user=yanglong&password=Willyang4862!&useUnicode=true&characterEncoding=utf8";
 
         try {

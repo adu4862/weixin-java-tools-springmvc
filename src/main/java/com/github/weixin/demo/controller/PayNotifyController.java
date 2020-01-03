@@ -93,7 +93,7 @@ public class PayNotifyController {
         // 避免中文乱码要指定useUnicode和characterEncoding
         // 执行数据库操作之前要在数据库管理系统上创建一个数据库，名字自己定，
         // 下面语句之前就要先创建javademo数据库
-        String url = "jdbc:mysql://localhost:3306/weixin_db?"
+        String url = "jdbc:mysql://47.92.131.178:3306/weixin_db?"
             + "user=yanglong&password=Willyang4862!&useUnicode=true&characterEncoding=utf8";
         try {
             // 之所以要使用下面这条语句，是因为要使用MySQL的驱动，所以我们要把它驱动起来，

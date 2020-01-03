@@ -20,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.*;
 import java.util.*;
 
@@ -70,7 +72,7 @@ public class CreateOrderController {
                             @RequestParam(name = "msg", required = false) String msg,
                             @RequestParam(name = "class_type", required = false) int class_type,
                             @RequestParam(name = "body", required = false) String body
-    ) {
+    ) throws UnsupportedEncodingException {
         ModelAndView modelAndView = new ModelAndView("wxPay");
         ReturnModel returnModel = new ReturnModel();
         String ip2 = MD5Util.getIp2(request);
@@ -79,7 +81,7 @@ public class CreateOrderController {
 //        WxMpUser user = wxMpService.getUserService().userInfo(openid,lang);
 //        course_id =
         String s = searchCourseList(course_id);
-
+        body = URLDecoder.decode(body, "UTF-8");
         //存数据库并生成订单id
         writeToDb(course_id, cost, name, sex, school, phone, grade, father_name, father_phone, mother_name, mother_phone, hobby, openId,address,subject,msg,age,class_type);
 
@@ -146,7 +148,7 @@ public class CreateOrderController {
         Connection conn = null;
         String sql;
 
-        String url = "jdbc:mysql://localhost:3306/weixin_db?"
+        String url = "jdbc:mysql://47.92.131.178:3306/weixin_db?"
             + "user=yanglong&password=Willyang4862!&useUnicode=true&characterEncoding=utf8";
 
         try {
@@ -199,7 +201,7 @@ public class CreateOrderController {
         // 避免中文乱码要指定useUnicode和characterEncoding
         // 执行数据库操作之前要在数据库管理系统上创建一个数据库，名字自己定，
         // 下面语句之前就要先创建javademo数据库
-        String url = "jdbc:mysql://localhost:3306/weixin_db?"
+        String url = "jdbc:mysql://47.92.131.178:3306/weixin_db?"
             + "user=yanglong&password=Willyang4862!&useUnicode=true&characterEncoding=utf8";
         try {
             // 之所以要使用下面这条语句，是因为要使用MySQL的驱动，所以我们要把它驱动起来，
