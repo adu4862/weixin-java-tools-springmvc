@@ -3,7 +3,7 @@
          pageEncoding="UTF-8" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="zh-CN">
+<html lang="zh-CN" style="height: 100%;">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,8 @@
             top: 1.25rem;
             z-index: 1;
         }
-        .prompt_name{
+
+        .prompt_name {
             margin-left: 10px;
             margin-top: 10px;
         }
@@ -34,7 +35,7 @@
         }
 
         .van-cell-group {
-            margin-top: 3.125rem;
+            margin-top: 2.125rem;
             display: flex;
             justify-content: space-evenly;
             flex-wrap: wrap;
@@ -120,8 +121,8 @@
         }
     </style>
 </head>
-<body>
-<div class="container">
+<body style="height: 100%;">
+<div class="container" style="height: 100%;position: relative">
     <div class="row">
         <div style="width: 100%;height: 25%">
             <img src="http://qiniu1.huanxinchao.com/%E5%B0%81%E9%9D%A211.png" style="height: 100%;width: 100%">
@@ -173,27 +174,27 @@
                     </a>
                 </div>
                 <%--<div class="">--%>
-                    <%--<ul class="clearfix">--%>
-                        <%--<li class="similar-li "><a href="${urlWithOpenId1}" onclick="" class="color_similar btn copyBtn"--%>
-                                                   <%--data-clipboard-action="copy" data-clipboard-target="#foo"><img--%>
-                            <%--src="http://qiniu1.huanxinchao.com/J-yishu.png" width="100%">--%>
-                            <%--<h3>艺术类(上午)</h3></a></li>--%>
-                        <%--<li class="similar-li "><a href="${urlWithOpenId2}" onclick=""--%>
-                                                   <%--class="color1_similar btn copyBtn" data-clipboard-action="copy"--%>
-                                                   <%--data-clipboard-target="#foo"><img--%>
-                            <%--src="http://qiniu1.huanxinchao.com/icon_Scenic.png" width="100%">--%>
-                            <%--<h3> 艺术类(下午)</h3></a></li>--%>
-                        <%--<li class="similar-li "><a href="${urlWithOpenId3}" onclick=""--%>
-                                                   <%--class="color2_similar btn copyBtn" data-clipboard-action="copy"--%>
-                                                   <%--data-clipboard-target="#foo"><img--%>
-                            <%--src="http://qiniu1.huanxinchao.com/icon_spa.png" width="100%">--%>
-                            <%--<h3>文化类（上午）</h3></a></li>--%>
-                        <%--<li class="similar-li "><a href="${urlWithOpenId4}" onclick=""--%>
-                                                   <%--class="color3_similar btn copyBtn" data-clipboard-action="copy"--%>
-                                                   <%--data-clipboard-target="#foo"><img--%>
-                            <%--src="http://qiniu1.huanxinchao.com/icon_spa.png" width="100%">--%>
-                            <%--<h3>文化类(下午)</h3></a></li>--%>
-                    <%--</ul>--%>
+                <%--<ul class="clearfix">--%>
+                <%--<li class="similar-li "><a href="${urlWithOpenId1}" onclick="" class="color_similar btn copyBtn"--%>
+                <%--data-clipboard-action="copy" data-clipboard-target="#foo"><img--%>
+                <%--src="http://qiniu1.huanxinchao.com/J-yishu.png" width="100%">--%>
+                <%--<h3>艺术类(上午)</h3></a></li>--%>
+                <%--<li class="similar-li "><a href="${urlWithOpenId2}" onclick=""--%>
+                <%--class="color1_similar btn copyBtn" data-clipboard-action="copy"--%>
+                <%--data-clipboard-target="#foo"><img--%>
+                <%--src="http://qiniu1.huanxinchao.com/icon_Scenic.png" width="100%">--%>
+                <%--<h3> 艺术类(下午)</h3></a></li>--%>
+                <%--<li class="similar-li "><a href="${urlWithOpenId3}" onclick=""--%>
+                <%--class="color2_similar btn copyBtn" data-clipboard-action="copy"--%>
+                <%--data-clipboard-target="#foo"><img--%>
+                <%--src="http://qiniu1.huanxinchao.com/icon_spa.png" width="100%">--%>
+                <%--<h3>文化类（上午）</h3></a></li>--%>
+                <%--<li class="similar-li "><a href="${urlWithOpenId4}" onclick=""--%>
+                <%--class="color3_similar btn copyBtn" data-clipboard-action="copy"--%>
+                <%--data-clipboard-target="#foo"><img--%>
+                <%--src="http://qiniu1.huanxinchao.com/icon_spa.png" width="100%">--%>
+                <%--<h3>文化类(下午)</h3></a></li>--%>
+                <%--</ul>--%>
                 <%--</div>--%>
                 <!--切换-->
 
@@ -201,6 +202,14 @@
             <!---->
         </section>
 
+    </div>
+
+    <div style="width: 100%;position: absolute;margin-top: 30px;margin-bottom: 20px" data-v-01db9b24="" class=" footend-container">
+        <a href="http://www.beian.miit.gov.cn" data-v-01db9b24="" class="footend"
+             style="display: flex;
+    align-items: center;
+    justify-content: center;">闽ICP备18013532号 &nbsp;©2018-2020
+        </a>
     </div>
 </div>
 <script>
