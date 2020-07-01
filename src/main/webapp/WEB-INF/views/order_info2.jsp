@@ -14,64 +14,17 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-    <link rel="shortcut icon" href="http://new.9dcm.net/attachment/images/global/wechat.jpg"/>
-    <link rel="stylesheet" type="text/css" href="http://new.9dcm.net/app/resource/css/common.min.css?v=20171106">
-    <link rel="stylesheet" type="text/css"
-          href="http://new.9dcm.net/addons/fx_activity/app/resource/components/mui/mui.ext.css?v=20171206">
-    <link rel="stylesheet" type="text/css"
-          href="http://new.9dcm.net/addons/fx_activity/app/resource/components/dropload/dropload.css?v=20171106">
 
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-
+    <link href="https://dcloud.io/hellomui/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="http://cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
+    <script type="text/javascript"
+            src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script>var app_module_name = 'fx_activity';</script>
-    <script type="text/javascript" src="http://new.9dcm.net/app/resource/js/app/util.js?v=20171206"></script>
-    <%--<script type="text/javascript" src="http://new.9dcm.net/app/resource/js/require.js?v=20171106"></script>--%>
-    <script type="text/javascript"
-            src="http://new.9dcm.net/app/resource/js/lib/jquery-1.11.1.min.js?v=20171106"></script>
-    <script type="text/javascript"
-            src="http://new.9dcm.net/addons/fx_activity/app/resource/js/app/util.min.js?v=20171206"></script>
-    <script type="text/javascript" src="http://new.9dcm.net/app/resource/js/lib/mui.min.js?v=20171106"></script>
-    <script type="text/javascript" src="http://new.9dcm.net/app/resource/js/app/common.js?v=20171106"></script>
-    <%--<script type="text/javascript"--%>
-            <%--src="http://new.9dcm.net/addons/fx_activity/app/resource/components/dropload/dropload.min.js"></script>--%>
-    <%--<script type="text/javascript">--%>
-        <%--var shareData = {--%>
-            <%--title: "分享标题",--%>
-            <%--desc: "",--%>
-            <%--link: window.location.href,--%>
-            <%--imgUrl: "http://qiniu1.huanxinchao.com/qrcode_for_gh_e7094005914d_258.jpg"--%>
-        <%--};--%>
-        <%--wx.ready(function () {--%>
-            <%--var _sharedata = {--%>
-                <%--title: shareData.title,--%>
-                <%--desc: shareData.desc,--%>
-                <%--link: shareData.link,--%>
-                <%--imgUrl: shareData.imgUrl,--%>
-                <%--success: function () {--%>
-                    <%--var url = "http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=activity&ac=detail&op=share&id=78";--%>
-                    <%--var share_action = "";--%>
-                    <%--if (share_action == '1') {--%>
-                        <%--$.post(url, function (d) {--%>
-                            <%--if (d.result == 1) {--%>
-                                <%--util.alert('恭喜您获取 ' + d.data + ' 积分', ' ');--%>
-                            <%--} else if (d.result == 2) {--%>
-                                <%--util.alert(d.data, ' ');--%>
-                            <%--}--%>
-                        <%--}, "json");--%>
-                    <%--}--%>
-                <%--},--%>
-                <%--cancel: function () {--%>
-                <%--}--%>
-            <%--};--%>
-            <%--wx.onMenuShareAppMessage(_sharedata);--%>
-            <%--wx.onMenuShareTimeline(_sharedata);--%>
-            <%--wx.onMenuShareQQ(_sharedata);--%>
-        <%--});--%>
-    <%--</script>--%>
+
 </head>
 <body>
 <span class="mui-ext-icon"></span><span class="fa"></span>
-<%--<script type="text/javascript" src="http://new.9dcm.net/addons/fx_activity/app/resource/js/jquery.cookie.js"></script>--%>
 <style type="text/css">
     .mui-bar a {
         color: #ff9900;
@@ -219,29 +172,7 @@
             <input name="form_id[]" type="hidden" class="form-control form_id" value="922"/>
 
 
-            <div class="mui-input-row">
-                <label>家长姓名 </label>
-                <input name="form_item_val_3" value="" type="text" placeholder="请输入家长姓名">
-            </div>
-            <input name="form_id[]" type="hidden" class="form-control form_id" value="925"/>
-            <input name="essential" type="hidden" value="4" title="家长电话" data-type="3"/>
-            <div class="mui-input-row">
-                <label>家长电话</label>
-                <input name="form_item_val_4" value="" type="number"   placeholder="请输入电话 (必填)">
-            </div>
-            <input name="form_id[]" type="hidden" class="form-control form_id" value="930"/>
 
-            <ul class="mui-table-view">
-                <li class="mui-table-view-cell mui-pl15" style="display:none">
-                    <a class="mui-navigate-right js-marketing" href="#">主办方优惠<span
-                        class="mui-badge mui-badge-inverted"></span></a>
-                </li>
-                <li class="mui-table-view-cell">
-                    <textarea id="textarea" class="mui-input-clear" name="msg" placeholder="留言"
-                              style="padding:3px;"></textarea>
-                </li>
-            </ul>
-            <p>&nbsp;</p>
         </div>
     </div>
 </form>

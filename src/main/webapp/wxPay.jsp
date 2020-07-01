@@ -11,8 +11,10 @@
           content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" type="text/css"/>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <link href="https://dcloud.io/hellomui/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="http://cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
     <script type="text/javascript"
-            src="http://new.9dcm.net/app/resource/js/lib/jquery-1.11.1.min.js?v=20171106"></script>
+            src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
 

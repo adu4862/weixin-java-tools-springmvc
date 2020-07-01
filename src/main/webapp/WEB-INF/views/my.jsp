@@ -13,12 +13,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-    <link rel="shortcut icon" href="http://new.9dcm.net/attachment/images/global/wechat.jpg"/>
-    <link rel="stylesheet" type="text/css" href="http://new.9dcm.net/app/resource/css/common.min.css?v=20171106">
-    <link rel="stylesheet" type="text/css"
-          href="http://new.9dcm.net/addons/fx_activity/app/resource/components/mui/mui.ext.css?v=20171206">
-    <link rel="stylesheet" type="text/css"
-          href="http://new.9dcm.net/addons/fx_activity/app/resource/components/dropload/dropload.css?v=20171106">
+    <link href="https://dcloud.io/hellomui/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="http://cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
+    <script type="text/javascript"
+            src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     <link rel="stylesheet" type="text/css"href="http://qiniu1.huanxinchao.com/iconfont_2.css"/>
@@ -80,16 +78,6 @@
 
     </script><!--兼容图片上传1.0-->
     <script>var app_module_name = 'fx_activity';</script>
-    <script type="text/javascript" src="http://new.9dcm.net/app/resource/js/app/util.js?v=20171206"></script>
-    <script type="text/javascript" src="http://new.9dcm.net/app/resource/js/require.js?v=20171106"></script>
-    <script type="text/javascript"
-            src="http://new.9dcm.net/app/resource/js/lib/jquery-1.11.1.min.js?v=20171106"></script>
-    <script type="text/javascript"
-            src="http://new.9dcm.net/addons/fx_activity/app/resource/js/app/util.min.js?v=20171206"></script>
-    <script type="text/javascript" src="http://new.9dcm.net/app/resource/js/lib/mui.min.js?v=20171106"></script>
-    <script type="text/javascript" src="http://new.9dcm.net/app/resource/js/app/common.js?v=20171106"></script>
-    <script type="text/javascript"
-            src="http://new.9dcm.net/addons/fx_activity/app/resource/components/dropload/dropload.min.js"></script>
     <script type="text/javascript">
         var shareData = {
             title: "分享标题",
@@ -259,31 +247,20 @@
 <div class="mui-content">
     <ul class="mui-table-view" style="margin-top: 0;">
         <li class="mui-table-view-cell mui-media">
-            <%--<a class="mui-navigate-right js-popover" data-popover='member'>--%>
                 <img class="mui-media-object mui-pull-left" src="${headImgUrl}">
                 <div class="mui-media-body">
                     <span></span>
                     <p class="mui-ellipsis">昵称：${nickname}</p>
                 </div>
-            <%--</a>--%>
         </li>
-        <%--<li class="mui-table-view-cell js-change" data-type="nickname">--%>
-            <%--<a>昵称<span class="mui-badge mui-badge-inverted">${nickname}</span></a>--%>
-        <%--</li>--%>
+
     </ul>
     <ul class="mui-table-view mui-grid-view mui-afterbefore-no mui-text-gray" style="margin:0; padding:0;">
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-2">
-            <%--<a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=favorite&"--%>
-            <%--class="mui-text-gray">--%>
-            <%--<span class="mui-ext-icon mui-icon-favorite"></span>--%>
-            <%--<div class="mui-media-body">收藏</div>--%>
-            <%--</a>--%>
+
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-2">
-            <%--<a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=profile&op=list"><span--%>
-            <%--class="mui-ext-icon mui-icon-fensi"></span>--%>
-            <%--<div class="mui-media-body">关注</div>--%>
-            <%--</a>--%>
+
         </li>
     </ul>
     <div class="mui-card mui-one">
@@ -299,32 +276,13 @@
 
             </ul>
         </div>
-        <%--<div class="mui-card-footer mui-small" style="text-align:center">--%>
-        <%--<a class="mui-card-link mui-text-gray"--%>
-        <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=1">--%>
-        <%--<p>0</p>待付款</a>--%>
-        <%--<a class="mui-card-link mui-text-gray"--%>
-        <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=2">--%>
-        <%--<p>0</p>待参与</a>--%>
-        <%--<a class="mui-card-link mui-text-gray"--%>
-        <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=3">--%>
-        <%--<p>0</p>已完成</a>--%>
-        <%--<a class="mui-card-link mui-text-gray"--%>
-        <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=4">--%>
-        <%--<p>0</p>已取消</a>--%>
-        <%--<a class="mui-card-link mui-text-gray"--%>
-        <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=records&ac=records&op=list&index=5">--%>
-        <%--<p>0</p>已退款</a>--%>
-        <%--</div>--%>
+
     </div>
 
     <ul class="mui-table-view mui-afterbefore-no" style="margin-bottom:20px;">
     </ul>
     <div class="mui-content-padded">
-        <%--<a class="mui-btn mui-btn-orange mui-btn-block"--%>
-        <%--href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=merch&op=display"--%>
-        <%--style="border-radius:100px;">我是主办方</span>--%>
-        <%--</a>--%>
+
     </div>
     <style type="text/css">
         .footer {
@@ -483,8 +441,6 @@
                     </ul>
                     <ul class="mui-table-view">
                         <li class="mui-table-view-cell">
-                            <a href="http://new.9dcm.net/app/index.php?i=3&c=entry&m=fx_activity&do=member&ac=bond&op=mobile&setting=1">手机号<span
-                                class="mui-badge mui-badge-inverted mui-text-primary">待绑定</span></a>
                         </li>
                         <li class="mui-table-view-cell js-change" data-type="qq">
                             <a>QQ号<span class="mui-badge mui-badge-inverted mui-text-primary">待绑定</span></a>
@@ -620,7 +576,5 @@
     }*/
 </script>
 <script>;</script>
-<script type="text/javascript"
-        src="http://new.9dcm.net/app/index.php?i=3&c=utility&a=visit&do=showjs&m=fx_activity"></script>
 </body>
 </html>
